@@ -151,9 +151,9 @@ ul.task-list li input[type="checkbox"] {
 <section class="site-intro">
   <div class="site-kicker">Teaching · Supervision · Learning by making</div>
   <h2 class="anchored">Education</h2>
-  <div class="site-lede">
-    <p>I view education as a process of inquiry, experimentation, and collective sense-making. My teaching draws on cybernetics, complexity, and hands-on learning to help students engage critically and creatively with the systems that shape our world.</p>
-    <p><span class="site-muted">This page gathers my teaching commitments, educational practice, research supervision, and mentoring activities.</span></p>
+  <div class="site-lede site-muted">
+    <p>Education has always been close to my heart. My teaching draws on cybernetics, complexity, and hands-on learning to help students engage critically and creatively with the systems that shape our world.</p>
+    <p><span class="site-lede">This page gathers my teaching commitments, educational practice, research supervision, and mentoring activities.</span></p>
   </div>
 </section>
 
@@ -178,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
 
     <article class="education-theme-card">
       <div class="education-card-kicker">Dialogue</div>
-      <h3 class="anchored">Cross-disciplinary communication</h3>
+      <h3 class="anchored">Cross-disciplinarity</h3>
       <p>My teaching invites students to work across technical, social, cultural, and ethical perspectives. I value learning as a collective practice shaped by diverse forms of expertise and lived experience.</p>
     </article>
   </div>
@@ -241,58 +241,61 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </section>
 
+
+<!--
 <section class="site-section education-practice-areas">
-  <h2 class="site-section-title anchored">Areas of educational practice</h2>
+  <h2 class="site-section-title">Areas of educational practice</h2>
   <p class="education-section-lede">
     My teaching interests are closely connected to my research: I use complexity, cybernetics, topology, and human–AI relations as ways to help learners ask better questions about systems, technology, knowledge, and responsibility.
   </p>
 
   <div class="education-practice-list">
     <article class="education-practice-item">
-      <h3 class="anchored">Complexity and cybernetics</h3>
+      <h3>Complexity and cybernetics</h3>
       <p>Teaching systems as dynamic, feedback-driven, and situated helps learners work with uncertainty rather than reduce it prematurely.</p>
     </article>
 
     <article class="education-practice-item">
-      <h3 class="anchored">Human–AI futures</h3>
+      <h3>Human–AI futures</h3>
       <p>I support learners in developing richer vocabularies for understanding generative AI beyond narrow technical framings, with attention to agency, accountability, context, and consequence.</p>
     </article>
 
     <article class="education-practice-item">
-      <h3 class="anchored">Data, structure, and topology</h3>
+      <h3>Data, structure, and topology</h3>
       <p>I am interested in making mathematical and computational ways of seeing more accessible, especially where they help reveal hidden patterns, relations, and flows in complex systems.</p>
     </article>
   </div>
 </section>
+-->
 
-<section class="site-band">
-  <div class="site-section">
-    <h2 class="site-section-title anchored">Research supervision and mentoring</h2>
-    <p class="education-section-lede">
-      My supervision and mentoring practice is grounded in curiosity, care, and methodological openness. I am interested in supporting students whose projects engage with complexity, cybernetics, information dynamics, topology, AI-mediated systems, or related questions about emergence and knowledge systems.
-    </p>
 
-    <div class="supervision-grid">
-      <article class="supervision-card">
-        <h3 class="anchored">Research supervision</h3>
-        <p>I welcome projects that combine conceptual, computational, empirical, or design-oriented approaches to understanding complex systems.</p>
-      </article>
 
-      <article class="supervision-card">
-        <h3 class="anchored">Mentoring</h3>
-        <p>Inspired by a <i>pay-it-forward</i> ethos, I aim to help students and emerging researchers clarify their questions, navigate uncertainty, and develop confidence in transdisciplinary work.</p>
-      </article>
+<section class="site-section">
+  <h2 class="site-section-title anchored">Research supervision and mentoring</h2>
+  <p class="education-section-lede">
+    My supervision and mentoring practice is grounded in curiosity, care, and methodological openness. I am interested in supporting students whose projects engage with complexity, cybernetics, information dynamics, topology, AI-mediated systems, or related questions about emergence and knowledge systems.
+  </p>
 
-      <article class="supervision-card">
-        <h3 class="anchored">Possible project directions</h3>
-        <ul>
-          <li>Modelling complex systems to deepen our understanding of pattern formation and the emergence of collective behaviour</li>
-          <li>Topics related to human–AI interaction</li>
-          <li>Information dynamics through language and communication</li>
-          <!--<li>Structural diagnostics for knowledge integrity</li>-->
-        </ul>
-      </article>
-    </div>
+  <div class="supervision-grid">
+    <article class="supervision-card">
+      <h3 class="anchored">Research supervision</h3>
+      <p>I welcome projects that combine conceptual, computational, empirical, or design-oriented approaches to understanding complex systems.</p>
+    </article>
+
+    <article class="supervision-card">
+      <h3 class="anchored">Mentoring</h3>
+      <p>Inspired by a <i>pay-it-forward</i> ethos, I aim to help students and emerging researchers clarify their questions, navigate uncertainty, and develop confidence in transdisciplinary work.</p>
+    </article>
+
+    <article class="supervision-card">
+      <h3 class="anchored">Possible project directions</h3>
+      <ul>
+        <li>Modelling complex systems to deepen our understanding of pattern formation and the emergence of collective behaviour</li>
+        <li>Topics related to human–AI interaction</li>
+        <li>Information dynamics through language and communication</li>
+        <!--<li>Structural diagnostics for knowledge integrity</li>-->
+      </ul>
+    </article>
   </div>
 </section>
 
@@ -374,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/YeoniH\.github\.io\/my_website\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

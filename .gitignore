@@ -1,3 +1,4 @@
+*.swp
 
 /.quarto/
 **/*.quarto_ipynb

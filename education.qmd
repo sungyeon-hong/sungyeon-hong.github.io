@@ -13,9 +13,9 @@ format:
 <section class="site-intro">
   <div class="site-kicker">Teaching · Supervision · Learning by making</div>
   <h2>Education</h2>
-  <div class="site-lede">
-    <p>I view education as a process of inquiry, experimentation, and collective sense-making. My teaching draws on cybernetics, complexity, and hands-on learning to help students engage critically and creatively with the systems that shape our world.</p>
-    <p><span class="site-muted">This page gathers my teaching commitments, educational practice, research supervision, and mentoring activities.</span></p>
+  <div class="site-lede site-muted">
+    <p>Education has always been close to my heart. My teaching draws on cybernetics, complexity, and hands-on learning to help students engage critically and creatively with the systems that shape our world.</p>
+    <p><span class="site-lede">This page gathers my teaching commitments, educational practice, research supervision, and mentoring activities.</span></p>
   </div>
 </section>
 
@@ -40,7 +40,7 @@ format:
 
     <article class="education-theme-card">
       <div class="education-card-kicker">Dialogue</div>
-      <h3>Cross-disciplinary communication</h3>
+      <h3>Cross-disciplinarity</h3>
       <p>My teaching invites students to work across technical, social, cultural, and ethical perspectives. I value learning as a collective practice shaped by diverse forms of expertise and lived experience.</p>
     </article>
   </div>
@@ -103,6 +103,8 @@ format:
   </div>
 </section>
 
+
+<!--
 <section class="site-section education-practice-areas">
   <h2 class="site-section-title">Areas of educational practice</h2>
   <p class="education-section-lede">
@@ -126,35 +128,36 @@ format:
     </article>
   </div>
 </section>
+-->
 
-<section class="site-band">
-  <div class="site-section">
-    <h2 class="site-section-title">Research supervision and mentoring</h2>
-    <p class="education-section-lede">
-      My supervision and mentoring practice is grounded in curiosity, care, and methodological openness. I am interested in supporting students whose projects engage with complexity, cybernetics, information dynamics, topology, AI-mediated systems, or related questions about emergence and knowledge systems.
-    </p>
 
-    <div class="supervision-grid">
-      <article class="supervision-card">
-        <h3>Research supervision</h3>
-        <p>I welcome projects that combine conceptual, computational, empirical, or design-oriented approaches to understanding complex systems.</p>
-      </article>
 
-      <article class="supervision-card">
-        <h3>Mentoring</h3>
-        <p>Inspired by a <i>pay-it-forward</i> ethos, I aim to help students and emerging researchers clarify their questions, navigate uncertainty, and develop confidence in transdisciplinary work.</p>
-      </article>
+<section class="site-section">
+  <h2 class="site-section-title">Research supervision and mentoring</h2>
+  <p class="education-section-lede">
+    My supervision and mentoring practice is grounded in curiosity, care, and methodological openness. I am interested in supporting students whose projects engage with complexity, cybernetics, information dynamics, topology, AI-mediated systems, or related questions about emergence and knowledge systems.
+  </p>
 
-      <article class="supervision-card">
-        <h3>Possible project directions</h3>
-        <ul>
-          <li>Modelling complex systems to deepen our understanding of pattern formation and the emergence of collective behaviour</li>
-          <li>Topics related to human–AI interaction</li>
-          <li>Information dynamics through language and communication</li>
-          <!--<li>Structural diagnostics for knowledge integrity</li>-->
-        </ul>
-      </article>
-    </div>
+  <div class="supervision-grid">
+    <article class="supervision-card">
+      <h3>Research supervision</h3>
+      <p>I welcome projects that combine conceptual, computational, empirical, or design-oriented approaches to understanding complex systems.</p>
+    </article>
+
+    <article class="supervision-card">
+      <h3>Mentoring</h3>
+      <p>Inspired by a <i>pay-it-forward</i> ethos, I aim to help students and emerging researchers clarify their questions, navigate uncertainty, and develop confidence in transdisciplinary work.</p>
+    </article>
+
+    <article class="supervision-card">
+      <h3>Possible project directions</h3>
+      <ul>
+        <li>Modelling complex systems to deepen our understanding of pattern formation and the emergence of collective behaviour</li>
+        <li>Topics related to human–AI interaction</li>
+        <li>Information dynamics through language and communication</li>
+        <!--<li>Structural diagnostics for knowledge integrity</li>-->
+      </ul>
+    </article>
   </div>
 </section>
 
