@@ -27,12 +27,6 @@ format:
 
   <div class="education-theme-grid">
     <article class="education-theme-card">
-      <div class="education-card-kicker">Practice</div>
-      <h3>Learning by making</h3>
-      <p>Students learn by building, testing, prototyping, and reflecting. I use hands-on activities to help learners encounter complexity not as an abstract idea, but as something they can observe, manipulate, and reason with.</p>
-    </article>
-
-    <article class="education-theme-card">
       <div class="education-card-kicker">Systems</div>
       <h3>Cybernetic thinking</h3>
       <p>I encourage students to attend to feedback, context, uncertainty, adaptation, and consequence. This supports more careful ways of understanding technological systems and the worlds they help produce.</p>
@@ -42,6 +36,12 @@ format:
       <div class="education-card-kicker">Dialogue</div>
       <h3>Cross-disciplinarity</h3>
       <p>My teaching invites students to work across technical, social, cultural, and ethical perspectives. I value learning as a collective practice shaped by diverse forms of expertise and lived experience.</p>
+    </article>
+    
+    <article class="education-theme-card">
+      <div class="education-card-kicker">Practice</div>
+      <h3>Learning by making</h3>
+      <p>Students learn by building, testing, prototyping, and reflecting. I use hands-on activities to help learners encounter complexity not as an abstract idea, but as something they can observe, manipulate, and reason with.</p>
     </article>
   </div>
 </section>
