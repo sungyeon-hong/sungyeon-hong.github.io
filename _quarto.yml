@@ -6,6 +6,7 @@ project:
 
 website:
   title: "Sungyeon Hong"
+  google-analytics: "G-CPXYZFK8GC"
   navbar:
     left:
       - text: Research
