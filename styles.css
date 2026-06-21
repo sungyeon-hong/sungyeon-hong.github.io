@@ -17,6 +17,27 @@
     text-decoration: none;
 }
 
+/* Navbar dropdown: hover on desktop, click/tap on mobile */
+@media (min-width: 992px) {
+  .navbar .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.15s ease,
+                transform 0.15s ease,
+                visibility 0.15s ease;
+  }
+
+  .navbar .dropdown:hover .dropdown-menu,
+  .navbar .dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    margin-top: 0;
+  }
+}
+/*
 .navbar .dropdown-menu {
   display: block;
   opacity: 0;
@@ -39,6 +60,8 @@
     margin-top: 0;
   }
 }
+*/
+
 
 /* Global hyperlinks */
 :root {
