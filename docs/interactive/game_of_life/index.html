@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sungyeon Hong</title>
+<title>Interactive Game of Life demo – Sungyeon Hong</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,23 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3cbf9fa670015d5da8a21d517caf2a17.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3cbf9fa670015d5da8a21d517caf2a17.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,7 +81,7 @@ gtag('config', 'G-CPXYZFK8GC', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -91,7 +91,7 @@ gtag('config', 'G-CPXYZFK8GC', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Sungyeon Hong</span>
     </a>
   </div>
@@ -107,33 +107,33 @@ gtag('config', 'G-CPXYZFK8GC', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-research">    
         <li>
-    <a class="dropdown-item" href="./research.html">
+    <a class="dropdown-item" href="../../research.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./research/hyperuniformity.html">
+    <a class="dropdown-item" href="../../research/hyperuniformity.html">
  <span class="dropdown-text">Geometry-driven complexity</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./research/information-dynamics.html">
+    <a class="dropdown-item" href="../../research/information-dynamics.html">
  <span class="dropdown-text">Information dynamics in human–AI systems</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./education.html"> 
+    <a class="nav-link" href="../../education.html"> 
 <span class="menu-text">Education</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./engagements.html"> 
+    <a class="nav-link" href="../../engagements.html"> 
 <span class="menu-text">Engagements</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resources.html"> 
+    <a class="nav-link" href="../../resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./faq.html"> 
+    <a class="nav-link" href="../../faq.html"> 
 <span class="menu-text">FAQ</span></a>
   </li>  
 </ul>
@@ -154,65 +154,8 @@ gtag('config', 'G-CPXYZFK8GC', { 'anonymize_ip': true});
 
 
 
-
-<div class="homepage">
-
-<section class="home-hero">
-  <div class="home-hero-inner">
-    <div class="home-kicker">Mathematics · Cybernetics · Complexity</div>
-    <h1 class="home-title">Sungyeon Hong</h1>
-    <div class="home-subtitle">
-      Transdisciplinary researcher and educator, studying how structure, behaviour, and meaning emerge in complex systems.
-    </div>
-    <div class="home-actions">
-      <a class="home-btn primary" href="research.html">Explore research</a>
-      <!--
-      <a class="home-btn secondary" href="contact.html">Get in touch</a>
-      -->
-    </div>
-  </div>
-</section>
-
-<section class="home-section narrow">
-  <h2 class="home-section-title anchored">About</h2>
-  <div class="home-about-grid">
-    <div>
-      <img class="home-about-photo" src="images/syh.jpg" alt="Portrait of Sungyeon Hong">
-    </div>
-    <div>
-      <p class="home-lede home-muted">
-        I am a Lecturer at the School of Cybernetics, Australian National University (ANU), in Canberra, Australia.
-      </p>
-      <p class="home-lede">
-        My research sits at the intersection of topology, complexity science, cybernetics, and information dynamics. I study how structure emerges, evolves, and sometimes degrades in systems composed of many interacting parts—from geometric point patterns to human–AI communication systems and knowledge landscapes.
-      </p>
-      <p class="home-lede">
-        Across these projects, I use topology not only as a mathematical toolkit, but as a way of seeing: a means of identifying shapes, holes, flows, and structural signatures that reveal how local interactions give rise to global phenomena.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-<section class="home-section">
-  <div class="home-two-col">
-    <div>
-      <h2 class="home-section-title anchored">Teaching and public engagement</h2>
-      <p class="home-lede">
-        I teach across undergraduate, postgraduate, and non-award learning contexts, with an emphasis on helping learners reason with complexity, build conceptual tools, and engage responsibly with emerging technologies.
-      </p>
-      <div class="home-list-links">
-        <a href="education.html"><strong>Education</strong><br><span>Teaching commitments and learning experiences</span></a>
-        <a href="engagements.html"><strong>Engagements</strong><br><span>Talks, workshops, panels, and public activities</span></a>
-      </div>
-    </div>
-    <div>
-      <img class="home-portrait" src="images/me_3mt.jpeg" alt="Placeholder image for teaching and public engagement">
-    </div>
-  </div>
-</section>
-
-</div>
+<iframe src="game_of_life_demo_app.html" title="Interactive Conway's Game of Life demo" style="width: 100%; height: 1500px; border: 0; border-radius: 12px; overflow: hidden;" loading="lazy">
+</iframe>
 
 
 
