@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Musical Homeostasis v.2: Distributed Tuning</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --panel: #ffffff;
+    --ink: #1f2933;
+    --muted: #667085;
+    --line: #d0d7de;
+    --soft: #e8edf2;
+    --accent: #426b73;
+    --accent-soft: #ecf4f5;
+    --danger: #b91c1c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.45;
+  }
+  .app {
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 18px;
+  }
+  h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+    letter-spacing: -0.03em;
+  }
+  h2 {
+    margin: 0 0 0.7rem;
+    font-size: clamp(1.02rem, 1.8vw, 1.28rem);
+    letter-spacing: -0.015em;
+  }
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+  }
+  .subtitle {
+    max-width: 1100px;
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin-bottom: 14px;
+  }
+  .intro, .controls, .main {
+    display: grid;
+    gap: 12px;
+  }
+  .intro { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: 14px; }
+  .controls { grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 14px; }
+  .main { grid-template-columns: minmax(560px, 1.65fr) minmax(360px, 0.95fr); }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+  }
+  .card p:last-child { margin-bottom: 0; }
+  .card p { margin-top: 0; }
+  .tiny { font-size: 0.82rem; color: var(--muted); }
+  .hint-list, .rule-list {
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+  .hint-list li, .rule-list li { margin-bottom: 0.33rem; }
+  label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  select, input[type="range"] { width: 100%; }
+  select {
+    padding: 7px 9px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: #fff;
+    color: var(--ink);
+  }
+  .value { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .info-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    border-radius: 50%;
+    border: 1px solid #94a3b8;
+    color: #475569;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: help;
+    vertical-align: 1px;
+  }
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  button {
+    padding: 8px 11px;
+    border-radius: 9px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+    font-weight: 650;
+  }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.danger { background: #fff5f5; border-color: #fecaca; color: var(--danger); }
+  button:hover { filter: brightness(0.98); }
+  .panel-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .panel-title strong { color: var(--ink); font-size: 0.96rem; }
+  canvas {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--soft);
+    border-radius: 10px;
+    background: white;
+  }
+  #lattice { aspect-ratio: 3 / 2; }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .stat {
+    background: #f8fafc;
+    border: 1px solid var(--soft);
+    border-radius: 10px;
+    padding: 8px 9px;
+  }
+  .stat b { display: block; font-size: 0.72rem; font-weight: 500; color: var(--muted); }
+  .stat span { font-weight: 750; font-variant-numeric: tabular-nums; }
+  .pitch-bars { display: grid; gap: 7px; }
+  .pitch-row {
+    display: grid;
+    grid-template-columns: 42px 1fr 46px;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .pitch-track {
+    height: 13px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .pitch-fill {
+    height: 100%;
+    border-radius: 999px;
+    width: 0%;
+    transition: width 0.18s ease;
+  }
+  .remark {
+    border-left: 4px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 12px;
+    padding: 11px 12px;
+  }
+  .guide {
+    background: #f8fafc;
+    border: 1px solid var(--soft);
+    border-radius: 12px;
+    padding: 11px;
+  }
+  .guide ul { margin: 0; padding-left: 1.05rem; }
+  .guide li { margin-bottom: 0.35rem; }
+  .sound-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  @media (max-width: 1180px) {
+    .intro, .main { grid-template-columns: 1fr; }
+    .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 720px) {
+    .controls, .stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <h1>Musical Homeostasis v.2: Distributed Tuning</h1>
+  <div class="subtitle">
+    A simplified online demo of self-organisation through music. Each triangle is an adaptive musical agent that plays one note, listens only to neighbouring triangles, and may retune itself to improve local harmony. The whole lattice becomes a collective instrument.
+  </div>
+
+  <section class="intro">
+    <article class="card">
+      <h2>What this models</h2>
+      <p>
+        This demo explores <strong>distributed tuning</strong>: no cell sees the whole system, and there is no central conductor. Yet a coherent collective sound may emerge from local interaction alone.
+      </p>
+      <p class="tiny">
+        Visual pattern and heard chord are directly linked: more triangles of a given colour means that note is heard more strongly.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>Rules</h2>
+      <ol class="rule-list">
+        <li>Each triangle holds one current note.</li>
+        <li>At each step, it listens to its three edge-neighbours.</li>
+        <li>It may switch to the note that best fits its local musical neighbourhood.</li>
+        <li>A little noise keeps the system flexible, and disturbances test recovery.</li>
+      </ol>
+    </article>
+
+    <article class="card">
+      <h2>What to look for</h2>
+      <ul class="hint-list">
+        <li>Start with <strong>Initialise</strong>, then <strong>Run</strong>.</li>
+        <li>Listen for whether the sound settles into near-unison or a chord.</li>
+        <li>Watch whether coloured domains form, move, or dissolve.</li>
+        <li>Use <strong>Disturb patch</strong> to see whether coherence returns.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="controls">
+    <div class="card">
+      <label for="scaleMode">Scale
+        <span class="info-dot" title="Fewer notes make the dynamics easier to see and hear. The triad is the clearest starting point.">?</span>
+      </label>
+      <select id="scaleMode">
+        <option value="triad" selected>C major triad (C, E, G)</option>
+        <option value="pentatonic">C major pentatonic</option>
+        <option value="chromatic">chromatic</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <label for="tuningStrength">Tuning strength <span id="tuningStrengthValue" class="value"></span>
+        <span class="info-dot" title="How readily a triangle retunes toward the locally best-fitting note.">?</span>
+      </label>
+      <input id="tuningStrength" type="range" min="0" max="1" step="0.01" value="0.68">
+    </div>
+
+    <div class="card">
+      <label for="noise">Noise <span id="noiseValue" class="value"></span>
+        <span class="info-dot" title="Small random variation in note updates. Too much noise can prevent the field from settling.">?</span>
+      </label>
+      <input id="noise" type="range" min="0" max="0.25" step="0.005" value="0.03">
+    </div>
+
+    <div class="card">
+      <label for="speed">Speed <span id="speedValue" class="value"></span>
+        <span class="info-dot" title="Update steps per second while the simulation is running.">?</span>
+      </label>
+      <input id="speed" type="range" min="1" max="20" step="1" value="6">
+    </div>
+
+    <div class="card">
+      <label for="volume">Volume <span id="volumeValue" class="value"></span>
+        <span class="info-dot" title="Browser audio starts only after clicking Start audio.">?</span>
+      </label>
+      <input id="volume" type="range" min="0" max="1" step="0.01" value="0.28">
+    </div>
+  </section>
+
+  <section class="main">
+    <article class="card">
+      <div class="panel-title">
+        <strong>Equilateral triangular lattice</strong>
+        <span>fill = current note · red outline = changed this step</span>
+      </div>
+      <canvas id="lattice" width="980" height="640" aria-label="Musical triangular lattice"></canvas>
+      <p class="tiny" style="margin-top:8px; margin-bottom:0;">
+        Remark: this is inspired by cellular automata such as Conway's Game of Life, but instead of birth and death, the cells remain present and <strong>retune</strong>. That is why we call it <strong>distributed tuning</strong>.
+      </p>
+    </article>
+
+    <aside class="card">
+      <div class="panel-title">
+        <strong>Collective instrument</strong>
+        <span>aggregate chord from the grid</span>
+      </div>
+
+      <div class="sound-row">
+        <button id="startAudio" class="primary">Start audio</button>
+        <button id="stopAudio">Mute</button>
+        <button id="run" class="primary">Run</button>
+        <button id="step">Step</button>
+        <button id="initialize">Initialise</button>
+        <button id="disturb" class="danger">Disturb patch</button>
+      </div>
+
+      <div class="stats" style="margin-bottom:10px;">
+        <div class="stat"><b>generation</b><span id="statGen">0</span></div>
+        <div class="stat"><b>changed cells</b><span id="statChanged">0%</span></div>
+        <div class="stat"><b>harmonic coherence</b><span id="statCoherence">0%</span></div>
+        <div class="stat"><b>note diversity</b><span id="statDiversity">0%</span></div>
+      </div>
+
+      <div>
+        <h3>Pitch distribution</h3>
+        <div id="pitchBars" class="pitch-bars"></div>
+        <p class="tiny" style="margin-top:8px;">
+          These bars drive the sound directly. If one note dominates, you will hear near-unison. If several compatible notes persist, you will hear a chord.
+        </p>
+      </div>
+
+      <div class="guide" style="margin-top:10px;">
+        <h3>Questions to explore</h3>
+        <ul>
+          <li>How much tuning strength is needed for a coherent musical field to emerge?</li>
+          <li>Does a disturbance fade away or reorganise the whole lattice?</li>
+          <li>What happens when you increase the note set from a triad to the chromatic scale?</li>
+          <li>Is equilibrium more interesting as sameness, or as compatible difference?</li>
+        </ul>
+      </div>
+
+      <div class="remark" style="margin-top:10px;">
+        <strong>Homeostasis here is not static silence.</strong> It is the tendency of the musical field to recover or maintain coherence while continually adjusting through local feedback.
+      </div>
+    </aside>
+  </section>
+</div>
+
+<script>
+(() => {
+  const els = Object.fromEntries(Array.from(document.querySelectorAll('[id]')).map(el => [el.id, el]));
+  const canvas = els.lattice;
+  const ctx = canvas.getContext('2d');
+
+  const MARGIN = 18;
+  const TRI_ROWS = 24;
+  const TRI_COLS = 30;
+
+  const scales = {
+    triad: [
+      {label: 'C', midi: 60},
+      {label: 'E', midi: 64},
+      {label: 'G', midi: 67}
+    ],
+    pentatonic: [
+      {label: 'C', midi: 60},
+      {label: 'D', midi: 62},
+      {label: 'E', midi: 64},
+      {label: 'G', midi: 67},
+      {label: 'A', midi: 69}
+    ],
+    chromatic: [
+      {label: 'C', midi: 60},
+      {label: 'C#', midi: 61},
+      {label: 'D', midi: 62},
+      {label: 'Eb', midi: 63},
+      {label: 'E', midi: 64},
+      {label: 'F', midi: 65},
+      {label: 'F#', midi: 66},
+      {label: 'G', midi: 67},
+      {label: 'Ab', midi: 68},
+      {label: 'A', midi: 69},
+      {label: 'Bb', midi: 70},
+      {label: 'B', midi: 71}
+    ]
+  };
+
+  const pitchPalette = {
+    0: '#2563eb',   // C
+    1: '#4f46e5',   // C#
+    2: '#0f766e',   // D
+    3: '#059669',   // Eb
+    4: '#65a30d',   // E
+    5: '#ca8a04',   // F
+    6: '#d97706',   // F#
+    7: '#ea580c',   // G
+    8: '#db2777',   // Ab
+    9: '#9333ea',   // A
+    10: '#e11d48',  // Bb
+    11: '#be123c'   // B
+  };
+
+  const state = {
+    cells: [],
+    neighbors: [],
+    generation: 0,
+    changedFraction: 0,
+    running: false,
+    timer: null,
+    audio: {
+      ctx: null,
+      master: null,
+      oscillators: [],
+      gains: [],
+      active: false,
+      scaleKey: null
+    }
+  };
+
+  function currentScale() {
+    return scales[els.scaleMode.value] || scales.triad;
+  }
+
+  function midiToFreq(midi) {
+    return 440 * Math.pow(2, (midi - 69) / 12);
+  }
+
+  function noteColor(idx) {
+    const note = currentScale()[idx];
+    const pitchClass = ((note.midi % 12) + 12) % 12;
+    return pitchPalette[pitchClass] || '#426b73';
+  }
+
+  function sortedPair(a, b) {
+    return a < b ? `${a}|${b}` : `${b}|${a}`;
+  }
+
+  function buildTriangularLattice() {
+    const widthAvail = canvas.width - 2 * MARGIN;
+    const heightAvail = canvas.height - 2 * MARGIN;
+    const sFromWidth = widthAvail * 2 / (TRI_COLS + 1);
+    const sFromHeight = heightAvail * 2 / (Math.sqrt(3) * TRI_ROWS);
+    const side = Math.min(sFromWidth, sFromHeight);
+    const h = side * Math.sqrt(3) / 2;
+
+    const cells = [];
+    const edgeMap = new Map();
+
+    function addCell(verts) {
+      const id = cells.length;
+      const cx = (verts[0].x + verts[1].x + verts[2].x) / 3;
+      const cy = (verts[0].y + verts[1].y + verts[2].y) / 3;
+      const ids = verts.map(v => `${v.x.toFixed(3)},${v.y.toFixed(3)}`);
+      const edges = [
+        sortedPair(ids[0], ids[1]),
+        sortedPair(ids[1], ids[2]),
+        sortedPair(ids[2], ids[0])
+      ];
+      const cell = { id, verts, cx, cy, current: 0, changed: false };
+      cells.push(cell);
+      for (const e of edges) {
+        if (!edgeMap.has(e)) edgeMap.set(e, []);
+        edgeMap.get(e).push(id);
+      }
+    }
+
+    for (let r = 0; r < TRI_ROWS; r++) {
+      const y0 = MARGIN + r * h;
+      for (let c = 0; c < TRI_COLS; c++) {
+        const x0 = MARGIN + c * (side / 2);
+        if ((r + c) % 2 === 0) {
+          addCell([
+            {x: x0, y: y0},
+            {x: x0 + side, y: y0},
+            {x: x0 + side / 2, y: y0 + h}
+          ]);
+        } else {
+          addCell([
+            {x: x0, y: y0 + h},
+            {x: x0 + side, y: y0 + h},
+            {x: x0 + side / 2, y: y0}
+          ]);
+        }
+      }
+    }
+
+    const neighbors = Array.from({length: cells.length}, () => new Set());
+    for (const ids of edgeMap.values()) {
+      if (ids.length > 1) {
+        for (const a of ids) {
+          for (const b of ids) {
+            if (a !== b) neighbors[a].add(b);
+          }
+        }
+      }
+    }
+
+    state.cells = cells;
+    state.neighbors = neighbors.map(s => Array.from(s));
+  }
+
+  function consonance(aIdx, bIdx) {
+    const scale = currentScale();
+    const a = scale[aIdx].midi;
+    const b = scale[bIdx].midi;
+    let d = Math.abs(a - b) % 12;
+    d = Math.min(d, 12 - d);
+
+    return ({
+      0: 1.00,
+      1: 0.06,
+      2: 0.32,
+      3: 0.72,
+      4: 0.84,
+      5: 0.70,
+      6: -0.18,
+      7: 0.94,
+      8: 0.64,
+      9: 0.58,
+      10: 0.18,
+      11: 0.04
+    }[d] ?? 0.2);
+  }
+
+  function scoreCandidate(cellId, candidate, oldStates) {
+    const nbs = state.neighbors[cellId] || [];
+    if (!nbs.length) return 0;
+    let s = 0;
+    for (const id of nbs) s += consonance(candidate, oldStates[id]);
+    return s / nbs.length;
+  }
+
+  function initialize() {
+    stopRunning();
+    buildTriangularLattice();
+    const scaleLen = currentScale().length;
+    for (const cell of state.cells) {
+      cell.current = Math.floor(Math.random() * scaleLen);
+      cell.changed = false;
+    }
+    state.generation = 0;
+    state.changedFraction = 0;
+    ensureAudioScale();
+    renderAll();
+  }
+
+  function stepModel() {
+    const oldStates = state.cells.map(c => c.current);
+    const scaleLen = currentScale().length;
+    const tune = Number(els.tuningStrength.value);
+    const noise = Number(els.noise.value);
+    let changed = 0;
+
+    for (const cell of state.cells) {
+      let bestNote = cell.current;
+      let bestScore = -Infinity;
+      for (let k = 0; k < scaleLen; k++) {
+        const score = scoreCandidate(cell.id, k, oldStates);
+        if (score > bestScore) {
+          bestScore = score;
+          bestNote = k;
+        }
+      }
+
+      let next = cell.current;
+      if (Math.random() < noise) {
+        next = Math.floor(Math.random() * scaleLen);
+      } else if (bestNote !== cell.current && Math.random() < tune) {
+        next = bestNote;
+      }
+
+      cell.changed = next !== cell.current;
+      if (cell.changed) changed++;
+      cell.current = next;
+    }
+
+    state.generation++;
+    state.changedFraction = changed / state.cells.length;
+    renderAll();
+  }
+
+  function disturbPatch() {
+    const scaleLen = currentScale().length;
+    const cx = MARGIN + Math.random() * (canvas.width - 2 * MARGIN);
+    const cy = MARGIN + Math.random() * (canvas.height - 2 * MARGIN);
+    const radius = 60 + Math.random() * 80;
+    let changed = 0;
+    for (const cell of state.cells) {
+      const d = Math.hypot(cell.cx - cx, cell.cy - cy);
+      if (d < radius) {
+        const prev = cell.current;
+        cell.current = Math.floor(Math.random() * scaleLen);
+        cell.changed = cell.current !== prev;
+        if (cell.changed) changed++;
+      } else {
+        cell.changed = false;
+      }
+    }
+    state.changedFraction = changed / state.cells.length;
+    renderAll();
+  }
+
+  function drawLattice() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (const cell of state.cells) {
+      ctx.beginPath();
+      ctx.moveTo(cell.verts[0].x, cell.verts[0].y);
+      ctx.lineTo(cell.verts[1].x, cell.verts[1].y);
+      ctx.lineTo(cell.verts[2].x, cell.verts[2].y);
+      ctx.closePath();
+      ctx.fillStyle = noteColor(cell.current);
+      ctx.fill();
+      ctx.strokeStyle = cell.changed ? '#ef4444' : '#ffffff';
+      ctx.lineWidth = cell.changed ? 1.6 : 0.55;
+      ctx.stroke();
+    }
+  }
+
+  function pitchCounts() {
+    const counts = Array(currentScale().length).fill(0);
+    for (const cell of state.cells) counts[cell.current]++;
+    return counts;
+  }
+
+  function coherenceMetric() {
+    let sum = 0, count = 0;
+    for (let i = 0; i < state.cells.length; i++) {
+      for (const j of state.neighbors[i] || []) {
+        if (j > i) {
+          sum += consonance(state.cells[i].current, state.cells[j].current);
+          count++;
+        }
+      }
+    }
+    if (!count) return 0;
+    return Math.max(0, Math.min(1, (sum / count + 0.2) / 1.2));
+  }
+
+  function diversityMetric(counts) {
+    const n = state.cells.length || 1;
+    let entropy = 0;
+    for (const c of counts) {
+      if (c > 0) {
+        const p = c / n;
+        entropy -= p * Math.log(p);
+      }
+    }
+    return counts.length > 1 ? entropy / Math.log(counts.length) : 0;
+  }
+
+  function renderDashboard() {
+    const counts = pitchCounts();
+    const n = state.cells.length || 1;
+    const scale = currentScale();
+    const coherence = coherenceMetric();
+    const diversity = diversityMetric(counts);
+
+    els.statGen.textContent = String(state.generation);
+    els.statChanged.textContent = `${Math.round(state.changedFraction * 100)}%`;
+    els.statCoherence.textContent = `${Math.round(coherence * 100)}%`;
+    els.statDiversity.textContent = `${Math.round(diversity * 100)}%`;
+
+    els.pitchBars.innerHTML = '';
+    for (let i = 0; i < scale.length; i++) {
+      const pct = counts[i] / n;
+      const row = document.createElement('div');
+      row.className = 'pitch-row';
+      const lab = document.createElement('div');
+      lab.textContent = scale[i].label;
+      const track = document.createElement('div');
+      track.className = 'pitch-track';
+      const fill = document.createElement('div');
+      fill.className = 'pitch-fill';
+      fill.style.background = noteColor(i);
+      fill.style.width = `${Math.round(pct * 100)}%`;
+      const val = document.createElement('div');
+      val.textContent = `${Math.round(pct * 100)}%`;
+      track.appendChild(fill);
+      row.appendChild(lab);
+      row.appendChild(track);
+      row.appendChild(val);
+      els.pitchBars.appendChild(row);
+    }
+  }
+
+  function updateLabels() {
+    els.tuningStrengthValue.textContent = Number(els.tuningStrength.value).toFixed(2);
+    els.noiseValue.textContent = Number(els.noise.value).toFixed(3);
+    els.speedValue.textContent = `${els.speed.value}/s`;
+    els.volumeValue.textContent = `${Math.round(Number(els.volume.value) * 100)}%`;
+  }
+
+  function startRunning() {
+    state.running = true;
+    els.run.textContent = 'Pause';
+    state.timer = window.setInterval(stepModel, Math.max(25, 1000 / Number(els.speed.value)));
+  }
+
+  function stopRunning() {
+    state.running = false;
+    els.run.textContent = 'Run';
+    if (state.timer) clearInterval(state.timer);
+    state.timer = null;
+  }
+
+  function toggleRun() {
+    if (state.running) stopRunning(); else startRunning();
+  }
+
+  function restartIfRunning() {
+    if (!state.running) return;
+    stopRunning();
+    startRunning();
+  }
+
+  function stopAudioNodes() {
+    const a = state.audio;
+    for (const g of a.gains) {
+      try { g.gain.setTargetAtTime(0, a.ctx ? a.ctx.currentTime : 0, 0.02); } catch (e) {}
+    }
+    for (const o of a.oscillators) {
+      try { o.stop(); } catch (e) {}
+    }
+    a.oscillators = [];
+    a.gains = [];
+    a.scaleKey = null;
+  }
+
+  function ensureAudioScale() {
+    const a = state.audio;
+    if (!a.ctx || !a.active) return;
+    const key = els.scaleMode.value;
+    const scale = currentScale();
+    if (a.scaleKey === key && a.oscillators.length === scale.length) return;
+
+    stopAudioNodes();
+    a.scaleKey = key;
+    a.master = a.ctx.createGain();
+    a.master.gain.value = Number(els.volume.value);
+    a.master.connect(a.ctx.destination);
+
+    for (const note of scale) {
+      const osc = a.ctx.createOscillator();
+      const gain = a.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = midiToFreq(note.midi);
+      gain.gain.value = 0;
+      osc.connect(gain);
+      gain.connect(a.master);
+      osc.start();
+      a.oscillators.push(osc);
+      a.gains.push(gain);
+    }
+  }
+
+  function startAudio() {
+    if (!state.audio.ctx) state.audio.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    state.audio.active = true;
+    state.audio.ctx.resume();
+    ensureAudioScale();
+    updateAudio();
+  }
+
+  function muteAudio() {
+    const a = state.audio;
+    a.active = false;
+    if (!a.ctx) return;
+    const now = a.ctx.currentTime;
+    for (const g of a.gains) g.gain.setTargetAtTime(0, now, 0.05);
+  }
+
+  function updateAudio() {
+    const a = state.audio;
+    if (!a.ctx || !a.active) return;
+    ensureAudioScale();
+    const counts = pitchCounts();
+    const n = Math.max(1, state.cells.length);
+    const now = a.ctx.currentTime;
+    if (a.master) a.master.gain.setTargetAtTime(Number(els.volume.value), now, 0.05);
+    const scaleLen = counts.length || 1;
+    for (let i = 0; i < counts.length; i++) {
+      const frac = counts[i] / n;
+      const target = 0.24 * Math.pow(frac, 0.8) / Math.sqrt(scaleLen);
+      if (a.gains[i]) a.gains[i].gain.setTargetAtTime(target, now, 0.08);
+    }
+  }
+
+  function renderAll() {
+    drawLattice();
+    renderDashboard();
+    updateLabels();
+    updateAudio();
+  }
+
+  els.run.addEventListener('click', toggleRun);
+  els.step.addEventListener('click', () => { stopRunning(); stepModel(); });
+  els.initialize.addEventListener('click', initialize);
+  els.disturb.addEventListener('click', disturbPatch);
+  els.startAudio.addEventListener('click', startAudio);
+  els.stopAudio.addEventListener('click', muteAudio);
+  els.speed.addEventListener('input', () => { updateLabels(); restartIfRunning(); });
+  els.volume.addEventListener('input', () => { updateLabels(); updateAudio(); });
+  els.tuningStrength.addEventListener('input', updateLabels);
+  els.noise.addEventListener('input', updateLabels);
+  els.scaleMode.addEventListener('change', initialize);
+
+  initialize();
+})();
+</script>
+</body>
+</html>

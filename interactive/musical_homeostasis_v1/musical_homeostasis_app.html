@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Musical Homeostasis v.1</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --panel: #ffffff;
+    --ink: #1f2933;
+    --muted: #64748b;
+    --line: #d1d5db;
+    --soft-line: #e5e7eb;
+    --accent: #426b73;
+    --accent-dark: #2f5158;
+    --accent-soft: #e7f0f1;
+    --warm: #f59e0b;
+    --disturb: #ef4444;
+    --blue: #2563eb;
+    --key-white: #ffffff;
+    --key-black: #111827;
+    --key-selected: #426b73;
+    --key-selected-soft: rgba(66, 107, 115, 0.16);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.45;
+  }
+
+  .app {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 18px;
+  }
+
+  header {
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    letter-spacing: -0.035em;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+    letter-spacing: -0.015em;
+  }
+
+  h3 {
+    margin: 0 0 0.55rem;
+    font-size: 1.02rem;
+  }
+
+  .subtitle {
+    max-width: 1060px;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .info-card,
+  .control-card,
+  .keyboard-panel,
+  .round-panel,
+  .guide-panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+  }
+
+  .info-card p,
+  .guide-panel p,
+  .round-panel p {
+    margin-top: 0;
+    color: var(--ink);
+  }
+
+  .rule-list,
+  .guide-list {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .rule-list li,
+  .guide-list li {
+    margin-bottom: 0.38rem;
+  }
+
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.2fr 1.6fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .control-card {
+    min-height: 92px;
+  }
+
+  label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="range"],
+  select {
+    width: 100%;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 8px;
+    background: #fff;
+    color: var(--ink);
+  }
+
+  input[type="checkbox"] {
+    transform: translateY(1px);
+    margin-right: 6px;
+  }
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  button {
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: white;
+    color: var(--ink);
+    padding: 8px 11px;
+    cursor: pointer;
+    font-weight: 650;
+  }
+
+  button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  button.warning {
+    background: #fff7ed;
+    border-color: #fed7aa;
+    color: #9a3412;
+  }
+
+  button.danger {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #b91c1c;
+  }
+
+  button:hover { filter: brightness(0.97); }
+
+  .info-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    border-radius: 50%;
+    border: 1px solid #94a3b8;
+    color: #475569;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: help;
+    vertical-align: 1px;
+  }
+
+  .main-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
+    gap: 14px;
+    align-items: start;
+  }
+
+  .keyboard-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .note-readout {
+    display: grid;
+    gap: 0.35rem;
+    justify-items: end;
+    color: var(--muted);
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  .current-note {
+    font-weight: 800;
+    color: var(--accent);
+    font-size: 1.4rem;
+    letter-spacing: -0.03em;
+  }
+
+  .keyboard-wrap {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .keyboard {
+    position: relative;
+    height: 235px;
+    min-width: 1040px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #eef2f7;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .white-key,
+  .black-key {
+    position: absolute;
+    top: 0;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: background 0.12s ease, transform 0.08s ease, box-shadow 0.12s ease;
+  }
+
+  .white-key {
+    height: 100%;
+    background: var(--key-white);
+    color: #475569;
+    border-bottom: 5px solid #e5e7eb;
+    z-index: 1;
+    padding-bottom: 9px;
+  }
+
+  .black-key {
+    height: 62%;
+    background: var(--key-black);
+    color: #e5e7eb;
+    border-color: #020617;
+    z-index: 2;
+    border-radius: 0 0 7px 7px;
+    padding-bottom: 8px;
+    box-shadow: 0 7px 12px rgba(15, 23, 42, 0.28);
+  }
+
+  .white-key:hover {
+    background: #f8fafc;
+  }
+
+  .black-key:hover {
+    background: #1e293b;
+  }
+
+  .white-key.selected {
+    background: var(--key-selected-soft);
+    border-bottom-color: var(--key-selected);
+    box-shadow: inset 0 0 0 3px rgba(66, 107, 115, 0.22);
+    color: var(--accent-dark);
+    font-weight: 800;
+  }
+
+  .black-key.selected {
+    background: var(--accent);
+    border-color: var(--accent-dark);
+    color: #ffffff;
+    box-shadow: 0 7px 12px rgba(15, 23, 42, 0.22), inset 0 0 0 2px rgba(255,255,255,0.22);
+  }
+
+  .keyboard.disturbance .white-key.selected {
+    background: rgba(239, 68, 68, 0.14);
+    border-bottom-color: var(--disturb);
+    box-shadow: inset 0 0 0 3px rgba(239, 68, 68, 0.22);
+  }
+
+  .keyboard.disturbance .black-key.selected {
+    background: var(--disturb);
+    border-color: #991b1b;
+  }
+
+  .status-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .stat {
+    background: #f8fafc;
+    border: 1px solid var(--soft-line);
+    border-radius: 10px;
+    padding: 8px 10px;
+  }
+
+  .stat b {
+    display: block;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+
+  .stat span {
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .side-stack {
+    display: grid;
+    gap: 14px;
+  }
+
+  .round-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+  }
+
+  .timer {
+    font-size: clamp(1.7rem, 5vw, 2.8rem);
+    font-weight: 850;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    margin: 0.3rem 0;
+  }
+
+  .phase-pill {
+    display: inline-block;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.32rem 0.7rem;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .note {
+    color: var(--muted);
+    font-size: 0.84rem;
+    margin-top: 8px;
+  }
+
+  .interval-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .interval-card {
+    border-left: 4px solid var(--accent);
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 0.75rem 0.85rem;
+    font-size: 0.92rem;
+  }
+
+  .interval-card strong {
+    color: var(--ink);
+  }
+
+  .mini-note {
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 0.35rem;
+  }
+
+  @media (max-width: 1120px) {
+    .intro-grid,
+    .main-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .controls {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .controls,
+    .status-row {
+      grid-template-columns: 1fr;
+    }
+
+    .keyboard {
+      min-width: 900px;
+      height: 220px;
+    }
+
+    .keyboard-header {
+      flex-direction: column;
+    }
+
+    .note-readout {
+      justify-items: start;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Musical Homeostasis v.1</h1>
+    <div class="subtitle">
+      A participatory sound experiment for embodying self-organisation. Each participant sustains one note and may change it at any time while listening to the group. Over time, the collective sound may converge toward a shared note, a chord, or another locally negotiated equilibrium.
+    </div>
+  </header>
+
+  <section class="intro-grid">
+    <article class="info-card">
+      <h2>What this models</h2>
+      <p>
+        This activity treats each participant as an adaptive agent in a shared acoustic environment. There is no conductor and no central plan: each person responds locally to what they hear. The group-level pattern emerges through feedback, adjustment, perturbation, and mutual listening.
+      </p>
+      <p class="note">
+        v.1 is designed for a co-located group, or for a remote group using a shared audio call with echo cancellation carefully managed. The web page itself does not synchronise participants through a server.
+      </p>
+    </article>
+
+    <article class="info-card">
+      <h2>Activity rules</h2>
+      <ol class="rule-list">
+        <li>Each participant opens this page on their own device.</li>
+        <li>Choose one note on the keyboard. The note will sustain until you change it or stop it.</li>
+        <li>Listen to the collective sound and change notes whenever you wish.</li>
+        <li>The aim is not to “win”, but to notice how the group seeks, resists, or redefines equilibrium.</li>
+        <li>In round two, a new participant enters as a disturbance and the group adapts again.</li>
+      </ol>
+    </article>
+  </section>
+
+  <section class="controls" aria-label="participant controls">
+    <div class="control-card">
+      <label for="participantName">
+        Participant name / label
+        <span class="info-dot" title="Optional. This is only shown locally on your screen and is useful when facilitating the activity.">?</span>
+      </label>
+      <input id="participantName" type="text" value="Participant">
+    </div>
+
+    <div class="control-card">
+      <label for="roleMode">
+        Role
+        <span class="info-dot" title="Normal participants are part of the adapting group. The disturbance role is for a participant who joins later in round two with a deliberately disruptive or contrasting note.">?</span>
+      </label>
+      <select id="roleMode">
+        <option value="participant" selected>participant</option>
+        <option value="disturbance">disturbance</option>
+        <option value="facilitator">facilitator / silent observer</option>
+      </select>
+    </div>
+
+    <div class="control-card">
+      <label for="waveform">
+        Tone quality
+        <span class="info-dot" title="Sine is soft and minimal. Triangle is slightly brighter. Sawtooth and square are more intense and are best used at low volume.">?</span>
+      </label>
+      <select id="waveform">
+        <option value="sine" selected>sine</option>
+        <option value="triangle">triangle</option>
+        <option value="sawtooth">sawtooth</option>
+        <option value="square">square</option>
+      </select>
+    </div>
+
+    <div class="control-card">
+      <label for="volume">
+        My volume
+        <span class="info-dot" title="Keep the volume low enough to hear others. This activity depends on listening more than projecting.">?</span>
+      </label>
+      <input id="volume" type="range" min="0" max="0.35" step="0.005" value="0.08">
+      <div class="note"><span id="volumeValue">23%</span> of demo max</div>
+    </div>
+
+    <div class="control-card">
+      <label>
+        Actions
+        <span class="info-dot" title="Start audio enables the browser audio engine. Stop my note silences your current note. Random note is useful for starting from dissonance.">?</span>
+      </label>
+      <div class="button-row">
+        <button id="startAudio" class="primary">Start audio</button>
+        <button id="stopNote">Stop my note</button>
+        <button id="randomNote" class="warning">Random note</button>
+        <button id="panic" class="danger">Panic mute</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-grid">
+    <article class="keyboard-panel">
+      <div class="keyboard-header">
+        <div>
+          <h2>Choose and sustain one note</h2>
+          <p class="note">
+            Recommended range: C3–C6, three octaves plus the final C. This is wide enough to form unisons, octaves, thirds, fifths, and dense clusters, while staying manageable for group listening.
+            <span class="info-dot" title="A full 88-key keyboard is visually crowded and encourages individual exploration. This reduced range supports collective listening and stable tonal negotiation.">?</span>
+          </p>
+        </div>
+        <div class="note-readout">
+          <span id="readoutLabel">Current note</span>
+          <span id="currentNote" class="current-note">silent</span>
+          <span id="currentFreq">—</span>
+        </div>
+      </div>
+
+      <div class="keyboard-wrap">
+        <div id="keyboard" class="keyboard" aria-label="Piano keyboard"></div>
+      </div>
+
+      <div class="status-row">
+        <div class="stat"><b>status</b><span id="audioStatus">not started</span></div>
+        <div class="stat"><b>role</b><span id="roleStatus">participant</span></div>
+        <div class="stat"><b>changes</b><span id="changeCount">0</span></div>
+        <div class="stat"><b>time on note</b><span id="timeOnNote">0s</span></div>
+      </div>
+    </article>
+
+    <aside class="side-stack">
+      <section class="round-panel">
+        <h2>Facilitation timer</h2>
+        <span id="phasePill" class="phase-pill">Round 1 · settling</span>
+        <div id="timer" class="timer">00:00</div>
+        <div class="round-controls">
+          <button id="round1" class="primary">Round 1</button>
+          <button id="round2">Round 2 disturbance</button>
+          <button id="timerPause">Pause</button>
+          <button id="timerReset">Reset</button>
+        </div>
+        <p id="roundPrompt" class="note">
+          Round 1: begin with random notes, then listen and adapt until the group feels a temporary equilibrium.
+        </p>
+      </section>
+
+      <section class="guide-panel">
+        <h2>What to listen for</h2>
+        <ul class="guide-list">
+          <li>Does the group collapse to one note, split into clusters, or settle into a chord?</li>
+          <li>Who changes first: those who feel dissonance, those who seek leadership, or those who wait?</li>
+          <li>Does equilibrium feel stable, fragile, negotiated, imposed, or playful?</li>
+          <li>When a disturbance enters, does the group absorb it, resist it, or reorganise around it?</li>
+        </ul>
+      </section>
+
+      <section class="guide-panel">
+        <h2>Consonance hints</h2>
+        <div class="interval-grid">
+          <div class="interval-card">
+            <strong>Unison / octave</strong>: strongest convergence.
+            <div class="mini-note">Same note name, or same note name in another octave.</div>
+          </div>
+          <div class="interval-card">
+            <strong>Perfect fifth</strong>: often feels open and stable.
+            <div class="mini-note">Example: C with G.</div>
+          </div>
+          <div class="interval-card">
+            <strong>Thirds</strong>: help form major/minor chords.
+            <div class="mini-note">Example: C with E or E♭.</div>
+          </div>
+          <div class="interval-card">
+            <strong>Seconds / tritones</strong>: may feel tense.
+            <div class="mini-note">Useful disturbances if the group has become too stable.</div>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </section>
+</div>
+
+<script>
+(() => {
+  const els = Object.fromEntries(Array.from(document.querySelectorAll("[id]")).map(el => [el.id, el]));
+
+  const noteNames = ["C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "G♯", "A", "B♭", "B"];
+  const whiteClasses = new Set([0, 2, 4, 5, 7, 9, 11]);
+  const startMidi = 48; // C3
+  const endMidi = 84;   // C6
+
+  const state = {
+    audioContext: null,
+    oscillator: null,
+    gainNode: null,
+    currentMidi: null,
+    noteStartedAt: null,
+    changeCount: 0,
+    audioStarted: false,
+    timerRunning: false,
+    timerStartedAt: null,
+    timerElapsedMs: 0,
+    timerInterval: null,
+    timeOnNoteInterval: null
+  };
+
+  function midiToFreq(midi) {
+    return 440 * Math.pow(2, (midi - 69) / 12);
+  }
+
+  function midiToName(midi) {
+    const name = noteNames[midi % 12];
+    const octave = Math.floor(midi / 12) - 1;
+    return `${name}${octave}`;
+  }
+
+  function ensureAudio() {
+    if (!state.audioContext) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      state.audioContext = new AudioContext();
+
+      state.gainNode = state.audioContext.createGain();
+      state.gainNode.gain.value = 0;
+      state.gainNode.connect(state.audioContext.destination);
+    }
+
+    if (state.audioContext.state === "suspended") {
+      return state.audioContext.resume().then(() => {
+        state.audioStarted = true;
+        updateStatus();
+      });
+    }
+
+    state.audioStarted = true;
+    updateStatus();
+    return Promise.resolve();
+  }
+
+  function setGainSmooth(value) {
+    if (!state.gainNode || !state.audioContext) return;
+    const now = state.audioContext.currentTime;
+    state.gainNode.gain.cancelScheduledValues(now);
+    state.gainNode.gain.setTargetAtTime(value, now, 0.035);
+  }
+
+  function stopOscillator() {
+    if (!state.audioContext || !state.oscillator) return;
+
+    const osc = state.oscillator;
+    const now = state.audioContext.currentTime;
+    setGainSmooth(0);
+
+    try {
+      osc.stop(now + 0.14);
+    } catch (e) {
+      // Oscillator may already be stopped.
+    }
+
+    state.oscillator = null;
+    state.currentMidi = null;
+    state.noteStartedAt = null;
+    updateKeyboardSelection();
+    updateStatus();
+  }
+
+  function playMidi(midi) {
+    ensureAudio().then(() => {
+      if (els.roleMode.value === "facilitator") {
+        updateStatus("facilitator role is silent");
+        return;
+      }
+
+      const freq = midiToFreq(midi);
+      const now = state.audioContext.currentTime;
+
+      if (!state.oscillator) {
+        const osc = state.audioContext.createOscillator();
+        osc.type = els.waveform.value;
+        osc.frequency.value = freq;
+        osc.connect(state.gainNode);
+        osc.start();
+        state.oscillator = osc;
+      } else {
+        state.oscillator.type = els.waveform.value;
+        state.oscillator.frequency.cancelScheduledValues(now);
+        state.oscillator.frequency.setTargetAtTime(freq, now, 0.04);
+      }
+
+      state.currentMidi = midi;
+      state.noteStartedAt = Date.now();
+      state.changeCount += 1;
+      setGainSmooth(Number(els.volume.value));
+      updateKeyboardSelection();
+      updateStatus();
+    });
+  }
+
+  function randomNote() {
+    const keys = [];
+    for (let midi = startMidi; midi <= endMidi; midi++) keys.push(midi);
+    const midi = keys[Math.floor(Math.random() * keys.length)];
+    playMidi(midi);
+  }
+
+  function buildKeyboard() {
+    const keyboard = els.keyboard;
+    keyboard.innerHTML = "";
+    keyboard.classList.toggle("disturbance", els.roleMode.value === "disturbance");
+
+    const whiteMidis = [];
+    const blackMidis = [];
+
+    for (let midi = startMidi; midi <= endMidi; midi++) {
+      const pitchClass = midi % 12;
+      if (whiteClasses.has(pitchClass)) whiteMidis.push(midi);
+      else blackMidis.push(midi);
+    }
+
+    const whiteWidth = 100 / whiteMidis.length;
+    const whiteIndex = new Map();
+    whiteMidis.forEach((midi, i) => whiteIndex.set(midi, i));
+
+    for (const midi of whiteMidis) {
+      const div = document.createElement("div");
+      div.className = "white-key";
+      div.dataset.midi = String(midi);
+      div.style.left = `${whiteIndex.get(midi) * whiteWidth}%`;
+      div.style.width = `${whiteWidth}%`;
+      div.textContent = midiToName(midi);
+      div.title = `${midiToName(midi)} · click to sustain this note`;
+      div.addEventListener("click", () => playMidi(midi));
+      keyboard.appendChild(div);
+    }
+
+    for (const midi of blackMidis) {
+      const prevWhite = findPreviousWhite(midi);
+      const i = whiteIndex.get(prevWhite);
+      if (i === undefined) continue;
+      const div = document.createElement("div");
+      div.className = "black-key";
+      div.dataset.midi = String(midi);
+      div.style.left = `${(i + 0.68) * whiteWidth}%`;
+      div.style.width = `${whiteWidth * 0.62}%`;
+      div.textContent = midiToName(midi).replace("♯", "♯").replace("♭", "♭");
+      div.title = `${midiToName(midi)} · click to sustain this note`;
+      div.addEventListener("click", () => playMidi(midi));
+      keyboard.appendChild(div);
+    }
+
+    updateKeyboardSelection();
+  }
+
+  function findPreviousWhite(midi) {
+    let m = midi - 1;
+    while (m >= startMidi && !whiteClasses.has(m % 12)) m--;
+    return m;
+  }
+
+  function updateKeyboardSelection() {
+    document.querySelectorAll(".white-key, .black-key").forEach(key => {
+      key.classList.toggle("selected", Number(key.dataset.midi) === state.currentMidi);
+    });
+  }
+
+  function updateStatus(message = null) {
+    const volPct = Math.round(Number(els.volume.value) / 0.35 * 100);
+    els.volumeValue.textContent = `${volPct}%`;
+
+    els.roleStatus.textContent = els.roleMode.value;
+    els.audioStatus.textContent = message || (state.audioStarted ? (state.currentMidi === null ? "ready / silent" : "sounding") : "not started");
+    els.changeCount.textContent = String(state.changeCount);
+
+    if (state.currentMidi === null) {
+      els.currentNote.textContent = "silent";
+      els.currentFreq.textContent = "—";
+      els.timeOnNote.textContent = "0s";
+    } else {
+      els.currentNote.textContent = midiToName(state.currentMidi);
+      els.currentFreq.textContent = `${midiToFreq(state.currentMidi).toFixed(2)} Hz`;
+      const secs = Math.floor((Date.now() - state.noteStartedAt) / 1000);
+      els.timeOnNote.textContent = `${secs}s`;
+    }
+
+    els.keyboard.classList.toggle("disturbance", els.roleMode.value === "disturbance");
+  }
+
+  function startRound(label) {
+    if (label === "round1") {
+      els.phasePill.textContent = "Round 1 · settling";
+      els.roundPrompt.textContent = "Round 1: begin with random notes, then listen and adapt until the group feels a temporary equilibrium.";
+    } else {
+      els.phasePill.textContent = "Round 2 · disturbance";
+      els.roundPrompt.textContent = "Round 2: begin again, then invite a new participant to enter as a disturbance. Observe whether the group absorbs, resists, or reorganises around the new note.";
+    }
+
+    state.timerElapsedMs = 0;
+    state.timerStartedAt = Date.now();
+    state.timerRunning = true;
+    updateTimer();
+    if (state.timerInterval) clearInterval(state.timerInterval);
+    state.timerInterval = setInterval(updateTimer, 250);
+  }
+
+  function pauseTimer() {
+    if (state.timerRunning) {
+      state.timerElapsedMs += Date.now() - state.timerStartedAt;
+      state.timerRunning = false;
+      els.timerPause.textContent = "Resume";
+    } else {
+      state.timerStartedAt = Date.now();
+      state.timerRunning = true;
+      els.timerPause.textContent = "Pause";
+    }
+    updateTimer();
+  }
+
+  function resetTimer() {
+    state.timerRunning = false;
+    state.timerElapsedMs = 0;
+    state.timerStartedAt = null;
+    if (state.timerInterval) clearInterval(state.timerInterval);
+    state.timerInterval = null;
+    els.timerPause.textContent = "Pause";
+    updateTimer();
+  }
+
+  function updateTimer() {
+    let ms = state.timerElapsedMs;
+    if (state.timerRunning && state.timerStartedAt) {
+      ms += Date.now() - state.timerStartedAt;
+    }
+
+    const totalSecs = Math.floor(ms / 1000);
+    const mins = Math.floor(totalSecs / 60);
+    const secs = totalSecs % 60;
+    els.timer.textContent = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+  }
+
+  els.startAudio.addEventListener("click", () => ensureAudio());
+  els.stopNote.addEventListener("click", stopOscillator);
+  els.panic.addEventListener("click", () => {
+    stopOscillator();
+    if (state.gainNode && state.audioContext) {
+      state.gainNode.gain.setValueAtTime(0, state.audioContext.currentTime);
+    }
+  });
+  els.randomNote.addEventListener("click", randomNote);
+
+  els.volume.addEventListener("input", () => {
+    if (state.currentMidi !== null) setGainSmooth(Number(els.volume.value));
+    updateStatus();
+  });
+
+  els.waveform.addEventListener("change", () => {
+    if (state.oscillator) state.oscillator.type = els.waveform.value;
+  });
+
+  els.roleMode.addEventListener("change", () => {
+    if (els.roleMode.value === "facilitator") stopOscillator();
+    buildKeyboard();
+    updateStatus();
+  });
+
+  els.round1.addEventListener("click", () => startRound("round1"));
+  els.round2.addEventListener("click", () => startRound("round2"));
+  els.timerPause.addEventListener("click", pauseTimer);
+  els.timerReset.addEventListener("click", resetTimer);
+
+  state.timeOnNoteInterval = setInterval(updateStatus, 500);
+
+  buildKeyboard();
+  updateStatus();
+  updateTimer();
+})();
+</script>
+</body>
+</html>
