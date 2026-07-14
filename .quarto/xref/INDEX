@@ -74,7 +74,12 @@
   "interactive/persistence/index.qmd": {
     "index.html": "6e873827"
   },
+<<<<<<< HEAD
   "interactive/music/index.qmd": {
     "index.html": "185a9cc7"
+=======
+  "interactive/game_of_life/index.qmd": {
+    "index.html": "3b25aa00"
+>>>>>>> 51e138f0a720021aba1d187a10051aa2359624f2
   }
 }

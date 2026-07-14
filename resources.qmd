@@ -24,7 +24,8 @@ format:
 <!--
 <section class="site-section">
   <h2 class="site-section-title">Resource list</h2>
-  <p>Need to itemise resources...</p>
+  <h3>Exploring complexity</h3>
+  <a class="demo-button" href="/interactive/game_of_life/">Launch Game of Life demo →</a>
 </section>
 -->
 

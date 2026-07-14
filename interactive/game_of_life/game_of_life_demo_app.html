@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interactive Conway's Game of Life demo</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --panel: #ffffff;
+    --ink: #1f2933;
+    --muted: #64748b;
+    --line: #d1d5db;
+    --soft-line: #e5e7eb;
+    --accent: #426b73;
+    --accent-dark: #2f5158;
+    --accent-soft: #e7f0f1;
+    --alive: #111827;
+    --alive-soft: #334155;
+    --compare: #ef4444;
+    --birth: #0f766e;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.45;
+  }
+
+  .app {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 18px;
+  }
+
+  header {
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.45rem, 2.6vw, 2.1rem);
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    letter-spacing: -0.015em;
+  }
+
+  .subtitle {
+    max-width: 1040px;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .info-card,
+  .control-card,
+  .panel,
+  .slider-panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+  }
+
+  .rule-list {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .rule-list li,
+  .guide-list li {
+    margin-bottom: 0.35rem;
+  }
+
+  .guide-list {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .controls {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1.3fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .control-card {
+    min-height: 88px;
+  }
+
+  label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+
+  input[type="number"],
+  input[type="range"],
+  select {
+    width: 100%;
+  }
+
+  input[type="number"],
+  select {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 8px;
+    background: #fff;
+    color: var(--ink);
+  }
+
+  input[type="checkbox"] {
+    transform: translateY(1px);
+    margin-right: 6px;
+  }
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  button {
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: white;
+    color: var(--ink);
+    padding: 8px 11px;
+    cursor: pointer;
+    font-weight: 650;
+  }
+
+  button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  button:hover { filter: brightness(0.97); }
+
+  .info-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    border-radius: 50%;
+    border: 1px solid #94a3b8;
+    color: #475569;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: help;
+    vertical-align: 1px;
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: minmax(360px, 1fr) minmax(360px, 1fr);
+    gap: 14px;
+  }
+
+  .panel-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+  }
+
+  .panel-title strong {
+    color: var(--ink);
+    font-size: 0.96rem;
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #ffffff;
+    border: 1px solid var(--soft-line);
+    border-radius: 10px;
+    touch-action: none;
+    cursor: crosshair;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .stat {
+    background: #f8fafc;
+    border: 1px solid var(--soft-line);
+    border-radius: 10px;
+    padding: 7px 8px;
+  }
+
+  .stat b {
+    display: block;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+
+  .stat span {
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .slider-panel {
+    margin-top: 14px;
+  }
+
+  .slider-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .note {
+    color: var(--muted);
+    font-size: 0.84rem;
+    margin-top: 8px;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 4px;
+    vertical-align: -1px;
+  }
+
+  @media (max-width: 1080px) {
+    .intro-grid,
+    .main {
+      grid-template-columns: 1fr;
+    }
+
+    .controls {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .controls,
+    .slider-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Conway's Game of Life</h1>
+    <div class="subtitle">
+      A two-dimensional cellular automaton for exploring how simple local rules can generate unexpectedly rich behaviour.
+      Each cell is either alive or dead. At every step, the next state of a cell is determined only by its eight neighbours.
+    </div>
+  </header>
+
+  <section class="intro-grid">
+    <article class="info-card">
+      <h2>Rules</h2>
+      <ol class="rule-list">
+        <li><strong>Survival:</strong> a live cell with two or three live neighbours stays alive.</li>
+        <li><strong>Death:</strong> a live cell with fewer than two neighbours dies from isolation; with more than three, it dies from overcrowding.</li>
+        <li><strong>Birth:</strong> a dead cell with exactly three live neighbours becomes alive.</li>
+      </ol>
+    </article>
+
+    <article class="info-card">
+      <h2>Interaction guide</h2>
+      <ul class="guide-list">
+        <li>Click or drag on either grid to draw an initial condition.</li>
+        <li>Try making the two grids almost identical, then add or remove one cell. How quickly do the histories diverge?</li>
+        <li>Look for stable forms, oscillators, travelling patterns, explosions, extinction, and long-lived transient behaviour.</li>
+        <li>Ask: where does complexity come from if every cell follows the same simple rule?</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="controls" aria-label="simulation controls">
+    <div class="control-card">
+      <label for="gridSize">
+        Grid size
+        <span class="info-dot" title="Number of cells along each side. Larger grids support richer behaviour but require more computation.">?</span>
+      </label>
+      <input id="gridSize" type="number" min="16" max="96" step="1" value="16">
+      <div class="note">max 96 × 96</div>
+    </div>
+
+    <div class="control-card">
+      <label for="density">
+        Random density
+        <span class="info-dot" title="Fraction of live cells used by the Randomise button.">?</span>
+      </label>
+      <input id="density" type="range" min="0.05" max="0.55" step="0.01" value="0.25">
+      <div class="note"><span id="densityValue">25%</span> live cells</div>
+    </div>
+
+    <div class="control-card">
+      <label for="boundaryMode">
+        Boundary
+        <span class="info-dot" title="Bounded edges treat cells beyond the grid as dead. Wrapped edges turn the grid into a torus, where opposite sides are connected.">?</span>
+      </label>
+      <select id="boundaryMode">
+        <option value="bounded">bounded edges</option>
+        <option value="wrapped" selected>wrapped torus</option>
+      </select>
+    </div>
+
+    <div class="control-card">
+      <label for="preset">
+        Pattern preset
+        <span class="info-dot" title="Choose a small known pattern to place near the centre of a selected grid. You can then edit it by clicking cells.">?</span>
+      </label>
+      <select id="preset">
+        <option value="glider">glider</option>
+        <option value="blinker">blinker</option>
+        <option value="toad">toad</option>
+        <option value="pulsar">pulsar</option>
+        <option value="acorn">acorn</option>
+      </select>
+      <div class="button-row" style="margin-top:8px;">
+        <button id="presetLeft">Add left</button>
+        <button id="presetRight">Add right</button>
+      </div>
+    </div>
+
+    <div class="control-card">
+      <label>
+        Actions
+        <span class="info-dot" title="Run starts or pauses both simulations. Step advances one generation. Initialise clears both grids. Copy + perturb copies the left grid to the right and flips one cell to create a tiny initial difference.">?</span>
+      </label>
+      <div class="button-row">
+        <button id="run" class="primary">Run</button>
+        <button id="step">Step</button>
+        <button id="initialize">Initialise</button>
+        <button id="randomize">Randomise</button>
+        <button id="copyPerturb">Copy L→R + perturb</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="main">
+    <article class="panel">
+      <div class="panel-title">
+        <strong>Grid A</strong>
+        <span>click or drag to edit <span class="info-dot" title="Click a cell to toggle it. Drag to keep drawing the same state. Right-click or drag with the secondary mouse button to erase.">?</span></span>
+      </div>
+      <canvas id="canvasA" width="720" height="720" aria-label="Game of Life grid A"></canvas>
+      <div class="stats">
+        <div class="stat"><b>generation</b><span id="genA">0</span></div>
+        <div class="stat"><b>population</b><span id="popA">0</span></div>
+        <div class="stat"><b>births / deaths</b><span id="bdA">0 / 0</span></div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="panel-title">
+        <strong>Grid B</strong>
+        <span>compare with Grid A <span class="info-dot" title="Use this grid to create a slightly different initial condition. The difference counter below measures how many cells differ between the two panels at the current generation.">?</span></span>
+      </div>
+      <canvas id="canvasB" width="720" height="720" aria-label="Game of Life grid B"></canvas>
+      <div class="stats">
+        <div class="stat"><b>generation</b><span id="genB">0</span></div>
+        <div class="stat"><b>population</b><span id="popB">0</span></div>
+        <div class="stat"><b>difference from A</b><span id="diffAB">0</span></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="slider-panel">
+    <div class="slider-grid">
+      <div>
+        <label for="speed">
+          Simulation speed
+          <span class="info-dot" title="Number of generations per second while Run is active.">?</span>
+        </label>
+        <input id="speed" type="range" min="1" max="30" step="1" value="8">
+        <div class="note"><span id="speedValue">8</span> generations / second</div>
+      </div>
+
+      <div class="legend">
+        <span><span class="swatch" style="background:var(--alive);"></span>alive cell</span>
+        <span><span class="swatch" style="background:#ffffff;border:1px solid var(--line);"></span>dead cell</span>
+        <span><span class="swatch" style="background:var(--compare);"></span>recent perturbation / difference marker</span>
+      </div>
+
+      <label style="font-size:0.88rem;color:var(--ink);margin:0;">
+        <input id="showDifference" type="checkbox"> show A/B differences on Grid B
+      </label>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const els = Object.fromEntries(Array.from(document.querySelectorAll("[id]")).map(el => [el.id, el]));
+
+  const state = {
+    n: 48,
+    A: [],
+    B: [],
+    genA: 0,
+    genB: 0,
+    lastA: {births: 0, deaths: 0},
+    lastB: {births: 0, deaths: 0},
+    running: false,
+    timer: null,
+    draw: {
+      active: false,
+      target: null,
+      value: 1,
+      lastCell: null
+    },
+    perturbCell: null
+  };
+
+  function makeGrid(n, fill = 0) {
+    return Array.from({length: n}, () => Array(n).fill(fill));
+  }
+
+  function copyGrid(g) {
+    return g.map(row => row.slice());
+  }
+
+  function population(g) {
+    let count = 0;
+    for (const row of g) for (const cell of row) count += cell;
+    return count;
+  }
+
+  function differenceCount(a, b) {
+    let count = 0;
+    for (let y = 0; y < state.n; y++) {
+      for (let x = 0; x < state.n; x++) {
+        if (a[y][x] !== b[y][x]) count++;
+      }
+    }
+    return count;
+  }
+
+  function getCellFromEvent(canvas, event) {
+    const rect = canvas.getBoundingClientRect();
+    const x = Math.floor((event.clientX - rect.left) / rect.width * state.n);
+    const y = Math.floor((event.clientY - rect.top) / rect.height * state.n);
+    if (x < 0 || x >= state.n || y < 0 || y >= state.n) return null;
+    return {x, y};
+  }
+
+  function setupCanvas(canvas, key) {
+    canvas.addEventListener("contextmenu", event => event.preventDefault());
+
+    canvas.addEventListener("pointerdown", event => {
+      event.preventDefault();
+      const cell = getCellFromEvent(canvas, event);
+      if (!cell) return;
+      const grid = state[key];
+      const erase = event.button === 2 || event.buttons === 2 || event.ctrlKey;
+      const value = erase ? 0 : (grid[cell.y][cell.x] ? 0 : 1);
+      state.draw = {active: true, target: key, value, lastCell: `${cell.x},${cell.y}`};
+      grid[cell.y][cell.x] = value;
+      if (key === "A") state.genA = 0;
+      if (key === "B") state.genB = 0;
+      render();
+    });
+
+    canvas.addEventListener("pointermove", event => {
+      if (!state.draw.active || state.draw.target !== key) return;
+      const cell = getCellFromEvent(canvas, event);
+      if (!cell) return;
+      const cellKey = `${cell.x},${cell.y}`;
+      if (cellKey === state.draw.lastCell) return;
+      state.draw.lastCell = cellKey;
+      state[key][cell.y][cell.x] = state.draw.value;
+      if (key === "A") state.genA = 0;
+      if (key === "B") state.genB = 0;
+      render();
+    });
+
+    window.addEventListener("pointerup", () => {
+      state.draw.active = false;
+      state.draw.target = null;
+      state.draw.lastCell = null;
+    });
+  }
+
+  function neighbourCount(g, x, y) {
+    let count = 0;
+    const wrapped = els.boundaryMode.value === "wrapped";
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        if (dx === 0 && dy === 0) continue;
+        let nx = x + dx;
+        let ny = y + dy;
+
+        if (wrapped) {
+          nx = (nx + state.n) % state.n;
+          ny = (ny + state.n) % state.n;
+          count += g[ny][nx];
+        } else {
+          if (nx < 0 || nx >= state.n || ny < 0 || ny >= state.n) continue;
+          count += g[ny][nx];
+        }
+      }
+    }
+    return count;
+  }
+
+  function nextGrid(g) {
+    const out = makeGrid(state.n);
+    let births = 0, deaths = 0;
+
+    for (let y = 0; y < state.n; y++) {
+      for (let x = 0; x < state.n; x++) {
+        const alive = g[y][x] === 1;
+        const nb = neighbourCount(g, x, y);
+        const nextAlive = alive ? (nb === 2 || nb === 3) : (nb === 3);
+        out[y][x] = nextAlive ? 1 : 0;
+        if (!alive && nextAlive) births++;
+        if (alive && !nextAlive) deaths++;
+      }
+    }
+
+    return {grid: out, births, deaths};
+  }
+
+  function stepOnce() {
+    const na = nextGrid(state.A);
+    const nb = nextGrid(state.B);
+    state.A = na.grid;
+    state.B = nb.grid;
+    state.lastA = {births: na.births, deaths: na.deaths};
+    state.lastB = {births: nb.births, deaths: nb.deaths};
+    state.genA++;
+    state.genB++;
+    state.perturbCell = null;
+    render();
+  }
+
+  function stopRunning() {
+    state.running = false;
+    if (state.timer) clearInterval(state.timer);
+    state.timer = null;
+    els.run.textContent = "Run";
+  }
+
+  function runPause() {
+    if (state.running) {
+      stopRunning();
+      return;
+    }
+    state.running = true;
+    els.run.textContent = "Pause";
+    const speed = Number(els.speed.value);
+    state.timer = setInterval(stepOnce, Math.max(20, 1000 / speed));
+  }
+
+  function restartTimerIfRunning() {
+    if (!state.running) return;
+    stopRunning();
+    runPause();
+  }
+
+  function clearGrids() {
+    stopRunning();
+    state.n = readGridSize();
+    state.A = makeGrid(state.n);
+    state.B = makeGrid(state.n);
+    state.genA = 0;
+    state.genB = 0;
+    state.lastA = {births: 0, deaths: 0};
+    state.lastB = {births: 0, deaths: 0};
+    state.perturbCell = null;
+    render();
+  }
+
+  function readGridSize() {
+    let n = Math.trunc(Number(els.gridSize.value));
+    if (!Number.isFinite(n)) n = 48;
+    n = Math.max(16, Math.min(96, n));
+    els.gridSize.value = n;
+    return n;
+  }
+
+  function randomize() {
+    stopRunning();
+    state.n = readGridSize();
+    const density = Number(els.density.value);
+    state.A = makeGrid(state.n);
+    state.B = makeGrid(state.n);
+
+    for (let y = 0; y < state.n; y++) {
+      for (let x = 0; x < state.n; x++) {
+        state.A[y][x] = Math.random() < density ? 1 : 0;
+        state.B[y][x] = Math.random() < density ? 1 : 0;
+      }
+    }
+
+    state.genA = 0;
+    state.genB = 0;
+    state.lastA = {births: 0, deaths: 0};
+    state.lastB = {births: 0, deaths: 0};
+    state.perturbCell = null;
+    render();
+  }
+
+  function copyAndPerturb() {
+    stopRunning();
+    state.B = copyGrid(state.A);
+    let x = Math.floor(Math.random() * state.n);
+    let y = Math.floor(Math.random() * state.n);
+    if (population(state.A) > 0) {
+      const aliveCells = [];
+      for (let yy = 0; yy < state.n; yy++) {
+        for (let xx = 0; xx < state.n; xx++) {
+          if (state.A[yy][xx]) aliveCells.push({x: xx, y: yy});
+        }
+      }
+      if (aliveCells.length && Math.random() < 0.5) {
+        const chosen = aliveCells[Math.floor(Math.random() * aliveCells.length)];
+        x = chosen.x;
+        y = chosen.y;
+      }
+    }
+    state.B[y][x] = state.B[y][x] ? 0 : 1;
+    state.perturbCell = {x, y};
+    state.genB = state.genA;
+    state.lastB = {births: 0, deaths: 0};
+    render();
+  }
+
+  const patterns = {
+    glider: [[0,1],[1,2],[2,0],[2,1],[2,2]],
+    blinker: [[0,0],[1,0],[2,0]],
+    toad: [[1,0],[2,0],[3,0],[0,1],[1,1],[2,1]],
+    acorn: [[1,0],[3,1],[0,2],[1,2],[4,2],[5,2],[6,2]],
+    pulsar: [
+      [2,0],[3,0],[4,0],[8,0],[9,0],[10,0],
+      [0,2],[5,2],[7,2],[12,2],
+      [0,3],[5,3],[7,3],[12,3],
+      [0,4],[5,4],[7,4],[12,4],
+      [2,5],[3,5],[4,5],[8,5],[9,5],[10,5],
+      [2,7],[3,7],[4,7],[8,7],[9,7],[10,7],
+      [0,8],[5,8],[7,8],[12,8],
+      [0,9],[5,9],[7,9],[12,9],
+      [0,10],[5,10],[7,10],[12,10],
+      [2,12],[3,12],[4,12],[8,12],[9,12],[10,12]
+    ]
+  };
+
+  function addPreset(target) {
+    stopRunning();
+    const name = els.preset.value;
+    const cells = patterns[name] || patterns.glider;
+    const xs = cells.map(d => d[0]);
+    const ys = cells.map(d => d[1]);
+    const w = Math.max(...xs) - Math.min(...xs) + 1;
+    const h = Math.max(...ys) - Math.min(...ys) + 1;
+    const ox = Math.floor((state.n - w) / 2) - Math.min(...xs);
+    const oy = Math.floor((state.n - h) / 2) - Math.min(...ys);
+    const grid = state[target];
+
+    for (const [x, y] of cells) {
+      const xx = ox + x;
+      const yy = oy + y;
+      if (xx >= 0 && xx < state.n && yy >= 0 && yy < state.n) {
+        grid[yy][xx] = 1;
+      }
+    }
+
+    if (target === "A") state.genA = 0;
+    if (target === "B") state.genB = 0;
+    render();
+  }
+
+  function drawGrid(canvas, grid, compareGrid = null) {
+    const ctx = canvas.getContext("2d");
+    const width = canvas.width;
+    const height = canvas.height;
+    const cell = width / state.n;
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, width, height);
+
+    if (compareGrid && els.showDifference.checked) {
+      ctx.fillStyle = "rgba(239, 68, 68, 0.16)";
+      for (let y = 0; y < state.n; y++) {
+        for (let x = 0; x < state.n; x++) {
+          if (grid[y][x] !== compareGrid[y][x]) {
+            ctx.fillRect(x * cell, y * cell, cell, cell);
+          }
+        }
+      }
+    }
+
+    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--alive").trim() || "#111827";
+    for (let y = 0; y < state.n; y++) {
+      for (let x = 0; x < state.n; x++) {
+        if (grid[y][x]) {
+          ctx.fillRect(x * cell + 1, y * cell + 1, Math.max(1, cell - 2), Math.max(1, cell - 2));
+        }
+      }
+    }
+
+    if (canvas.id === "canvasB" && state.perturbCell) {
+      ctx.strokeStyle = "#ef4444";
+      ctx.lineWidth = Math.max(2, cell * 0.18);
+      ctx.strokeRect(state.perturbCell.x * cell + 1, state.perturbCell.y * cell + 1, cell - 2, cell - 2);
+    }
+
+    const gridLineEvery = state.n <= 56 ? 1 : 2;
+    ctx.strokeStyle = "#e5e7eb";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = 0; i <= state.n; i += gridLineEvery) {
+      const p = i * cell;
+      ctx.moveTo(p, 0);
+      ctx.lineTo(p, height);
+      ctx.moveTo(0, p);
+      ctx.lineTo(width, p);
+    }
+    ctx.stroke();
+  }
+
+  function renderStats() {
+    els.genA.textContent = String(state.genA);
+    els.genB.textContent = String(state.genB);
+    els.popA.textContent = String(population(state.A));
+    els.popB.textContent = String(population(state.B));
+    els.bdA.textContent = `${state.lastA.births} / ${state.lastA.deaths}`;
+    els.diffAB.textContent = String(differenceCount(state.A, state.B));
+  }
+
+  function render() {
+    drawGrid(els.canvasA, state.A);
+    drawGrid(els.canvasB, state.B, state.A);
+    renderStats();
+  }
+
+  els.run.addEventListener("click", runPause);
+  els.step.addEventListener("click", () => {
+    stopRunning();
+    stepOnce();
+  });
+  els.initialize.addEventListener("click", clearGrids);
+  els.randomize.addEventListener("click", randomize);
+  els.copyPerturb.addEventListener("click", copyAndPerturb);
+  els.presetLeft.addEventListener("click", () => addPreset("A"));
+  els.presetRight.addEventListener("click", () => addPreset("B"));
+
+  els.gridSize.addEventListener("change", clearGrids);
+  els.boundaryMode.addEventListener("change", render);
+  els.showDifference.addEventListener("change", render);
+  els.speed.addEventListener("input", () => {
+    els.speedValue.textContent = els.speed.value;
+    restartTimerIfRunning();
+  });
+  els.density.addEventListener("input", () => {
+    els.densityValue.textContent = `${Math.round(Number(els.density.value) * 100)}%`;
+  });
+
+  setupCanvas(els.canvasA, "A");
+  setupCanvas(els.canvasB, "B");
+
+  clearGrids();
+})();
+</script>
+</body>
+</html>
