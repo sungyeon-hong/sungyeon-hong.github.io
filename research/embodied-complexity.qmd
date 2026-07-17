@@ -1,0 +1,92 @@
+---
+pagetitle: "Embodied complexity"
+page-layout: full
+format:
+  html:
+    toc: false
+---
+
+```{=html}
+
+<div class="research-subpage">
+
+<section class="research-subpage-intro">
+  <div class="research-kicker">Embodiment · Collective dynamics · Equilibrium</div>
+  <h2 class="research-title">Embodied complexity</h2>
+  <div class="research-lede">
+    <h3><i>Can we experience complexity, rather than merely observe it?</i></h3>
+  </div>
+</section>
+
+
+<section class="research-subpage-section">
+  <h2 class="research-section-title">Overview</h2>
+  <p>
+    Complex systems are often introduced through equations, simulations, and abstract models. While these are indispensable scientific tools, they can sometimes obscure the intuitive experience of emergence itself. I am interested in designing interactive systems that allow people to participate in complexity—not simply by watching patterns unfold, but by becoming part of the dynamics that generate them.
+  </p>
+
+  <p>
+    My work in embodied complexity explores how ideas from cybernetics, complexity science, and self-organisation can be experienced through physical interaction, collaborative activities, and creative media. Rather than treating participants as passive observers, these projects invite them to become interacting agents whose local decisions collectively shape global outcomes.
+  </p>
+  <p>
+    Current projects include <strong>Musical Homeostasis</strong>, an interactive framework in which participants seek collective musical equilibrium through local listening and adaptation, together with a growing collection of online demonstrations that explore cellular automata, topology, emergence, and adaptive systems. Through these activities, I hope to make complex systems more tangible, accessible, and enjoyable while opening new opportunities for research, education, and public engagement.
+  </p>
+</section>
+
+
+<section class="research-band">
+  <div class="research-subpage-section">
+    <h2 class="research-section-title">Research projects</h2>
+    <p class="research-muted project-section-lede">
+      These projects use participation, sound, physical interaction, and computational media to turn abstract ideas about emergence into experiences that can be explored directly.
+    </p>
+
+    <div class="research-project-grid">
+
+      <a class="research-project-card" href="projects/musical-homeostasis.html" aria-label="Explore the Musical Homeostasis project">
+        <div class="project-card-visual project-card-visual-music" aria-hidden="true">
+          <span class="project-card-ring project-card-ring-one"></span>
+          <span class="project-card-ring project-card-ring-two"></span>
+          <span class="project-card-ring project-card-ring-three"></span>
+          <span class="project-card-glyph">♪</span>
+        </div>
+
+        <div class="project-card-body">
+          <div class="project-card-meta">Active project · Interactive research</div>
+          <h3>Musical Homeostasis</h3>
+          <p>
+            An embodied experiment in self-organisation, where participants begin from arbitrary notes and adapt through local listening until a shared musical equilibrium emerges.
+          </p>
+
+          <div class="project-card-tags" aria-label="Project themes">
+            <span>Self-organisation</span>
+            <span>Collective dynamics</span>
+            <span>Cybernetics</span>
+            <span>Music</span>
+          </div>
+
+          <span class="project-card-link">Explore the project <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="research-subpage-section">
+  <div class="research-collaboration-callout">
+    <div>
+      <div class="research-collaboration-kicker">Collaborate</div>
+      <h2>Interested in making complexity tangible?</h2>
+      <p>
+        I welcome conversations with researchers, musicians, educators, designers, artists, roboticists, and creative technologists interested in developing participatory models, interactive installations, or learning experiences around emergence and collective behaviour.
+      </p>
+    </div>
+    <a class="research-collaboration-link" href="../contact.html">Start a conversation <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</div>
+
+```

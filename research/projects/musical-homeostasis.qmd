@@ -1,0 +1,167 @@
+---
+pagetitle: "Musical Homeostasis"
+page-layout: full
+format:
+  html:
+    toc: false
+---
+
+```{=html}
+
+<div class="research-subpage research-project-page">
+
+<section class="research-subpage-intro project-page-intro">
+  <a class="project-back-link" href="../embodied-complexity.html">← Embodied complexity</a>
+  <div class="research-kicker">Self-organisation · Collective music · Cybernetics</div>
+  <h2 class="research-title">Musical Homeostasis</h2>
+  <div class="research-lede project-question">
+    <h3><i>How might collective musical order emerge when no one is conducting?</i></h3>
+  </div>
+
+  <div class="project-status-row" aria-label="Project status and format">
+    <span>Exploratory research project</span>
+    <span>Active</span>
+    <span>Participatory · Interactive</span>
+  </div>
+</section>
+
+
+<section class="research-subpage-section project-overview">
+  <h2 class="research-section-title">Overview</h2>
+
+  <p>
+    One of the recurring questions throughout my research is how collective order emerges without a central controller—a phenomenon known as <strong>self-organisation</strong>. Whether in materials, ecosystems, communication networks, or human–AI systems, complex patterns often arise from simple local interactions among many individual components. While these ideas are commonly illustrated through simulations of particles, cells, or agents, I have been interested in exploring whether they can also be experienced directly through music.
+  </p>
+
+  <p>
+    The term <em>homeostasis</em> is inspired by W. Ross Ashby's Homeostat, one of the earliest cybernetic machines to demonstrate how stable global behaviour can emerge through continual local adaptation. Drawing on the same principles, Musical Homeostasis is an ongoing experiment in creating an embodied manifestation of self-organisation.
+  </p>
+
+  <div class="project-pullquote">
+    Music provides a way to feel emergence: participants listen, adapt, and collectively create an outcome that no individual determines alone.
+  </div>
+</section>
+
+
+<section class="research-band">
+  <div class="research-subpage-section">
+    <h2 class="research-section-title">Why music?</h2>
+
+    <div class="project-two-column">
+      <div>
+        <p>
+          Music is a particularly appealing medium because it can connect people without requiring formal musical training or verbal communication. We may not share the same technical vocabulary, but we can often sense tension, harmony, balance, repetition, and change.
+        </p>
+        <p>
+          Musical Homeostasis therefore shifts attention away from musical expertise and towards listening, adaptation, and collective sense-making. The activity asks participants not to perform a predetermined composition, but to create the conditions in which a collective musical structure can organise itself.
+        </p>
+      </div>
+
+      <aside class="project-concept-note">
+        <div class="project-concept-note-label">Central idea</div>
+        <p>
+          The participants do not compose the final outcome directly. They continually adjust their own local contribution, and the larger pattern emerges from those interactions.
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<section class="research-subpage-section">
+  <h2 class="research-section-title">How Musical Homeostasis works</h2>
+  <p class="research-muted project-section-lede">
+    The simplest form of Musical Homeostasis (MH v.1) translates three elements of a self-organising system into a shared musical activity.
+  </p>
+
+  <div class="project-principle-grid">
+    <article class="project-principle-card">
+      <div class="project-principle-number">01</div>
+      <h3>Initial condition</h3>
+      <p>
+        Each participant begins by selecting an arbitrary sustained note. The group therefore starts from a deliberately uncoordinated musical state.
+      </p>
+    </article>
+
+    <article class="project-principle-card">
+      <div class="project-principle-number">02</div>
+      <h3>Local interaction</h3>
+      <p>
+        Participants listen to the notes around them and may change their own note at any time. There is no conductor and no access to a complete global plan.
+      </p>
+    </article>
+
+    <article class="project-principle-card">
+      <div class="project-principle-number">03</div>
+      <h3>Emergent equilibrium</h3>
+      <p>
+        Through repeated mutual adjustment, the group may converge on one note, form a harmonious chord, or settle into another arrangement that feels collectively satisfactory.
+      </p>
+    </article>
+  </div>
+
+  <div class="project-concepts-strip" aria-label="Central research concepts">
+    <span>Self-organisation</span>
+    <span>Collective dynamics</span>
+    <span>Feedback</span>
+    <span>Adaptation</span>
+    <span>Equilibrium</span>
+  </div>
+</section>
+
+
+<section class="research-band">
+  <div class="research-subpage-section">
+    <h2 class="research-section-title">Interactive experience</h2>
+
+    <div class="project-demo-feature">
+      <div class="project-demo-copy">
+        <div class="project-card-meta">Musical Homeostasis v.1</div>
+        <h3>Listen, adapt, and let the music organise itself</h3>
+        <p>
+          Invite at least two friends or colleagues to join from their own devices. Each person chooses a note, listens to the collective sound, and changes notes as the group searches for a musical equilibrium.
+        </p>
+        <p class="research-muted">
+          No musical background is required. For the clearest experience, participate in the same physical room and keep device volumes moderate.
+        </p>
+
+        <div class="project-demo-actions">
+          <a class="demo-button project-primary-button" href="../../interactive/musical_homeostasis_v1/">Launch MH v.1 <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="project-demo-visual" aria-hidden="true">
+        <span class="project-demo-note project-demo-note-one">E</span>
+        <span class="project-demo-note project-demo-note-two">G</span>
+        <span class="project-demo-note project-demo-note-three">B♭</span>
+        <span class="project-demo-centre">♪</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="research-subpage-section">
+  <h2 class="research-section-title">Where the project could go next</h2>
+  <p>
+    Musical Homeostasis is intentionally minimal at this stage. Its simplicity makes the central dynamics visible, but it also leaves substantial room for richer models: new interaction rules, computational agents, spatial or networked arrangements, multimodal visualisations, empirical studies of group behaviour, and installations that connect physical and online participation.
+  </p>
+  <p>
+    I am especially interested in how different rules and constraints shape the kinds of equilibria a group can reach, how disturbances reorganise an established musical state, and whether recurring dynamical signatures can be identified across different groups and settings.
+  </p>
+
+  <div class="research-collaboration-callout project-collaboration-callout">
+    <div>
+      <div class="research-collaboration-kicker">Collaborate</div>
+      <h2>Help develop the next iteration</h2>
+      <p>
+        I would be delighted to hear from researchers, musicians, educators, designers, artists, and creative technologists interested in developing more sophisticated models, participatory experiments, interactive installations, or learning activities inspired by Musical Homeostasis.
+      </p>
+    </div>
+    <a class="research-collaboration-link" href="../../contact.html">Get in touch <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</div>
+
+```

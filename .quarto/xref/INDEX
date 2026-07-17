@@ -1,85 +1,68 @@
 {
-  "index.qmd": {
-    "index.html": "bc543634"
-  },
-  "about.qmd": {
-    "about.html": "9d223f5e"
-  },
-  "fun.qmd": {
-    "fun.html": "740ccd2a"
-  },
-  "research/geometry-driven-hyperuniformity.qmd": {
-    "geometry-driven-hyperuniformity.html": "0ab1276d"
-  },
-  "research/supervision.qmd": {
-    "supervision.html": "da94fb32"
-  },
-  "research/topological-analysis-information-flow.qmd": {
-    "topological-analysis-information-flow.html": "6790f947"
-  },
-  "activities/future/example-future-event.qmd": {
-    "example-future-event.html": "38da82bc"
-  },
-  "activities/past/example-past-event.qmd": {
-    "example-past-event.html": "7a741782"
-  },
-  "education.qmd": {
-    "education.html": "f56aeb95"
-  },
-  "publications.qmd": {
-    "publications.html": "aa52496e"
-  },
   "engagements.qmd": {
-    "engagements.html": "f1629ec5"
-  },
-  "interactive_lloyd/lloyd_demo.qmd": {
-    "lloyd_demo.html": "940dbfbb"
-  },
-  "research.qmd": {
-    "research.html": "ed249d75"
-  },
-  "engagements/future/example-future-event.qmd": {
-    "example-future-event.html": "776c604b"
-  },
-  "engagements/past/example-past-event.qmd": {
-    "example-past-event.html": "e6b57d10"
-  },
-  "contact.qmd": {
-    "contact.html": "fc8bbbab"
-  },
-  "interactive_lloyd/index.qmd": {
-    "index.html": "c292035a"
+    "engagements.html": "00fd7298"
   },
   "research/information-dynamics.qmd": {
-    "information-dynamics.html": "3a94d690"
+    "information-dynamics.html": "7e9306d4"
   },
   "research/knowledge-integrity.qmd": {
-    "knowledge-integrity.html": "4ec4470d"
+    "knowledge-integrity.html": "ad011a5d"
   },
   "research/hyperuniformity.qmd": {
-    "hyperuniformity.html": "bfde95ae"
-  },
-  "faq.qmd": {
-    "faq.html": "926a52ad"
-  },
-  "faq_rendering-issue.qmd": {
-    "faq_rendering-issue.html": "7e31e2a7"
+    "hyperuniformity.html": "be16f072"
   },
   "resources.qmd": {
-    "resources.html": "e755e433"
+    "resources.html": "8a376b6f"
+  },
+  "education.qmd": {
+    "education.html": "402e44fb"
+  },
+  "faq.qmd": {
+    "faq.html": "aa0126bb"
+  },
+  "interactive/melodic_homeostasis_v1/index.qmd": {
+    "index.html": "148595a2"
+  },
+  "interactive/musical_homeostasis_v2/index.qmd": {
+    "index.html": "38924047"
+  },
+  "interactive/musical_homeostasis_v1/index.qmd": {
+    "index.html": "5d623e35"
   },
   "interactive/lloyd/index.qmd": {
-    "index.html": "3051a4c5"
+    "index.html": "bf6c6bf6"
+  },
+  "interactive/game_of_life/index.qmd": {
+    "index.html": "de42179d"
   },
   "interactive/persistence/index.qmd": {
-    "index.html": "6e873827"
+    "index.html": "82681c0c"
   },
-<<<<<<< HEAD
-  "interactive/music/index.qmd": {
-    "index.html": "185a9cc7"
-=======
-  "interactive/game_of_life/index.qmd": {
-    "index.html": "3b25aa00"
->>>>>>> 51e138f0a720021aba1d187a10051aa2359624f2
+  "interactive/melodic_homeostasis/index.qmd": {
+    "index.html": "91cd05f7"
+  },
+  "interactive/musical_homeostasis_v2_simplified/index.qmd": {
+    "index.html": "3755bfe8"
+  },
+  "research.qmd": {
+    "research.html": "0b61750e"
+  },
+  "index.qmd": {
+    "index.html": "6635099c"
+  },
+  "engagements/future/example-future-event.qmd": {
+    "example-future-event.html": "ece4ee2b"
+  },
+  "engagements/past/example-past-event.qmd": {
+    "example-past-event.html": "8e58c257"
+  },
+  "contact.qmd": {
+    "contact.html": "a8963aa4"
+  },
+  "research/embodied-complexity.qmd": {
+    "embodied-complexity.html": "d3f267ed"
+  },
+  "research/projects/musical-homeostasis.qmd": {
+    "musical-homeostasis.html": "273e9df0"
   }
 }

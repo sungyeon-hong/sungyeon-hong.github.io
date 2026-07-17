@@ -24,21 +24,52 @@ format:
 <section class="faq-section">
 
 <h2 id="research" class="faq-section-title">Research</h2>
+
 <details class="faq-item">
 <summary>What connects your different research interests?</summary>
 <div class="faq-answer">
 
-My work is connected by a shared interest in how global patterns emerge from local interactions. Across geometry-driven pattern formation, human–AI systems, and knowledge integrity, I use topology as a lens for identifying structure, connectivity, flow, and robustness in complex systems.
+Although my research spans materials, information systems, and interactive experiences, it is guided by a common question: <b>How do coherent patterns emerge from many interacting components without central control?</b> Whether I am studying geometry-driven complexity, information dynamics, or embodied experiences of emergence, I am ultimately interested in understanding how structure, meaning, and collective behaviour arise through local interactions. Rather than viewing these as separate disciplines, I see them as different manifestations of the same underlying principles of complexity.
 
 </div>
 </details>
 
 <details class="faq-item">
-<summary>How did your PhD work lead you into complexity science?</summary>
+<summary>Why do you work across such different fields?</summary>
 <div class="faq-answer">
+	<p>
+	I've never been particularly good at fitting neatly into a single disciplinary box. Although I was trained in mathematics and physics, I have always found myself following questions rather than labels. If the same question appears in materials science, ecology, communication, music, or AI, I'm naturally inclined to explore all of them.
+	</p>
+	<p>
+	Many of these seemingly different systems are connected by common ideas, such as emergence, self-organisation, feedback, adaptation, and collective behaviour. Rather than studying each domain in isolation, I enjoy looking for the recurring principles that govern how complex systems organise themselves. That search for <b>universality</b> is one of the most rewarding and thrilling aspects of my research.
+	</p>
+</div>
+</details>
 
-My PhD work on geometry-driven hyperuniformity introduced me to the richness of systems in which simple local rules can generate striking large-scale order. That became an entry point into broader questions about emergence, adaptation, nonlinearity, and collective behaviour.
+<details class="faq-item">
+<summary>How did you get into complexity science?</summary>
+<div class="faq-answer">
+	<p>
+	My entry point into complexity science came through my PhD research on geometry-driven hyperuniformity. What began as a study of disordered materials quickly became a fascination with a much broader question: how can remarkably simple local interactions generate striking forms of large-scale order?
+	</p>
+	<p>
+	That experience introduced me to a rich landscape of ideas, including emergence, self-organisation, adaptation, phase transitions, nonlinearity, and collective behaviour, which continue to shape my research today. Although the systems I study have expanded from materials to information, communication, and embodied interaction, the underlying questions have remained remarkably consistent.
+	</p>
+</div>
+</details>
 
+<details class="faq-item">
+<summary>What is cybernetics? How does it inform your research?</summary>
+<div class="faq-answer">
+	<p>
+	Cybernetics is the study of <b>how systems regulate, adapt, and organise themselves through feedback</b>. Originally developed to understand purposeful behaviour in both living organisms and machines, it has since evolved into a rich way of thinking about complex systems across the natural, social, and technological worlds.
+	</p>
+	<p>
+	What draws me to cybernetics is not simply its concepts, but its way of asking questions. Rather than viewing systems as isolated components, cybernetics encourages us to think in terms of relationships, interactions, feedback loops, adaptation, and emergence. It asks how collective behaviour arises, how systems remain resilient under change, and how they continue to learn and reorganise over time.
+	</p>
+	<p>
+	Voilà, that's what I found in cybernetics: a common language for communicating across fields, connecting research themes from geometry-driven complexity and information dynamics to embodied experiences, such as <i>Musical Homeostasis</i>. Cybernetics therefore serves not only as a theoretical foundation, but also as a practical orientation for exploring how complex systems organise, communicate, and evolve.
+	</p>
 </div>
 </details>
 
@@ -65,7 +96,7 @@ Topology offers a way to study shape, structure, and connectivity without reduci
 <summary>What kinds of students do you supervise?</summary>
 <div class="faq-answer">
 
-I am interested in supervising students whose projects engage with complexity, cybernetics, information dynamics, topology, AI-mediated systems, or related questions about emergence and knowledge systems. Projects can be computational, conceptual, applied, or transdisciplinary.
+I welcome students whose projects engage with complexity, cybernetics, information dynamics, topology, AI-mediated systems, or broader questions about emergence, communication, and knowledge systems. Projects may be computational, conceptual, empirical, design-oriented, or embodied. Above all, I enjoy working with students who are curious, open to crossing disciplinary boundaries, and willing to explore unfamiliar ideas with intellectual generosity.
 
 </div>
 </details>
@@ -74,7 +105,7 @@ I am interested in supervising students whose projects engage with complexity, c
 <summary>Do students need a strong mathematical background to work with you?</summary>
 <div class="faq-answer">
 
-Not always. Some projects require mathematical or computational depth, while others are more conceptual, design-oriented, or interpretive. What matters most is a willingness to work carefully across methods, assumptions, and levels of abstraction with an open mind and curiosity.
+Not always! Some projects require mathematical or computational depth, while others are more conceptual, design-oriented, or interpretive. What matters most is a willingness to work carefully across methods, assumptions, and levels of abstraction with an open mind and curiosity.
 
 </div>
 </details>
@@ -83,7 +114,7 @@ Not always. Some projects require mathematical or computational depth, while oth
 <summary>What is your teaching style?</summary>
 <div class="faq-answer">
 
-My teaching is grounded in inquiry, reflection, and learning by making. I aim to help students develop conceptual clarity while also engaging with practical tools, prototypes, examples, and situated problems.
+My teaching is grounded in inquiry, reflection, and learning by making. I aim to help students develop conceptual clarity by breaking complex ideas into digestible pieces that can be communicated thoughtfully to diverse audiences. Along the way, I encourage students to learn through practical tools, prototypes, interactive demonstrations, real-world examples, and situated problems, building confidence not only in understanding complexity but also in explaining it.
 
 </div>
 </details>
@@ -93,7 +124,7 @@ My teaching is grounded in inquiry, reflection, and learning by making. I aim to
 <summary>What kinds of collaborations are you interested in?</summary>
 <div class="faq-answer">
 
-I am especially interested in collaborations that bring together complexity science, cybernetics, AI, knowledge systems, communication, education, or creative practice. I am drawn to projects where computational and conceptual tools can help illuminate hidden structures or dynamics.
+I enjoy collaborations that bring together complexity science, cybernetics, natural and artificial intelligence, knowledge systems, communication, education, and creative practice. I am particularly interested in projects where computational, conceptual, or interactive approaches can reveal hidden structures, dynamics, or organising principles. More recently, I have become increasingly interested in developing embodied experiences of complexity, creating ways for people not only to study emergence, but to participate in and experience it firsthand.
 
 </div>
 </details>

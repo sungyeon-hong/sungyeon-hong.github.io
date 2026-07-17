@@ -1,5 +1,5 @@
 ---
-pagetitle: "Geometry-driven complexity"
+pagetitle: "Order, disorder and in-between"
 page-layout: full
 format:
   html:
@@ -12,10 +12,10 @@ format:
 <div class="research-subpage">
 
 <section class="research-subpage-intro">
-  <div class="research-kicker">Pattern formation · Hyperuniformity · Emergent order</div>
-  <h2 class="research-title">Geometry-driven complexity</h2>
+  <div class="research-kicker">Pattern formation · Emergent order ·  Hyperuniformity</div>
+  <h2 class="research-title">Order, disorder and in-between</h2>
   <div class="research-lede">
-    <h3><i>How can simple geometric interactions generate large-scale order?</i></h3>
+    <h3><i>How does order emerge from disorder? And what can we learn from the fascinating space in-between?</i></h3>
   </div>
 </section>
 
@@ -23,7 +23,13 @@ format:
 <section class="research-subpage-section">
   <h2 class="research-section-title">Overview</h2>
   <p>
-    This research theme traces my entry into complexity science through geometry-driven hyperuniformity and related questions of pattern formation. It asks how local geometric interactions, constraints, and relaxation rules can generate large-scale order.
+    Nature rarely presents us with perfect order or complete randomness. Snowflakes and crystals are highly ordered; gases and crowds may appear almost random. Yet many of the most intriguing systems inhabit the rich territory between these extremes, where simple local interactions give rise to complex collective organisation. Understanding this interplay offers insights not only into physical materials but also into biological, social, and technological systems that continually organise and reorganise themselves.
+  </p>
+  <p>
+  My research in this area began with <a href="https://doi.org/10.25911/ZVZS-J932"><i>geometry-driven hyperuniformity</i></a>, where I investigated how simple geometric interactions among neighbouring points spontaneously generate large-scale order without any central coordination. This work revealed how topological defects, orientational domains, and scale-free correlations emerge during ordering transitions, leading to unusual structural and mechanical properties.
+  </p>
+	<p>
+Today, these ideas continue to motivate my broader interest in emergence, phase transitions, and universality across complex systems. By combining geometry, topology, computation, and dynamical modelling, I seek common organising principles that transcend individual disciplines—from condensed matter and biological tissues to collective behaviour and adaptive systems.
   </p>
 
   <h2 class="research-section-title">Interactive demo</h2>

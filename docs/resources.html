@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>resources – Sungyeon Hong</title>
+<title>Resources – Sungyeon Hong</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3cbf9fa670015d5da8a21d517caf2a17.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-19f9f6dfbad63c64d447301a7ac90294.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,11 +112,15 @@ gtag('config', 'G-CPXYZFK8GC', { 'anonymize_ip': true});
   </li>  
         <li>
     <a class="dropdown-item" href="./research/hyperuniformity.html">
- <span class="dropdown-text">Geometry-driven complexity</span></a>
+ <span class="dropdown-text">Order, disorder and in-between</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./research/information-dynamics.html">
- <span class="dropdown-text">Information dynamics in human–AI systems</span></a>
+ <span class="dropdown-text">Information dynamics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./research/embodied-complexity.html">
+ <span class="dropdown-text">Embodied complexity</span></a>
   </li>  
     </ul>
   </li>
@@ -155,27 +159,185 @@ gtag('config', 'G-CPXYZFK8GC', { 'anonymize_ip': true});
 
 
 
+<div class="site-page resources-page">
 
-<div class="site-page">
-
-<section class="site-intro">
-  <div class="site-kicker">Reading · Tools · Inspiration</div>
+<section class="site-intro resources-intro">
+  <div class="site-kicker">Interactive explorations · Learning tools · Open demos</div>
   <h2 class="anchored">Resources</h2>
   <div class="site-lede">
-    <p>In this page, you can find resources that I find useful/insightful for my work.</p>
-    <p><span class="site-muted">This page is under construction. It will be updated irregularly, so please feel free to check back every now and then if you are interested.</span></p>
+    <p>
+      This page gathers browser-based demonstrations developed across my research and teaching. Some accompany particular projects elsewhere on the website; others stand alone as invitations to explore foundational ideas in complexity, emergence, geometry, topology, and collective behaviour.
+    </p>
+    <p>
+      Each demo is designed to be used experimentally: change one condition, watch what follows, and ask how local rules, initial states, or interactions shape the larger pattern.
+    </p>
   </div>
 </section>
 
-<!--
-<section class="site-section">
-  <h2 class="site-section-title">Resource list</h2>
-  <h3>Exploring complexity</h3>
-  <a class="demo-button" href="/interactive/game_of_life/">Launch Game of Life demo →</a>
+
+<section class="site-band">
+  <div class="site-section resources-section">
+    <div class="resources-section-heading">
+      <div>
+        <div class="resource-section-kicker">Good places to begin</div>
+        <h2 class="site-section-title anchored">Foundations of complexity</h2>
+      </div>
+      <p>
+        These demos introduce two widely useful ways of thinking about complex systems: how simple local rules generate emergent behaviour, and how structure changes as our notion of proximity changes.
+      </p>
+    </div>
+
+    <div class="resource-feature-grid">
+
+      <a class="resource-feature-card" href="interactive/game_of_life/" aria-label="Open Conway's Game of Life interactive demo">
+        <div class="resource-card-visual resource-visual-life" aria-hidden="true">
+          <div class="life-grid-pattern"></div>
+        </div>
+        <div class="resource-card-body">
+          <div class="resource-card-meta">Cellular automata · Emergence</div>
+          <h3 class="anchored">Conway's Game of Life</h3>
+          <p>
+            Explore how a two-dimensional cellular automaton can generate stable forms, oscillators, travelling structures, and long-lived transients from a minimal rule set. Two editable grids make it possible to compare how small differences in initial conditions reshape the system's future.
+          </p>
+          <div class="resource-card-prompts">
+            <span>What to notice</span>
+            <p>Local rules, sensitivity to initial conditions, persistence, extinction, and unexpected pattern formation.</p>
+          </div>
+          <span class="resource-card-link">Launch demo <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+      <a class="resource-feature-card" href="interactive/persistence/" aria-label="Open persistent homology interactive demo">
+        <div class="resource-card-visual resource-visual-topology" aria-hidden="true">
+          <span class="topology-loop topology-loop-one"></span>
+          <span class="topology-loop topology-loop-two"></span>
+          <span class="topology-loop topology-loop-three"></span>
+          <span class="topology-point topology-point-one"></span>
+          <span class="topology-point topology-point-two"></span>
+          <span class="topology-point topology-point-three"></span>
+          <span class="topology-point topology-point-four"></span>
+        </div>
+        <div class="resource-card-body">
+          <div class="resource-card-meta">Topology · Shape of data</div>
+          <h3 class="anchored">Persistent Homology</h3>
+          <p>
+            Grow neighbourhoods around a point cloud and watch connected components and loops appear and disappear across scale. The linked persistence diagram helps reveal which structures endure and which are short-lived.
+          </p>
+          <div class="resource-card-prompts">
+            <span>What to notice</span>
+            <p>Connectivity, loops, scale, noise, and the distinction between fleeting and persistent structure.</p>
+          </div>
+          <span class="resource-card-link">Launch demo <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
 </section>
--->
+
+
+<section class="site-section resources-section">
+  <div class="resources-section-heading">
+    <div>
+      <div class="resource-section-kicker">From current research</div>
+      <h2 class="site-section-title anchored">Research-led experiments</h2>
+    </div>
+    <p>
+      The following demos translate ideas from my research into interactive form. They can also be found from the relevant research-theme or project pages; this collection provides a single place to browse them together.
+    </p>
+  </div>
+
+  <div class="resource-demo-grid">
+
+    <a class="resource-demo-card" href="interactive/lloyd/" aria-label="Open geometry-driven hyperuniformity Lloyd demo">
+      <div class="resource-demo-icon resource-icon-geometry" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="resource-demo-content">
+        <div class="resource-card-meta">Order, disorder, and in-between</div>
+        <h3 class="anchored">Geometry-driven Hyperuniformity</h3>
+        <p>
+          Follow a point pattern through Lloyd iterations and examine how local geometric optimisation reorganises the system. Track energy, displacement, local topology, orientational order, and low-wave-number structure.
+        </p>
+        <div class="resource-demo-tags">
+          <span>Pattern formation</span>
+          <span>Self-organisation</span>
+          <span>Spatial order</span>
+        </div>
+        <span class="resource-card-link">Explore the demo <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+
+    <a class="resource-demo-card" href="interactive/musical_homeostasis_v1/" aria-label="Open Musical Homeostasis version 1 demo">
+      <div class="resource-demo-icon resource-icon-music" aria-hidden="true">♪</div>
+      <div class="resource-demo-content">
+        <div class="resource-card-meta">Embodied complexity · Group activity</div>
+        <h3 class="anchored">Musical Homeostasis v.1</h3>
+        <p>
+          Use music to experience self-organisation directly. Each participant begins with an arbitrary note, listens locally, and adapts while the group searches for a shared musical equilibrium. The activity works best with three or more people in the same room.
+        </p>
+        <div class="resource-demo-tags">
+          <span>Collective dynamics</span>
+          <span>Feedback</span>
+          <span>Equilibrium</span>
+        </div>
+        <span class="resource-card-link">Start the activity <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+
+    <a class="resource-demo-card" href="interactive/melodic_homeostasis/" aria-label="Open Melodic Homeostasis demo">
+      <div class="resource-demo-icon resource-icon-melody" aria-hidden="true">
+        <svg viewbox="0 0 120 80" role="presentation">
+          <polyline points="5,58 26,36 48,27 69,19 92,58 114,38" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <circle cx="5" cy="58" r="5"></circle>
+          <circle cx="26" cy="36" r="5"></circle>
+          <circle cx="48" cy="27" r="5"></circle>
+          <circle cx="69" cy="19" r="5"></circle>
+          <circle cx="92" cy="58" r="5"></circle>
+          <circle cx="114" cy="38" r="5"></circle>
+        </svg>
+      </div>
+      <div class="resource-demo-content">
+        <div class="resource-card-meta">Embodied complexity · Generative music</div>
+        <h3 class="anchored">Melodic Homeostasis</h3>
+        <p>
+          Enter or play a short motif, then generate and compare several musical continuations using transparent rules of motif loyalty, exploration, tension, and resolution. Listen to each trajectory, inspect its piano-roll shape, or export it as MIDI.
+        </p>
+        <div class="resource-demo-tags">
+          <span>Initial conditions</span>
+          <span>Rule-based generation</span>
+          <span>Musical trajectories</span>
+        </div>
+        <span class="resource-card-link">Compose from a motif <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+<section class="site-band">
+  <div class="site-section resources-section">
+    <div class="resource-use-callout">
+      <div>
+        <div class="resource-section-kicker">A simple way to explore</div>
+        <h2 class="anchored">Change one thing at a time</h2>
+        <p>
+          Begin with the default state, then vary a single initial condition, parameter, or local rule. Observe not only what changes, but also what remains stable. Repeating this process helps reveal feedback, thresholds, path dependence, robustness, and other signatures of complex behaviour.
+        </p>
+      </div>
+      <div class="resource-use-steps" aria-label="Suggested exploration process">
+        <span><b>1</b> Observe</span>
+        <span><b>2</b> Perturb</span>
+        <span><b>3</b> Compare</span>
+        <span><b>4</b> Reflect</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 </div>
+
 
 
 

@@ -1,5 +1,5 @@
 ---
-pagetitle: "Information dynamics in human–AI systems"
+pagetitle: "Information dynamics"
 page-layout: full
 format:
   html:
@@ -12,9 +12,9 @@ format:
 
 <section class="research-subpage-intro">
   <div class="research-kicker">Generative AI · Feedback · Adaptation</div>
-  <h2 class="research-title">Information dynamics in human–AI systems</h2>
+  <h2 class="research-title">Information dynamics</h2>
   <div class="research-lede">
-    <h3><i>How does information evolve when humans and AI systems participate in feedback loops and shape each other?</i></h3>
+    <h3><i>How does information evolve as it moves through complex communication networks?</i></h3>
   </div>
 </section>
 
@@ -22,10 +22,13 @@ format:
 <section class="research-subpage-section">
   <h2 class="research-section-title">Overview</h2>
   <p>
-    This research theme examines how information evolves when humans and AI systems communicate and interact with each other. I am interested in generative AI not only as a technical artefact, but as a latent field shaping cultural, organisational, and epistemic dynamics.
+    Information rarely remains unchanged as it passes from one person (or a system) to another. Meanings are interpreted, compressed, transformed, and occasionally distorted through continual interaction. As generative AI becomes increasingly embedded in how we create, communicate, and evaluate knowledge, understanding these dynamics has become both a scientific and societal challenge.
   </p>
   <p>
-    Cybernetics offers a practical language for studying these systems: communication, feedback, adaptation, observation, and recursive change.
+  This research theme examines how information evolves when humans and AI systems communicate and interact. I am interested in generative AI not merely as a technological artefact, but as part of a broader information ecosystem that shapes how knowledge is produced, circulated, interpreted, and transformed.
+	</p>
+	<p>
+	My current work investigates semantic dynamics in recursive human–AI communication using tools from topology, geometry, and network science. By analysing trajectories of meaning across multimodal AI systems and large-scale knowledge networks, I seek to develop quantitative diagnostics for semantic drift, information flow, and knowledge integrity. Ultimately, this research aims to identify structural signatures that distinguish resilient knowledge ecosystems from those vulnerable to fragmentation, misinformation, or epistemic degradation, providing foundations for more trustworthy and responsible human–AI collaboration.
   </p>
 </section>
 
@@ -36,6 +39,7 @@ format:
     <h2 class="research-section-title">Relevant publications</h2>
     <p class="research-muted">
       This list is intended for publications connected to human–AI interaction, generative AI, communication, feedback, adaptation, and information dynamics.
+      <!--knowledge integrity, structural diagnostics, epistemic robustness, semantic drift, and trustworthy knowledge systems-->
     </p>
 
     <div class="publication-list">

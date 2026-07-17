@@ -13,12 +13,12 @@ website:
         menu:
           - text: Overview
             href: research.qmd
-          - text: Geometry-driven complexity
+          - text: Order, disorder and in-between
             href: research/hyperuniformity.qmd
-          - text: Information dynamics in human–AI systems
+          - text: Information dynamics
             href: research/information-dynamics.qmd
-#          - text: Structural diagnostics for knowledge integrity
-#            href: research/knowledge-integrity.qmd
+          - text: Embodied complexity
+            href: research/embodied-complexity.qmd
       - text: Education
         href: education.qmd
       - text: Engagements

@@ -130,13 +130,13 @@ format:
   		We are living in a vast ocean of data. As cognitive beings, we continually seek to derive meaning from the information we encounter — identifying patterns, forming abstractions, and constructing narratives that help us navigate an increasingly complex world.
   	</p>
     <p>
-      My research investigates how global patterns, behaviours, and meanings emerge from local interactions in complex systems. Beginning with my PhD work on geometry-driven hyperuniformity, I became interested in how simple generative rules can produce striking forms of collective order.
+      My research asks a simple yet far-reaching question: <b>how do coherent structures emerge from many interacting components without central control?</b> From material organisation and communication networks to embodied human experience, I investigate how local interactions give rise to collective patterns, adaptive behaviours, and shared meaning.
     </p>
     <p>
-      My current work extends this perspective to information systems, especially those mediated by generative AI, where feedback, adaptation, and communication shape how knowledge is created, circulated, and transformed.
+      Beginning with my PhD work on <b>geometry-driven hyperuniformity</b>, I became interested in how remarkably simple generative rules can produce striking forms of collective order. More recently, I have extended this perspective to <b>information systems mediated by generative AI</b>, where feedback, adaptation, and communication continually reshape how knowledge is created, circulated, and transformed. Alongside these computational studies, I am exploring <b>embodied complexity</b> through interactive experiences, such as <i>Musical Homeostasis</i>, which invites participants to experience self-organisation, collective dynamics, and equilibrium through collaborative music-making.
     </p>
     <p>
-      Across these domains, topology provides a unifying lens: a way of characterising structure beyond individual components, revealing the organisational signatures that govern robustness, information flow, and knowledge integrity.
+    	Across these domains, I combine ideas from complexity science, cybernetics, and topology to uncover organisational principles that transcend individual systems. Rather than studying any single application in isolation, I seek recurring structures and mechanisms that reveal how complex systems organise, adapt, and remain resilient across diverse domains.
     </p>
   </div>
 </section>
@@ -148,20 +148,30 @@ format:
       <article class="research-card">
         <img src="images/random_vs_hyperuniform.png" alt="Placeholder image for geometry-driven complexity">
         <div class="research-card-body">
-          <h3>Geometry-driven complexity</h3>
-          <p>How local geometric interactions and constraints can generate large-scale order, pattern formation, and hyperuniform structure.</p>
+          <h3>Order, Disorder and In-between</h3>
+          <p>How simple local interactions generate spatial organisation and reveal universal principles of pattern formation.</p>
           <a href="research/hyperuniformity.html">Read more →</a>
         </div>
       </article>
 
       <article class="research-card">
-        <img src="images/semantic_topologies.png" alt="Placeholder image for information dynamics in human-AI systems">
+        <img src="images/semantic_topologies.png" alt="Placeholder image for information dynamics">
         <div class="research-card-body">
-          <h3>Information dynamics in human–AI systems</h3>
-          <p>How information circulates, adapts, and changes through feedback between people, organisations, and generative AI systems.</p>
+          <h3>Information Dynamics</h3>
+          <p>How information, meaning, and knowledge evolve through communication, feedback, and human–AI interaction.</p>
           <a href="research/information-dynamics.html">Read more →</a>
         </div>
       </article>
+
+      <article class="research-card">
+        <img src="images/research-embodied-complexity-placeholder.jpg" alt="Placeholder image for embodied complexity">
+        <div class="research-card-body">
+          <h3>Embodied Complexity</h3>
+          <p>How self-organisation, adaptation, and collective behaviour can be experienced through interactive systems and creative media.</p>
+          <a href="research/embodied-complexity.html">Read more →</a>
+        </div>
+      </article>
+
 
 <!--
       <article class="research-card">

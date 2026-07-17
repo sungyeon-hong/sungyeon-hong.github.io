@@ -1,0 +1,1483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Melodic Homeostasis</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --panel: #ffffff;
+    --ink: #1f2933;
+    --muted: #64748b;
+    --line: #d1d5db;
+    --soft-line: #e5e7eb;
+    --accent: #426b73;
+    --accent-dark: #2f5158;
+    --accent-soft: #e7f0f1;
+    --warn: #ef4444;
+    --blue: #2563eb;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.45;
+  }
+
+  .app {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 18px;
+  }
+
+  header { margin-bottom: 14px; }
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.45rem, 2.7vw, 2.25rem);
+    letter-spacing: -0.035em;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    letter-spacing: -0.015em;
+  }
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    letter-spacing: -0.015em;
+  }
+
+  .subtitle {
+    max-width: 1080px;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .card,
+  .panel,
+  .control-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+  }
+
+  .card p { margin: 0 0 0.65rem; }
+  .card p:last-child { margin-bottom: 0; }
+
+  .rule-list,
+  .guide-list {
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+
+  .rule-list li,
+  .guide-list li { margin-bottom: 0.35rem; }
+
+  .controls {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .sliders {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 8px;
+    background: #fff;
+    color: var(--ink);
+  }
+
+  input[type="range"] { width: 100%; }
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  button {
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: white;
+    color: var(--ink);
+    padding: 8px 11px;
+    cursor: pointer;
+    font-weight: 650;
+  }
+
+  button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  button:hover { filter: brightness(0.97); }
+
+  .info-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    border-radius: 50%;
+    border: 1px solid #94a3b8;
+    color: #475569;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: help;
+    vertical-align: 1px;
+  }
+
+  .value {
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: minmax(650px, 1.55fr) minmax(360px, 0.9fr);
+    gap: 14px;
+  }
+
+  .panel-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+  }
+
+  .panel-title strong {
+    color: var(--ink);
+    font-size: 0.96rem;
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid var(--soft-line);
+    border-radius: 10px;
+  }
+
+  #pianoRoll {
+    aspect-ratio: 2.35 / 1;
+  }
+
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .stat {
+    background: #f8fafc;
+    border: 1px solid var(--soft-line);
+    border-radius: 10px;
+    padding: 8px 9px;
+  }
+
+  .stat b {
+    display: block;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+
+  .stat span {
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .variations {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .variation-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  }
+
+  .variation-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(31, 41, 51, 0.06);
+  }
+
+  .variation-card.active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(66, 107, 115, 0.14);
+  }
+
+  .variation-card h3 {
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+  }
+
+  .variation-meta {
+    color: var(--muted);
+    font-size: 0.76rem;
+    margin-bottom: 6px;
+  }
+
+  .mini-roll {
+    width: 100%;
+    height: 56px;
+    display: block;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid var(--soft-line);
+  }
+
+  .note {
+    color: var(--muted);
+    font-size: 0.84rem;
+    margin-top: 8px;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    gap: 10px;
+  }
+
+  .motif-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .pill {
+    display: inline-block;
+    border: 1px solid var(--line);
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+    border-radius: 999px;
+    padding: 0.24rem 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 650;
+  }
+
+  .explanation-box {
+    background: #f7fafb;
+    border: 1px solid var(--soft-line);
+    border-radius: 12px;
+    padding: 11px;
+    min-height: 92px;
+    color: var(--ink);
+    font-size: 0.9rem;
+  }
+
+  .remark {
+    border-left: 4px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 12px;
+    padding: 11px 12px;
+    color: var(--ink);
+  }
+
+  .keyboard {
+    display: flex;
+    height: 48px;
+    margin-top: 8px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .key {
+    position: relative;
+    flex: 1;
+    border-right: 1px solid var(--soft-line);
+    display: grid;
+    place-items: end center;
+    padding-bottom: 4px;
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+
+  .key:last-child { border-right: none; }
+  .key.active {
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+    font-weight: 750;
+  }
+
+
+  .motif-builder {
+    grid-column: 1 / -1;
+  }
+
+  .motif-builder-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 10px;
+  }
+
+  .motif-keyboard {
+    position: relative;
+    height: 148px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #ffffff;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .motif-keyboard-white-layer {
+    display: flex;
+    height: 100%;
+  }
+
+  .motif-piano-key {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .motif-piano-key.white {
+    flex: 1;
+    height: 100%;
+    background: linear-gradient(#ffffff, #f8fafc);
+    border-right: 1px solid var(--soft-line);
+    color: var(--muted);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 8px;
+    font-size: 0.72rem;
+    position: relative;
+  }
+
+  .motif-piano-key.white:last-child {
+    border-right: none;
+  }
+
+  .motif-piano-key.black {
+    position: absolute;
+    top: 0;
+    height: 62%;
+    width: calc((100% / 14) * 0.62);
+    transform: translateX(-50%);
+    background: linear-gradient(#111827, #374151);
+    color: #f8fafc;
+    z-index: 3;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+    font-size: 0.66rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 7px;
+  }
+
+  .motif-piano-key.used::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 26px;
+    width: 7px;
+    height: 7px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .motif-piano-key.black.used::after {
+    bottom: 22px;
+    background: #93c5fd;
+  }
+
+  .motif-piano-key.recent {
+    outline: 3px solid rgba(66, 107, 115, 0.32);
+    outline-offset: -3px;
+  }
+
+  .motif-piano-key:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: -3px;
+  }
+
+  @media (max-width: 1180px) {
+    .intro-grid,
+    .main {
+      grid-template-columns: 1fr;
+    }
+
+    .controls,
+    .sliders {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .variations {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .controls,
+    .sliders,
+    .analysis-grid,
+    .variations {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Melodic Homeostasis: Regulated Variation from a Motif</h1>
+    <div class="subtitle">
+      This demo generates short melodies from an initial motif. It is not an AI music generator trained on songs; instead, it uses transparent rules of motif loyalty, exploration, tension, and resolution so you can see how a musical trajectory can emerge from an initial condition.
+    </div>
+  </header>
+
+  <section class="intro-grid">
+    <article class="card">
+      <h2>What this models</h2>
+      <p>
+        A melody is treated as a trajectory through pitch space. The seed motif provides the initial condition; the rule set regulates how far the melody may depart, when it should vary, and when it should return.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>Rules in plain language</h2>
+      <ol class="rule-list">
+        <li>Extract intervals, contour, range, and anchor notes from the motif.</li>
+        <li>Generate candidate next notes from motif intervals and nearby scale tones.</li>
+        <li>Score candidates by smoothness, motif identity, tension, and phrase resolution.</li>
+        <li>Choose probabilistically, so the same motif can produce different outputs.</li>
+      </ol>
+    </article>
+
+    <article class="card">
+      <h2>Interaction guide</h2>
+      <ul class="guide-list">
+        <li>Build a motif by clicking the keyboard, or type note names directly.</li>
+        <li>Play the motif first, then generate variations from it.</li>
+        <li>Compare outputs for the same input using the variation cards.</li>
+        <li>Play or export the selected melody as a MIDI file.</li>
+        <li>Ask: how much variation can occur before the motif loses identity?</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="controls" aria-label="main controls">
+    <div class="control-card motif-builder">
+      <label for="motifInput">
+        Initial motif
+        <span class="info-dot" title="Click the keyboard to append notes to the motif, or type note names directly. Accidentals are accepted, e.g. Bb4, B♭4, F#4, C5.">?</span>
+      </label>
+      <input id="motifInput" type="text" value="E4 G4 A4 Bb4 E4">
+      <div class="motif-builder-actions">
+        <button id="playMotif">Play motif</button>
+        <button id="clearMotif">Clear motif</button>
+        <button id="removeLastMotifNote">Remove last note</button>
+      </div>
+      <div id="motifKeyboard" class="motif-keyboard" aria-label="Clickable motif keyboard"></div>
+      <div class="note">
+        Click a key to hear the note and add it to the motif. The keyboard spans C4–B5; you can still type notes outside this range directly.
+      </div>
+    </div>
+
+    <div class="control-card">
+      <label for="scaleMode">
+        Scale frame
+        <span class="info-dot" title="Constrains candidate notes. Auto chooses a small scale-like collection around the motif. Chromatic allows the most freedom.">?</span>
+      </label>
+      <select id="scaleMode">
+        <option value="auto" selected>auto from motif</option>
+        <option value="minor">minor / modal colour</option>
+        <option value="major">major</option>
+        <option value="pentatonic">pentatonic</option>
+        <option value="chromatic">chromatic</option>
+      </select>
+    </div>
+
+    <div class="control-card">
+      <label for="phraseLength">
+        Generated length
+        <span class="info-dot" title="Number of generated notes, including the initial motif.">?</span>
+      </label>
+      <select id="phraseLength">
+        <option value="16">16 notes</option>
+        <option value="24" selected>24 notes</option>
+        <option value="32">32 notes</option>
+        <option value="48">48 notes</option>
+      </select>
+    </div>
+
+    <div class="control-card">
+      <label>
+        Actions
+        <span class="info-dot" title="Generate creates four different variations from the same motif and current parameter settings. Export MIDI downloads the selected variation as a standard MIDI file.">?</span>
+      </label>
+      <div class="button-row">
+        <button id="generate" class="primary">Generate variations</button>
+        <button id="play">Play selected</button>
+        <button id="stop">Stop</button>
+        <button id="downloadMidi">Export MIDI</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sliders" aria-label="rule controls">
+    <div class="control-card">
+      <label for="motifLoyalty">
+        Motif loyalty <span class="value" id="motifLoyaltyValue"></span>
+        <span class="info-dot" title="How strongly the generator reuses intervals and anchor notes from the motif.">?</span>
+      </label>
+      <input id="motifLoyalty" type="range" min="0" max="1" step="0.01" value="0.72">
+    </div>
+
+    <div class="control-card">
+      <label for="exploration">
+        Exploration <span class="value" id="explorationValue"></span>
+        <span class="info-dot" title="How willing the melody is to depart from the motif and try less expected notes.">?</span>
+      </label>
+      <input id="exploration" type="range" min="0" max="1" step="0.01" value="0.32">
+    </div>
+
+    <div class="control-card">
+      <label for="tension">
+        Tension <span class="value" id="tensionValue"></span>
+        <span class="info-dot" title="Higher values encourage more unstable notes around phrase middles. Resolution still pulls the melody home near phrase endings.">?</span>
+      </label>
+      <input id="tension" type="range" min="0" max="1" step="0.01" value="0.38">
+    </div>
+
+    <div class="control-card">
+      <label for="resolution">
+        Resolution strength <span class="value" id="resolutionValue"></span>
+        <span class="info-dot" title="How strongly phrase endings return toward anchor notes extracted from the motif.">?</span>
+      </label>
+      <input id="resolution" type="range" min="0" max="1" step="0.01" value="0.68">
+    </div>
+
+    <div class="control-card">
+      <label for="tempo">
+        Tempo <span class="value" id="tempoValue"></span>
+        <span class="info-dot" title="Playback tempo and exported MIDI tempo.">?</span>
+      </label>
+      <input id="tempo" type="range" min="50" max="180" step="1" value="92">
+    </div>
+
+    <div class="control-card">
+      <label for="durationMode">
+        Rhythm
+        <span class="info-dot" title="Simple uses mostly equal note lengths. Breathing adds longer notes near phrase endings.">?</span>
+      </label>
+      <select id="durationMode">
+        <option value="simple" selected>simple pulse</option>
+        <option value="breathing">breathing phrase</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-title">
+      <strong>Variation gallery</strong>
+      <span>
+        same motif, different probabilistic trajectories
+        <span class="info-dot" title="This is the main interface for comparing different outputs from the same input. Select a card to inspect, play, or export it.">?</span>
+      </span>
+    </div>
+    <div id="variationGallery" class="variations"></div>
+  </section>
+
+  <section class="main">
+    <article class="panel">
+      <div class="panel-title">
+        <strong>Selected melodic trajectory</strong>
+        <span>
+          piano-roll view
+          <span class="info-dot" title="Horizontal position is time. Vertical position is pitch. The initial motif is shown more darkly; generated continuation is shown in the accent colour. Hover or click notes to see why they were selected.">?</span>
+        </span>
+      </div>
+      <canvas id="pianoRoll" width="1100" height="470" aria-label="Piano roll visualisation of selected melody"></canvas>
+      <div class="keyboard" id="keyboard"></div>
+      <div class="note">
+        The piano roll is a first visualisation of musical “shape”: contour, range, repetition, leaps, and returns. A richer affective or harmonic-shape visualisation could be added later.
+      </div>
+    </article>
+
+    <aside class="panel">
+      <div class="panel-title">
+        <strong>Motif analysis and rule trace</strong>
+        <span>
+          transparent generation
+          <span class="info-dot" title="The app exposes the extracted motif features and a short explanation for selected generated notes.">?</span>
+        </span>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="analysis-grid">
+          <div class="stat"><b>anchor</b><span id="anchorOut">–</span></div>
+          <div class="stat"><b>range</b><span id="rangeOut">–</span></div>
+          <div class="stat"><b>motif intervals</b><span id="intervalOut">–</span></div>
+          <div class="stat"><b>contour</b><span id="contourOut">–</span></div>
+        </div>
+
+        <div>
+          <h3>Motif notes</h3>
+          <div id="motifPills" class="motif-pill-row"></div>
+        </div>
+
+        <div>
+          <h3>Selected note explanation</h3>
+          <div id="explanation" class="explanation-box">
+            Hover over or click a note in the piano roll to see a short rule-based explanation.
+          </div>
+        </div>
+
+        <div class="remark">
+          <strong>Export note:</strong> MIDI is a good format here because the system generates symbolic notes directly. It stores pitch, timing, and tempo compactly, and can be opened in notation software or a digital audio workstation.
+        </div>
+      </div>
+    </aside>
+  </section>
+</div>
+
+<script>
+(() => {
+  const els = Object.fromEntries(Array.from(document.querySelectorAll("[id]")).map(el => [el.id, el]));
+  const roll = els.pianoRoll;
+  const ctx = roll.getContext("2d");
+
+  const noteNamesSharp = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
+  const scaleTemplates = {
+    major: [0, 2, 4, 5, 7, 9, 11],
+    minor: [0, 2, 3, 5, 7, 8, 10],
+    pentatonic: [0, 2, 4, 7, 9],
+    chromatic: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  };
+
+  let variations = [];
+  let selectedIndex = 0;
+  let analysis = null;
+  let audio = {ctx: null, timers: [], nodes: []};
+  let hoverNote = null;
+
+  function mulberry32(seed) {
+    return function() {
+      let t = seed += 0x6D2B79F5;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  function hashString(s) {
+    let h = 2166136261 >>> 0;
+    for (let i = 0; i < s.length; i++) {
+      h ^= s.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+
+  function midiToName(midi) {
+    const pc = ((midi % 12) + 12) % 12;
+    const octave = Math.floor(midi / 12) - 1;
+    return noteNamesSharp[pc] + octave;
+  }
+
+  function nameToMidi(raw) {
+    let s = raw.trim();
+    if (!s) return null;
+    s = s.replace("♭", "b").replace("♯", "#");
+    const m = s.match(/^([A-Ga-g])([#b]?)(-?\d)$/);
+    if (!m) return null;
+    const letter = m[1].toUpperCase();
+    const accidental = m[2];
+    const octave = Number(m[3]);
+    const base = {C:0, D:2, E:4, F:5, G:7, A:9, B:11}[letter];
+    const pc = (base + (accidental === "#" ? 1 : accidental === "b" ? -1 : 0) + 12) % 12;
+    return (octave + 1) * 12 + pc;
+  }
+
+  function getMotifMidis() {
+    return els.motifInput.value
+      .split(/[\s,]+/)
+      .filter(Boolean)
+      .map(nameToMidi)
+      .filter(n => n !== null);
+  }
+
+  function setMotifFromMidis(midis) {
+    els.motifInput.value = midis.map(midiToName).join(" ");
+    updateMotifKeyboardHighlights();
+  }
+
+  function appendMotifNote(midi) {
+    const midis = getMotifMidis();
+    midis.push(midi);
+    setMotifFromMidis(midis);
+    playSingleNote(midi, 0.45);
+  }
+
+  function removeLastMotifNote() {
+    const midis = getMotifMidis();
+    midis.pop();
+    setMotifFromMidis(midis);
+  }
+
+  function clearMotif() {
+    setMotifFromMidis([]);
+  }
+
+  function renderMotifKeyboard() {
+    const start = 60; // C4
+    const end = 83;   // B5
+    const whitePcs = new Set([0, 2, 4, 5, 7, 9, 11]);
+    const container = els.motifKeyboard;
+    container.innerHTML = "";
+
+    const whiteLayer = document.createElement("div");
+    whiteLayer.className = "motif-keyboard-white-layer";
+    container.appendChild(whiteLayer);
+
+    const whiteMidis = [];
+    for (let midi = start; midi <= end; midi++) {
+      if (whitePcs.has(midi % 12)) whiteMidis.push(midi);
+    }
+
+    const whiteIndexByMidi = new Map();
+    whiteMidis.forEach((midi, idx) => {
+      whiteIndexByMidi.set(midi, idx);
+      const key = document.createElement("button");
+      key.type = "button";
+      key.className = "motif-piano-key white";
+      key.dataset.midi = String(midi);
+      key.title = `Add ${midiToName(midi)} to motif`;
+      key.textContent = midiToName(midi).replace(/(\d+)/, "$1");
+      key.addEventListener("click", () => appendMotifNote(midi));
+      whiteLayer.appendChild(key);
+    });
+
+    for (let midi = start; midi <= end; midi++) {
+      if (whitePcs.has(midi % 12)) continue;
+      const previousWhiteMidi = midi - 1;
+      const previousWhiteIndex = whiteIndexByMidi.get(previousWhiteMidi);
+      if (previousWhiteIndex === undefined) continue;
+      const key = document.createElement("button");
+      key.type = "button";
+      key.className = "motif-piano-key black";
+      key.dataset.midi = String(midi);
+      key.title = `Add ${midiToName(midi)} to motif`;
+      key.textContent = midiToName(midi).replace(/(\d+)/, "$1");
+      key.style.left = `${((previousWhiteIndex + 1) / whiteMidis.length) * 100}%`;
+      key.addEventListener("click", () => appendMotifNote(midi));
+      container.appendChild(key);
+    }
+
+    updateMotifKeyboardHighlights();
+  }
+
+  function updateMotifKeyboardHighlights() {
+    const midis = getMotifMidis();
+    const used = new Set(midis);
+    const last = midis.length ? midis[midis.length - 1] : null;
+
+    document.querySelectorAll(".motif-piano-key").forEach(key => {
+      const midi = Number(key.dataset.midi);
+      key.classList.toggle("used", used.has(midi));
+      key.classList.toggle("recent", midi === last);
+    });
+  }
+
+  function parseMotif() {
+    const tokens = els.motifInput.value.split(/[\s,]+/).filter(Boolean);
+    const notes = tokens.map(nameToMidi).filter(n => n !== null);
+    if (notes.length < 2) {
+      return [64, 67, 69, 70, 64];
+    }
+    return notes;
+  }
+
+  function mode(arr) {
+    const counts = new Map();
+    for (const x of arr) counts.set(x, (counts.get(x) || 0) + 1);
+    return Array.from(counts.entries()).sort((a, b) => b[1] - a[1])[0][0];
+  }
+
+  function analyseMotif(notes) {
+    const intervals = [];
+    const contour = [];
+    for (let i = 1; i < notes.length; i++) {
+      const d = notes[i] - notes[i - 1];
+      intervals.push(d);
+      contour.push(d > 0 ? "up" : d < 0 ? "down" : "same");
+    }
+
+    const pcs = notes.map(n => ((n % 12) + 12) % 12);
+    const anchorPc = mode(pcs);
+    let anchor = notes.find(n => ((n % 12) + 12) % 12 === anchorPc) || notes[0];
+
+    if (((notes[0] - notes[notes.length - 1]) % 12 + 12) % 12 === 0) {
+      anchor = notes[0];
+    }
+
+    return {
+      notes,
+      intervals,
+      contour,
+      anchor,
+      anchorPc: ((anchor % 12) + 12) % 12,
+      min: Math.min(...notes),
+      max: Math.max(...notes),
+      rangeLow: Math.max(48, Math.min(...notes) - 7),
+      rangeHigh: Math.min(84, Math.max(...notes) + 9),
+      pitchClasses: Array.from(new Set(pcs))
+    };
+  }
+
+  function buildScale(ana) {
+    const scaleMode = els.scaleMode.value;
+    if (scaleMode === "auto") {
+      const seedPcs = new Set(ana.pitchClasses);
+      for (const pc of ana.pitchClasses) {
+        seedPcs.add((pc + 2) % 12);
+        seedPcs.add((pc + 7) % 12);
+      }
+      return Array.from(seedPcs);
+    }
+    const template = scaleTemplates[scaleMode] || scaleTemplates.minor;
+    return template.map(x => (ana.anchorPc + x) % 12);
+  }
+
+  function candidateNotes(ana, previous) {
+    const scalePcs = buildScale(ana);
+    const cand = new Set();
+
+    for (const d of ana.intervals) {
+      cand.add(previous + d);
+      cand.add(previous - d);
+      if (Math.abs(d) > 3) {
+        cand.add(previous + Math.sign(d) * 2);
+      }
+    }
+
+    for (const d of [-2, -1, 0, 1, 2, 3, -3, 5, -5, 7, -7]) {
+      cand.add(previous + d);
+    }
+
+    for (let oct = -2; oct <= 2; oct++) {
+      cand.add(ana.anchor + 12 * oct);
+    }
+
+    for (const n of ana.notes) {
+      const shift = Math.round((previous - n) / 12) * 12;
+      cand.add(n + shift);
+      cand.add(n + shift + 12);
+      cand.add(n + shift - 12);
+    }
+
+    return Array.from(cand)
+      .filter(n => n >= ana.rangeLow && n <= ana.rangeHigh)
+      .filter(n => scalePcs.includes(((n % 12) + 12) % 12));
+  }
+
+  function tensionValue(note, ana) {
+    const d = Math.abs((((note - ana.anchor) % 12) + 12) % 12);
+    const ic = Math.min(d, 12 - d);
+    const table = {0:0.05, 1:0.95, 2:0.42, 3:0.34, 4:0.25, 5:0.58, 6:1.00, 7:0.16, 8:0.48, 9:0.55, 10:0.62, 11:0.82};
+    return table[ic] ?? 0.5;
+  }
+
+  function phraseTargetTension(pos) {
+    const phase = (pos % 8) / 7;
+    return 0.18 + 0.62 * Math.sin(Math.PI * phase);
+  }
+
+  function scoreCandidate(note, prev, prevPrev, ana, pos, len, params) {
+    const interval = note - prev;
+    const absInterval = Math.abs(interval);
+    const pc = ((note % 12) + 12) % 12;
+
+    const motifIntervalScore = ana.intervals.some(d => Math.abs(d - interval) <= 1 || Math.abs(d + interval) <= 1) ? 1 : 0;
+    const anchorScore = pc === ana.anchorPc ? 1 : ana.pitchClasses.includes(pc) ? 0.62 : 0.24;
+    const smoothScore = absInterval === 0 ? 0.2 : absInterval <= 2 ? 1 : absInterval <= 5 ? 0.58 : absInterval <= 7 ? 0.32 : -0.35;
+    const contourRepair = prevPrev === null ? 0 : (Math.abs(prev - prevPrev) >= 5 && Math.sign(interval) === -Math.sign(prev - prevPrev) && absInterval <= 3 ? 0.8 : 0);
+    const repPenalty = note === prev ? -0.32 : 0;
+
+    const phrasePhase = (pos + 1) / len;
+    const localPhase = (pos % 8) / 7;
+    const ending = localPhase > 0.68 || phrasePhase > 0.86;
+    const resolutionScore = ending ? (1 - Math.min(1, Math.abs(note - ana.anchor) / 14)) : 0;
+    const t = tensionValue(note, ana);
+    const targetT = phraseTargetTension(pos);
+    const tensionScore = 1 - Math.abs(t - targetT);
+
+    const rangeMid = (ana.rangeLow + ana.rangeHigh) / 2;
+    const rangeScore = 1 - Math.abs(note - rangeMid) / Math.max(1, (ana.rangeHigh - ana.rangeLow) / 2);
+
+    return (
+      params.loyalty * (0.7 * motifIntervalScore + 0.3 * anchorScore) +
+      0.88 * smoothScore +
+      0.45 * contourRepair +
+      params.tension * tensionScore +
+      params.resolution * resolutionScore +
+      0.16 * rangeScore +
+      params.exploration * (Math.random() * 0.9) +
+      repPenalty
+    );
+  }
+
+  function generateVariation(ana, seedOffset) {
+    const seedBase = hashString(els.motifInput.value + "|" + els.scaleMode.value + "|" + seedOffset + "|" + Date.now());
+    const rand = mulberry32(seedBase);
+    const originalRandom = Math.random;
+    Math.random = rand;
+
+    const len = Number(els.phraseLength.value);
+    const params = {
+      loyalty: Number(els.motifLoyalty.value),
+      exploration: Number(els.exploration.value),
+      tension: Number(els.tension.value),
+      resolution: Number(els.resolution.value)
+    };
+
+    const rhythmMode = els.durationMode.value;
+    const out = ana.notes.slice(0, Math.min(ana.notes.length, len)).map((midi, i) => ({
+      midi,
+      duration: rhythmMode === "breathing" && i === ana.notes.length - 1 ? 1.0 : 0.5,
+      source: "motif",
+      reason: "Part of the initial motif."
+    }));
+
+    while (out.length < len) {
+      const pos = out.length;
+      const prev = out[out.length - 1].midi;
+      const prevPrev = out.length > 1 ? out[out.length - 2].midi : null;
+      const cand = candidateNotes(ana, prev);
+      let scored = cand.map(n => ({
+        midi: n,
+        score: scoreCandidate(n, prev, prevPrev, ana, pos, len, params)
+      }));
+
+      scored.sort((a, b) => b.score - a.score);
+      const temperature = 0.22 + params.exploration * 0.75;
+      const weights = scored.slice(0, 8).map((d, i) => Math.exp((d.score - scored[0].score) / temperature) * (1 / (1 + i * 0.08)));
+      const total = weights.reduce((a, b) => a + b, 0);
+      let pick = rand() * total;
+      let chosen = scored[0];
+
+      for (let i = 0; i < weights.length; i++) {
+        pick -= weights[i];
+        if (pick <= 0) {
+          chosen = scored[i];
+          break;
+        }
+      }
+
+      const interval = chosen.midi - prev;
+      const ending = ((pos + 1) % 8 === 0) || (pos > len * 0.86);
+      const duration = rhythmMode === "breathing"
+        ? (ending ? 1.0 : (Math.abs(interval) > 5 ? 0.75 : 0.5))
+        : 0.5;
+
+      const reasonBits = [];
+      if (ana.intervals.some(d => Math.abs(d - interval) <= 1 || Math.abs(d + interval) <= 1)) {
+        reasonBits.push("reuses or echoes a motif interval");
+      }
+      if (Math.abs(interval) <= 2) reasonBits.push("keeps stepwise continuity");
+      if (Math.abs(interval) >= 5) reasonBits.push("adds a leap for contrast");
+      if (ending) reasonBits.push("is pulled toward phrase resolution");
+      if (((chosen.midi % 12) + 12) % 12 === ana.anchorPc) reasonBits.push("returns to the anchor pitch class");
+
+      out.push({
+        midi: chosen.midi,
+        duration,
+        source: "generated",
+        score: chosen.score,
+        reason: reasonBits.length ? "Chosen because it " + reasonBits.join(", ") + "." : "Chosen as a probabilistic compromise among the rule scores."
+      });
+    }
+
+    Math.random = originalRandom;
+    return out;
+  }
+
+  function summariseVariation(notes) {
+    let leaps = 0, stepwise = 0;
+    for (let i = 1; i < notes.length; i++) {
+      const d = Math.abs(notes[i].midi - notes[i - 1].midi);
+      if (d <= 2) stepwise++;
+      if (d >= 5) leaps++;
+    }
+    const uniquePcs = new Set(notes.map(n => ((n.midi % 12) + 12) % 12)).size;
+    return {leaps, stepwise, uniquePcs};
+  }
+
+  function generateAll() {
+    stopPlayback();
+    const motif = parseMotif();
+    analysis = analyseMotif(motif);
+    variations = [];
+    for (let i = 0; i < 4; i++) {
+      variations.push(generateVariation(analysis, i + 1));
+    }
+    selectedIndex = 0;
+    hoverNote = null;
+    renderAll();
+  }
+
+  function renderAnalysis() {
+    if (!analysis) return;
+    els.anchorOut.textContent = midiToName(analysis.anchor).replace(/\d$/, "");
+    els.rangeOut.textContent = `${midiToName(analysis.rangeLow)}–${midiToName(analysis.rangeHigh)}`;
+    els.intervalOut.textContent = analysis.intervals.map(d => d > 0 ? `+${d}` : String(d)).join(", ");
+    els.contourOut.textContent = analysis.contour.join(" → ");
+
+    els.motifPills.innerHTML = "";
+    for (const n of analysis.notes) {
+      const pill = document.createElement("span");
+      pill.className = "pill";
+      pill.textContent = midiToName(n);
+      els.motifPills.appendChild(pill);
+    }
+  }
+
+  function renderGallery() {
+    els.variationGallery.innerHTML = "";
+    variations.forEach((v, i) => {
+      const card = document.createElement("div");
+      card.className = "variation-card" + (i === selectedIndex ? " active" : "");
+      card.tabIndex = 0;
+      card.addEventListener("click", () => { selectedIndex = i; hoverNote = null; renderAll(); });
+      card.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") { selectedIndex = i; hoverNote = null; renderAll(); }
+      });
+
+      const title = document.createElement("h3");
+      title.textContent = `Variation ${i + 1}`;
+
+      const meta = document.createElement("div");
+      meta.className = "variation-meta";
+      const s = summariseVariation(v);
+      meta.textContent = `${s.uniquePcs} pitch classes · ${s.stepwise} stepwise · ${s.leaps} leaps`;
+
+      const canvas = document.createElement("canvas");
+      canvas.className = "mini-roll";
+      canvas.width = 300;
+      canvas.height = 70;
+
+      card.appendChild(title);
+      card.appendChild(meta);
+      card.appendChild(canvas);
+      els.variationGallery.appendChild(card);
+      drawMiniRoll(canvas, v);
+    });
+  }
+
+  function noteExtents(notes) {
+    const midis = notes.map(n => n.midi);
+    return {
+      min: Math.min(...midis) - 1,
+      max: Math.max(...midis) + 1,
+      totalDur: notes.reduce((s, n) => s + n.duration, 0)
+    };
+  }
+
+  function drawMiniRoll(c, notes) {
+    const g = c.getContext("2d");
+    const {min, max, totalDur} = noteExtents(notes);
+    const pad = 6;
+    g.clearRect(0, 0, c.width, c.height);
+    g.fillStyle = "#f8fafc";
+    g.fillRect(0, 0, c.width, c.height);
+    let t = 0;
+    for (const n of notes) {
+      const x = pad + (t / totalDur) * (c.width - 2 * pad);
+      const w = Math.max(2, (n.duration / totalDur) * (c.width - 2 * pad) - 1);
+      const y = pad + (1 - (n.midi - min) / Math.max(1, max - min)) * (c.height - 2 * pad);
+      g.fillStyle = n.source === "motif" ? "#1f2933" : "#426b73";
+      g.globalAlpha = n.source === "motif" ? 0.78 : 0.62;
+      g.fillRect(x, y - 3, w, 6);
+      t += n.duration;
+    }
+    g.globalAlpha = 1;
+  }
+
+  function selectedNotes() {
+    return variations[selectedIndex] || [];
+  }
+
+  function renderPianoRoll() {
+    const notes = selectedNotes();
+    if (!notes.length) return;
+
+    const {min, max, totalDur} = noteExtents(notes);
+    const padL = 54, padR = 18, padT = 22, padB = 34;
+    ctx.clearRect(0, 0, roll.width, roll.height);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, roll.width, roll.height);
+
+    ctx.strokeStyle = "#e5e7eb";
+    ctx.lineWidth = 1;
+    ctx.font = "12px sans-serif";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+
+    for (let m = min; m <= max; m++) {
+      const y = padT + (1 - (m - min) / Math.max(1, max - min)) * (roll.height - padT - padB);
+      ctx.beginPath();
+      ctx.moveTo(padL, y);
+      ctx.lineTo(roll.width - padR, y);
+      ctx.stroke();
+
+      if (m % 2 === 0) {
+        ctx.fillStyle = "#64748b";
+        ctx.fillText(midiToName(m), padL - 8, y);
+      }
+    }
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    const beats = Math.ceil(totalDur);
+    for (let b = 0; b <= beats; b++) {
+      const x = padL + (b / totalDur) * (roll.width - padL - padR);
+      ctx.strokeStyle = b % 4 === 0 ? "#cbd5e1" : "#eef2f7";
+      ctx.beginPath();
+      ctx.moveTo(x, padT);
+      ctx.lineTo(x, roll.height - padB);
+      ctx.stroke();
+      if (b % 4 === 0) {
+        ctx.fillStyle = "#64748b";
+        ctx.fillText(String(b), x, roll.height - padB + 8);
+      }
+    }
+
+    let t = 0;
+    notes.forEach((n, idx) => {
+      const x = padL + (t / totalDur) * (roll.width - padL - padR);
+      const w = Math.max(5, (n.duration / totalDur) * (roll.width - padL - padR) - 2);
+      const y = padT + (1 - (n.midi - min) / Math.max(1, max - min)) * (roll.height - padT - padB);
+      const h = 12;
+      const isHover = hoverNote === idx;
+
+      ctx.fillStyle = n.source === "motif" ? "#1f2933" : "#426b73";
+      ctx.globalAlpha = isHover ? 0.95 : n.source === "motif" ? 0.78 : 0.70;
+      roundRect(ctx, x, y - h/2, w, h, 5);
+      ctx.fill();
+
+      if (isHover) {
+        ctx.strokeStyle = "#ef4444";
+        ctx.lineWidth = 2;
+        ctx.globalAlpha = 1;
+        roundRect(ctx, x, y - h/2, w, h, 5);
+        ctx.stroke();
+      }
+
+      n._box = {x, y: y - h/2, w, h};
+      t += n.duration;
+    });
+
+    ctx.globalAlpha = 1;
+  }
+
+  function roundRect(g, x, y, w, h, r) {
+    g.beginPath();
+    g.moveTo(x + r, y);
+    g.lineTo(x + w - r, y);
+    g.quadraticCurveTo(x + w, y, x + w, y + r);
+    g.lineTo(x + w, y + h - r);
+    g.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    g.lineTo(x + r, y + h);
+    g.quadraticCurveTo(x, y + h, x, y + h - r);
+    g.lineTo(x, y + r);
+    g.quadraticCurveTo(x, y, x + r, y);
+    g.closePath();
+  }
+
+  function renderKeyboard() {
+    const notes = selectedNotes();
+    if (!notes.length) return;
+    const {min, max} = noteExtents(notes);
+    els.keyboard.innerHTML = "";
+    const pcsInMelody = new Set(notes.map(n => ((n.midi % 12) + 12) % 12));
+
+    for (let m = min; m <= max; m++) {
+      const key = document.createElement("div");
+      key.className = "key" + (pcsInMelody.has(((m % 12) + 12) % 12) ? " active" : "");
+      key.textContent = midiToName(m);
+      els.keyboard.appendChild(key);
+    }
+  }
+
+  function renderExplanation() {
+    const notes = selectedNotes();
+    if (hoverNote === null || !notes[hoverNote]) {
+      els.explanation.textContent = "Hover over or click a note in the piano roll to see a short rule-based explanation.";
+      return;
+    }
+    const n = notes[hoverNote];
+    const prefix = `${midiToName(n.midi)} · ${n.source === "motif" ? "initial motif" : "generated continuation"}`;
+    els.explanation.textContent = `${prefix}: ${n.reason}`;
+  }
+
+  function renderAll() {
+    updateLabels();
+    renderAnalysis();
+    renderGallery();
+    renderPianoRoll();
+    renderKeyboard();
+    renderExplanation();
+  }
+
+  function updateLabels() {
+    els.motifLoyaltyValue.textContent = Math.round(Number(els.motifLoyalty.value) * 100) + "%";
+    els.explorationValue.textContent = Math.round(Number(els.exploration.value) * 100) + "%";
+    els.tensionValue.textContent = Math.round(Number(els.tension.value) * 100) + "%";
+    els.resolutionValue.textContent = Math.round(Number(els.resolution.value) * 100) + "%";
+    els.tempoValue.textContent = els.tempo.value + " bpm";
+  }
+
+  function handleRollPointer(event) {
+    const rect = roll.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width * roll.width;
+    const y = (event.clientY - rect.top) / rect.height * roll.height;
+    const notes = selectedNotes();
+    let hit = null;
+    for (let i = 0; i < notes.length; i++) {
+      const b = notes[i]._box;
+      if (b && x >= b.x && x <= b.x + b.w && y >= b.y - 3 && y <= b.y + b.h + 3) {
+        hit = i;
+        break;
+      }
+    }
+    hoverNote = hit;
+    renderPianoRoll();
+    renderExplanation();
+  }
+
+  function midiToFreq(midi) {
+    return 440 * Math.pow(2, (midi - 69) / 12);
+  }
+
+  function stopPlayback() {
+    if (audio.timers) {
+      for (const t of audio.timers) clearTimeout(t);
+    }
+    audio.timers = [];
+    if (audio.nodes) {
+      for (const node of audio.nodes) {
+        try { node.stop(); } catch(e) {}
+      }
+    }
+    audio.nodes = [];
+  }
+
+  function ensureAudioContext() {
+    if (!audio.ctx) {
+      audio.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    audio.ctx.resume();
+  }
+
+  function playSingleNote(midi, durationSeconds = 0.38) {
+    ensureAudioContext();
+    const now = audio.ctx.currentTime;
+    const osc = audio.ctx.createOscillator();
+    const gain = audio.ctx.createGain();
+    osc.type = "triangle";
+    osc.frequency.value = midiToFreq(midi);
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.14, now + 0.015);
+    gain.gain.setTargetAtTime(0, now + Math.max(0.04, durationSeconds - 0.06), 0.045);
+    osc.connect(gain);
+    gain.connect(audio.ctx.destination);
+    osc.start(now);
+    osc.stop(now + durationSeconds + 0.12);
+    audio.nodes.push(osc);
+  }
+
+  function playNoteSequence(notes) {
+    stopPlayback();
+    if (!notes.length) return;
+
+    ensureAudioContext();
+
+    const bpm = Number(els.tempo.value);
+    const secPerBeat = 60 / bpm;
+    let t = 0;
+
+    for (const note of notes) {
+      const startMs = t * secPerBeat * 1000;
+      const dur = note.duration * secPerBeat;
+      const timer = setTimeout(() => {
+        playSingleNote(note.midi, dur);
+      }, startMs);
+      audio.timers.push(timer);
+      t += note.duration;
+    }
+  }
+
+  function playSelected() {
+    playNoteSequence(selectedNotes());
+  }
+
+  function playMotif() {
+    const motifNotes = getMotifMidis().map(midi => ({midi, duration: 0.5}));
+    playNoteSequence(motifNotes);
+  }
+
+  function writeVarLen(value) {
+    let buffer = value & 0x7F;
+    const bytes = [];
+    while ((value >>= 7)) {
+      buffer <<= 8;
+      buffer |= ((value & 0x7F) | 0x80);
+    }
+    while (true) {
+      bytes.push(buffer & 0xFF);
+      if (buffer & 0x80) buffer >>= 8;
+      else break;
+    }
+    return bytes;
+  }
+
+  function strBytes(s) {
+    return Array.from(s).map(c => c.charCodeAt(0));
+  }
+
+  function int32(n) {
+    return [(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255];
+  }
+
+  function int16(n) {
+    return [(n >>> 8) & 255, n & 255];
+  }
+
+  function makeMidiBytes(notes) {
+    const ppq = 480;
+    const bpm = Number(els.tempo.value);
+    const usPerQuarter = Math.round(60000000 / bpm);
+    const track = [];
+
+    track.push(0x00, 0xFF, 0x51, 0x03, (usPerQuarter >> 16) & 255, (usPerQuarter >> 8) & 255, usPerQuarter & 255);
+
+    const name = "Melodic Homeostasis";
+    track.push(0x00, 0xFF, 0x03, name.length, ...strBytes(name));
+
+    for (const note of notes) {
+      const ticks = Math.round(note.duration * ppq);
+      track.push(...writeVarLen(0), 0x90, note.midi & 0x7F, 88);
+      track.push(...writeVarLen(ticks), 0x80, note.midi & 0x7F, 0);
+    }
+
+    track.push(0x00, 0xFF, 0x2F, 0x00);
+
+    const header = [
+      ...strBytes("MThd"),
+      ...int32(6),
+      ...int16(0),
+      ...int16(1),
+      ...int16(ppq)
+    ];
+
+    const chunk = [
+      ...strBytes("MTrk"),
+      ...int32(track.length),
+      ...track
+    ];
+
+    return new Uint8Array([...header, ...chunk]);
+  }
+
+  function downloadMidi() {
+    const notes = selectedNotes();
+    if (!notes.length) return;
+    const bytes = makeMidiBytes(notes);
+    const blob = new Blob([bytes], {type: "audio/midi"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `melodic-homeostasis-variation-${selectedIndex + 1}.mid`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  roll.addEventListener("mousemove", handleRollPointer);
+  roll.addEventListener("click", handleRollPointer);
+  roll.addEventListener("mouseleave", () => {
+    hoverNote = null;
+    renderPianoRoll();
+    renderExplanation();
+  });
+
+  els.generate.addEventListener("click", generateAll);
+  els.play.addEventListener("click", playSelected);
+  els.stop.addEventListener("click", stopPlayback);
+  els.downloadMidi.addEventListener("click", downloadMidi);
+  els.playMotif.addEventListener("click", playMotif);
+  els.clearMotif.addEventListener("click", clearMotif);
+  els.removeLastMotifNote.addEventListener("click", removeLastMotifNote);
+  els.motifInput.addEventListener("input", updateMotifKeyboardHighlights);
+
+  for (const id of ["motifLoyalty", "exploration", "tension", "resolution", "tempo"]) {
+    els[id].addEventListener("input", updateLabels);
+  }
+
+  for (const id of ["scaleMode", "phraseLength", "durationMode"]) {
+    els[id].addEventListener("change", generateAll);
+  }
+
+  renderMotifKeyboard();
+  generateAll();
+})();
+</script>
+</body>
+</html>
