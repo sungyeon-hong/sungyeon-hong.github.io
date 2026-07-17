@@ -105,7 +105,7 @@
 
   .controls {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1.2fr 1.6fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr 1.7fr;
     gap: 10px;
     margin-bottom: 14px;
   }
@@ -310,6 +310,96 @@
     border-color: #991b1b;
   }
 
+
+
+  .source-view[hidden] {
+    display: none !important;
+  }
+
+  .string-source {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 0.55fr);
+    gap: 18px;
+    align-items: center;
+    min-height: 235px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: linear-gradient(145deg, #f8fafc, #edf4f5);
+  }
+
+  .string-control-block {
+    display: grid;
+    gap: 10px;
+  }
+
+  .string-control-block label {
+    margin-bottom: 0;
+  }
+
+  .string-value-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .string-value-row strong {
+    color: var(--accent-dark);
+  }
+
+  .string-visual {
+    position: relative;
+    min-height: 170px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background:
+      radial-gradient(circle at center, rgba(255,255,255,0.9), transparent 42%),
+      repeating-linear-gradient(90deg, rgba(66,107,115,0.05) 0 1px, transparent 1px 22px);
+  }
+
+  .string-visual svg {
+    width: 92%;
+    height: 120px;
+    overflow: visible;
+  }
+
+  .string-anchor {
+    fill: var(--accent-dark);
+  }
+
+  .string-path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 4;
+    stroke-linecap: round;
+    filter: drop-shadow(0 3px 4px rgba(47, 81, 88, 0.2));
+  }
+
+  .string-baseline {
+    stroke: rgba(66,107,115,0.18);
+    stroke-width: 1;
+    stroke-dasharray: 4 5;
+  }
+
+  .string-source.sounding .string-path {
+    stroke: var(--warm);
+  }
+
+  .string-formula {
+    margin: 0;
+    padding: 0.7rem 0.8rem;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    background: rgba(255,255,255,0.78);
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+
   .status-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -426,6 +516,10 @@
     .note-readout {
       justify-items: start;
     }
+
+    .string-source {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
@@ -434,7 +528,7 @@
   <header>
     <h1>Musical Homeostasis v.1</h1>
     <div class="subtitle">
-      A participatory sound experiment for embodying self-organisation. Each participant sustains one note and may change it at any time while listening to the group. Over time, the collective sound may converge toward a shared note, a chord, or another locally negotiated equilibrium.
+      A participatory sound experiment for embodying self-organisation. Each participant sustains one tone, selected from a piano keyboard or tuned continuously with a virtual string, and may change it at any time while listening to the group. Over time, the collective sound may converge toward a shared note, a chord, or another locally negotiated equilibrium.
     </div>
   </header>
 
@@ -453,7 +547,7 @@
       <h2>Activity rules</h2>
       <ol class="rule-list">
         <li>Each participant opens this page on their own device.</li>
-        <li>Choose one note on the keyboard. The note will sustain until you change it or stop it.</li>
+        <li>Choose a sound source: select a note on the piano keyboard, or tune a virtual string by adjusting its length. The sound will sustain until you change it or stop it.</li>
         <li>Listen to the collective sound and change notes whenever you wish.</li>
         <li>The aim is not to “win”, but to notice how the group seeks, resists, or redefines equilibrium.</li>
         <li>In round two, a new participant enters as a disturbance and the group adapts again.</li>
@@ -482,7 +576,20 @@
       </select>
     </div>
 
+
+
     <div class="control-card">
+      <label for="soundSource">
+        Sound source
+        <span class="info-dot" title="Use the piano keyboard for discrete musical notes, or the virtual string for a continuously adjustable frequency controlled by string length.">?</span>
+      </label>
+      <select id="soundSource">
+        <option value="keyboard" selected>piano keyboard</option>
+        <option value="string">virtual string</option>
+      </select>
+    </div>
+
+    <div class="control-card" id="waveformCard">
       <label for="waveform">
         Tone quality
         <span class="info-dot" title="Sine is soft and minimal. Triangle is slightly brighter. Sawtooth and square are more intense and are best used at low volume.">?</span>
@@ -522,28 +629,65 @@
     <article class="keyboard-panel">
       <div class="keyboard-header">
         <div>
-          <h2>Choose and sustain one note</h2>
-          <p class="note">
-            Recommended range: C3–C6, three octaves plus the final C. This is wide enough to form unisons, octaves, thirds, fifths, and dense clusters, while staying manageable for group listening.
+          <h2 id="sourceTitle">Choose and sustain one note</h2>
+          <p id="sourceDescription" class="note">
+            Recommended range: C3-C6, three octaves plus the final C. This is wide enough to form unisons, octaves, thirds, fifths, and dense clusters, while staying manageable for group listening.
             <span class="info-dot" title="A full 88-key keyboard is visually crowded and encourages individual exploration. This reduced range supports collective listening and stable tonal negotiation.">?</span>
           </p>
         </div>
         <div class="note-readout">
           <span id="readoutLabel">Current note</span>
           <span id="currentNote" class="current-note">silent</span>
-          <span id="currentFreq">—</span>
+          <span id="currentFreq">-</span>
         </div>
       </div>
 
-      <div class="keyboard-wrap">
-        <div id="keyboard" class="keyboard" aria-label="Piano keyboard"></div>
+      <div id="keyboardSource" class="source-view">
+        <div class="keyboard-wrap">
+          <div id="keyboard" class="keyboard" aria-label="Piano keyboard"></div>
+        </div>
+      </div>
+
+      <div id="stringSource" class="source-view string-source" hidden>
+        <div class="string-control-block">
+          <div>
+            <label for="stringLength">
+              String length
+              <span class="info-dot" title="For a string under fixed tension and linear density, the fundamental frequency is inversely proportional to length. This virtual string keeps wave speed fixed at 440 m/s.">?</span>
+            </label>
+            <input id="stringLength" type="range" min="0.25" max="2.00" step="0.005" value="1.00">
+          </div>
+
+          <div class="string-value-row">
+            <span>Length: <strong id="stringLengthValue">1.000 m</strong></span>
+            <span>Fundamental: <strong id="stringFrequencyValue">220.00 Hz</strong></span>
+          </div>
+
+          <p class="string-formula">
+            Simplified fixed-wave-speed model: <strong>f = v/(2L)</strong>, with v = 440 m/s. Shorter strings produce higher frequencies; longer strings produce lower frequencies.
+          </p>
+
+          <div class="button-row">
+            <button id="playString" class="primary">Start / sustain string</button>
+            <button id="setA3String">Reset to 1.00 m (A3)</button>
+          </div>
+        </div>
+
+        <div id="stringVisual" class="string-visual" aria-label="Visual representation of a vibrating string">
+          <svg viewBox="0 0 520 120" role="img" aria-label="Standing wave on a string">
+            <line class="string-baseline" x1="20" y1="60" x2="500" y2="60"></line>
+            <circle class="string-anchor" cx="20" cy="60" r="6"></circle>
+            <circle id="stringRightAnchor" class="string-anchor" cx="500" cy="60" r="6"></circle>
+            <path id="stringPath" class="string-path" d="M 20 60 L 500 60"></path>
+          </svg>
+        </div>
       </div>
 
       <div class="status-row">
         <div class="stat"><b>status</b><span id="audioStatus">not started</span></div>
         <div class="stat"><b>role</b><span id="roleStatus">participant</span></div>
         <div class="stat"><b>changes</b><span id="changeCount">0</span></div>
-        <div class="stat"><b>time on note</b><span id="timeOnNote">0s</span></div>
+        <div class="stat"><b>time on sound</b><span id="timeOnNote">0s</span></div>
       </div>
     </article>
 
@@ -602,24 +746,30 @@
 (() => {
   const els = Object.fromEntries(Array.from(document.querySelectorAll("[id]")).map(el => [el.id, el]));
 
-  const noteNames = ["C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "G♯", "A", "B♭", "B"];
+  const noteNames = ["C", "C sharp", "D", "E flat", "E", "F", "F sharp", "G", "G sharp", "A", "B flat", "B"];
+  const noteLabels = ["C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "G♯", "A", "B♭", "B"];
   const whiteClasses = new Set([0, 2, 4, 5, 7, 9, 11]);
   const startMidi = 48; // C3
   const endMidi = 84;   // C6
+  const stringWaveSpeed = 440; // metres per second in the simplified model
 
   const state = {
     audioContext: null,
     oscillator: null,
     gainNode: null,
     currentMidi: null,
-    noteStartedAt: null,
+    currentFrequency: null,
+    activeSource: null,
+    soundStartedAt: null,
     changeCount: 0,
     audioStarted: false,
     timerRunning: false,
     timerStartedAt: null,
     timerElapsedMs: 0,
     timerInterval: null,
-    timeOnNoteInterval: null
+    timeOnNoteInterval: null,
+    animationFrame: null,
+    animationPhase: 0
   };
 
   function midiToFreq(midi) {
@@ -627,9 +777,18 @@
   }
 
   function midiToName(midi) {
-    const name = noteNames[midi % 12];
+    const name = noteLabels[midi % 12];
     const octave = Math.floor(midi / 12) - 1;
     return `${name}${octave}`;
+  }
+
+  function frequencyToNearestNote(freq) {
+    const midi = Math.round(69 + 12 * Math.log2(freq / 440));
+    return midiToName(midi);
+  }
+
+  function stringLengthToFrequency(lengthMetres) {
+    return stringWaveSpeed / (2 * lengthMetres);
   }
 
   function ensureAudio() {
@@ -661,8 +820,48 @@
     state.gainNode.gain.setTargetAtTime(value, now, 0.035);
   }
 
+  function applyKeyboardWaveform() {
+    if (!state.oscillator) return;
+    state.oscillator.type = els.waveform.value;
+  }
+
+  function applyStringWaveform() {
+    if (!state.oscillator || !state.audioContext) return;
+    const real = new Float32Array([0, 0, 0, 0, 0, 0]);
+    const imag = new Float32Array([0, 1, 0.48, 0.24, 0.12, 0.06]);
+    const wave = state.audioContext.createPeriodicWave(real, imag, { disableNormalization: false });
+    state.oscillator.setPeriodicWave(wave);
+  }
+
+  function createOrUpdateOscillator(freq, source) {
+    const now = state.audioContext.currentTime;
+
+    if (!state.oscillator) {
+      const osc = state.audioContext.createOscillator();
+      osc.frequency.value = freq;
+      osc.connect(state.gainNode);
+      osc.start();
+      state.oscillator = osc;
+    } else {
+      state.oscillator.frequency.cancelScheduledValues(now);
+      state.oscillator.frequency.setTargetAtTime(freq, now, source === "string" ? 0.025 : 0.04);
+    }
+
+    if (source === "string") applyStringWaveform();
+    else applyKeyboardWaveform();
+  }
+
   function stopOscillator() {
-    if (!state.audioContext || !state.oscillator) return;
+    if (!state.audioContext || !state.oscillator) {
+      state.currentMidi = null;
+      state.currentFrequency = null;
+      state.activeSource = null;
+      state.soundStartedAt = null;
+      updateKeyboardSelection();
+      updateStatus();
+      updateStringVisual();
+      return;
+    }
 
     const osc = state.oscillator;
     const now = state.audioContext.currentTime;
@@ -676,9 +875,12 @@
 
     state.oscillator = null;
     state.currentMidi = null;
-    state.noteStartedAt = null;
+    state.currentFrequency = null;
+    state.activeSource = null;
+    state.soundStartedAt = null;
     updateKeyboardSelection();
     updateStatus();
+    updateStringVisual();
   }
 
   function playMidi(midi) {
@@ -689,31 +891,56 @@
       }
 
       const freq = midiToFreq(midi);
-      const now = state.audioContext.currentTime;
-
-      if (!state.oscillator) {
-        const osc = state.audioContext.createOscillator();
-        osc.type = els.waveform.value;
-        osc.frequency.value = freq;
-        osc.connect(state.gainNode);
-        osc.start();
-        state.oscillator = osc;
-      } else {
-        state.oscillator.type = els.waveform.value;
-        state.oscillator.frequency.cancelScheduledValues(now);
-        state.oscillator.frequency.setTargetAtTime(freq, now, 0.04);
-      }
+      createOrUpdateOscillator(freq, "keyboard");
 
       state.currentMidi = midi;
-      state.noteStartedAt = Date.now();
+      state.currentFrequency = freq;
+      state.activeSource = "keyboard";
+      state.soundStartedAt = Date.now();
       state.changeCount += 1;
       setGainSmooth(Number(els.volume.value));
       updateKeyboardSelection();
       updateStatus();
+      updateStringVisual();
     });
   }
 
-  function randomNote() {
+  function playString(countChange = true) {
+    ensureAudio().then(() => {
+      if (els.roleMode.value === "facilitator") {
+        updateStatus("facilitator role is silent");
+        return;
+      }
+
+      const length = Number(els.stringLength.value);
+      const freq = stringLengthToFrequency(length);
+      createOrUpdateOscillator(freq, "string");
+
+      state.currentMidi = null;
+      state.currentFrequency = freq;
+      state.activeSource = "string";
+      if (countChange || !state.soundStartedAt) {
+        state.soundStartedAt = Date.now();
+      }
+      if (countChange) state.changeCount += 1;
+      setGainSmooth(Number(els.volume.value));
+      updateKeyboardSelection();
+      updateStatus();
+      updateStringVisual();
+    });
+  }
+
+  function randomSelection() {
+    if (els.soundSource.value === "string") {
+      const min = Number(els.stringLength.min);
+      const max = Number(els.stringLength.max);
+      const randomLength = min + Math.random() * (max - min);
+      els.stringLength.value = randomLength.toFixed(3);
+      updateStringReadout();
+      playString();
+      return;
+    }
+
     const keys = [];
     for (let midi = startMidi; midi <= endMidi; midi++) keys.push(midi);
     const midi = keys[Math.floor(Math.random() * keys.length)];
@@ -745,7 +972,7 @@
       div.style.left = `${whiteIndex.get(midi) * whiteWidth}%`;
       div.style.width = `${whiteWidth}%`;
       div.textContent = midiToName(midi);
-      div.title = `${midiToName(midi)} · click to sustain this note`;
+      div.title = `${midiToName(midi)} - click to sustain this note`;
       div.addEventListener("click", () => playMidi(midi));
       keyboard.appendChild(div);
     }
@@ -759,8 +986,8 @@
       div.dataset.midi = String(midi);
       div.style.left = `${(i + 0.68) * whiteWidth}%`;
       div.style.width = `${whiteWidth * 0.62}%`;
-      div.textContent = midiToName(midi).replace("♯", "♯").replace("♭", "♭");
-      div.title = `${midiToName(midi)} · click to sustain this note`;
+      div.textContent = midiToName(midi);
+      div.title = `${midiToName(midi)} - click to sustain this note`;
       div.addEventListener("click", () => playMidi(midi));
       keyboard.appendChild(div);
     }
@@ -776,8 +1003,88 @@
 
   function updateKeyboardSelection() {
     document.querySelectorAll(".white-key, .black-key").forEach(key => {
-      key.classList.toggle("selected", Number(key.dataset.midi) === state.currentMidi);
+      const selected = state.activeSource === "keyboard" && Number(key.dataset.midi) === state.currentMidi;
+      key.classList.toggle("selected", selected);
     });
+  }
+
+  function updateStringReadout() {
+    const length = Number(els.stringLength.value);
+    const freq = stringLengthToFrequency(length);
+    els.stringLengthValue.textContent = `${length.toFixed(3)} m`;
+    els.stringFrequencyValue.textContent = `${freq.toFixed(2)} Hz`;
+    updateStringVisual();
+  }
+
+  function updateStringVisual(timestamp = 0) {
+    if (!els.stringPath) return;
+
+    if (timestamp === 0 && state.animationFrame) {
+      cancelAnimationFrame(state.animationFrame);
+      state.animationFrame = null;
+    }
+
+    const length = Number(els.stringLength.value);
+    const min = Number(els.stringLength.min);
+    const max = Number(els.stringLength.max);
+    const normalized = (length - min) / (max - min);
+    const x0 = 20;
+    const x1 = 230 + normalized * 270;
+    const y = 60;
+    const sounding = state.activeSource === "string" && state.currentFrequency !== null;
+
+    els.stringRightAnchor.setAttribute("cx", x1.toFixed(1));
+    els.stringSource.classList.toggle("sounding", sounding);
+
+    const points = [];
+    const segments = 72;
+    const amplitude = sounding ? 17 : 0;
+    const phase = sounding ? state.animationPhase : 0;
+
+    for (let i = 0; i <= segments; i++) {
+      const t = i / segments;
+      const x = x0 + (x1 - x0) * t;
+      const envelope = Math.sin(Math.PI * t);
+      const yy = y + amplitude * envelope * Math.sin(Math.PI * t + phase);
+      points.push(`${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${yy.toFixed(1)}`);
+    }
+
+    els.stringPath.setAttribute("d", points.join(" "));
+
+    if (sounding) {
+      state.animationPhase += 0.28;
+      state.animationFrame = requestAnimationFrame(updateStringVisual);
+    } else if (state.animationFrame) {
+      cancelAnimationFrame(state.animationFrame);
+      state.animationFrame = null;
+    }
+  }
+
+  function switchSource() {
+    const isString = els.soundSource.value === "string";
+    stopOscillator();
+
+    els.keyboardSource.hidden = isString;
+    els.stringSource.hidden = !isString;
+    els.waveform.disabled = isString;
+    els.waveformCard.style.opacity = isString ? "0.58" : "1";
+
+    if (isString) {
+      els.sourceTitle.textContent = "Tune and sustain one virtual string";
+      els.sourceDescription.innerHTML = "Move the length slider to tune the string continuously. With tension and linear density held fixed, frequency varies inversely with length: shorter strings sound higher and longer strings sound lower.";
+      els.readoutLabel.textContent = "Current string";
+      els.startAudio.textContent = "Start string";
+      els.randomNote.textContent = "Random length";
+    } else {
+      els.sourceTitle.textContent = "Choose and sustain one note";
+      els.sourceDescription.innerHTML = "Recommended range: C3-C6, three octaves plus the final C. This is wide enough to form unisons, octaves, thirds, fifths, and dense clusters, while staying manageable for group listening.";
+      els.readoutLabel.textContent = "Current note";
+      els.startAudio.textContent = "Start audio";
+      els.randomNote.textContent = "Random note";
+    }
+
+    updateStatus();
+    updateStringReadout();
   }
 
   function updateStatus(message = null) {
@@ -785,17 +1092,23 @@
     els.volumeValue.textContent = `${volPct}%`;
 
     els.roleStatus.textContent = els.roleMode.value;
-    els.audioStatus.textContent = message || (state.audioStarted ? (state.currentMidi === null ? "ready / silent" : "sounding") : "not started");
+    const sounding = state.currentFrequency !== null && state.oscillator !== null;
+    els.audioStatus.textContent = message || (state.audioStarted ? (sounding ? "sounding" : "ready / silent") : "not started");
     els.changeCount.textContent = String(state.changeCount);
 
-    if (state.currentMidi === null) {
+    if (!sounding) {
       els.currentNote.textContent = "silent";
-      els.currentFreq.textContent = "—";
+      els.currentFreq.textContent = "-";
       els.timeOnNote.textContent = "0s";
-    } else {
+    } else if (state.activeSource === "keyboard") {
       els.currentNote.textContent = midiToName(state.currentMidi);
-      els.currentFreq.textContent = `${midiToFreq(state.currentMidi).toFixed(2)} Hz`;
-      const secs = Math.floor((Date.now() - state.noteStartedAt) / 1000);
+      els.currentFreq.textContent = `${state.currentFrequency.toFixed(2)} Hz`;
+      const secs = Math.floor((Date.now() - state.soundStartedAt) / 1000);
+      els.timeOnNote.textContent = `${secs}s`;
+    } else {
+      els.currentNote.textContent = `string - ${frequencyToNearestNote(state.currentFrequency)}`;
+      els.currentFreq.textContent = `${state.currentFrequency.toFixed(2)} Hz`;
+      const secs = Math.floor((Date.now() - state.soundStartedAt) / 1000);
       els.timeOnNote.textContent = `${secs}s`;
     }
 
@@ -804,11 +1117,11 @@
 
   function startRound(label) {
     if (label === "round1") {
-      els.phasePill.textContent = "Round 1 · settling";
-      els.roundPrompt.textContent = "Round 1: begin with random notes, then listen and adapt until the group feels a temporary equilibrium.";
+      els.phasePill.textContent = "Round 1 - settling";
+      els.roundPrompt.textContent = "Round 1: begin with random sounds, then listen and adapt until the group feels a temporary equilibrium.";
     } else {
-      els.phasePill.textContent = "Round 2 · disturbance";
-      els.roundPrompt.textContent = "Round 2: begin again, then invite a new participant to enter as a disturbance. Observe whether the group absorbs, resists, or reorganises around the new note.";
+      els.phasePill.textContent = "Round 2 - disturbance";
+      els.roundPrompt.textContent = "Round 2: begin again, then invite a new participant to enter as a disturbance. Observe whether the group absorbs, resists, or reorganises around the new sound.";
     }
 
     state.timerElapsedMs = 0;
@@ -854,7 +1167,10 @@
     els.timer.textContent = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   }
 
-  els.startAudio.addEventListener("click", () => ensureAudio());
+  els.startAudio.addEventListener("click", () => {
+    if (els.soundSource.value === "string") playString();
+    else ensureAudio();
+  });
   els.stopNote.addEventListener("click", stopOscillator);
   els.panic.addEventListener("click", () => {
     stopOscillator();
@@ -862,15 +1178,42 @@
       state.gainNode.gain.setValueAtTime(0, state.audioContext.currentTime);
     }
   });
-  els.randomNote.addEventListener("click", randomNote);
+  els.randomNote.addEventListener("click", randomSelection);
 
   els.volume.addEventListener("input", () => {
-    if (state.currentMidi !== null) setGainSmooth(Number(els.volume.value));
+    if (state.currentFrequency !== null) setGainSmooth(Number(els.volume.value));
     updateStatus();
   });
 
   els.waveform.addEventListener("change", () => {
-    if (state.oscillator) state.oscillator.type = els.waveform.value;
+    if (state.oscillator && state.activeSource === "keyboard") applyKeyboardWaveform();
+  });
+
+  els.soundSource.addEventListener("change", switchSource);
+
+  els.stringLength.addEventListener("input", () => {
+    updateStringReadout();
+    if (state.activeSource === "string" && state.oscillator) {
+      const freq = stringLengthToFrequency(Number(els.stringLength.value));
+      state.currentFrequency = freq;
+      state.oscillator.frequency.setTargetAtTime(freq, state.audioContext.currentTime, 0.02);
+      updateStatus();
+    }
+  });
+
+  els.stringLength.addEventListener("change", () => {
+    if (state.activeSource === "string" && state.oscillator) {
+      state.changeCount += 1;
+      state.soundStartedAt = Date.now();
+      updateStatus();
+    }
+  });
+
+  els.playString.addEventListener("click", () => playString());
+  els.setA3String.addEventListener("click", () => {
+    els.stringLength.value = "1.00";
+    updateStringReadout();
+    if (state.activeSource === "string" && state.oscillator) playString();
   });
 
   els.roleMode.addEventListener("change", () => {
@@ -887,6 +1230,7 @@
   state.timeOnNoteInterval = setInterval(updateStatus, 500);
 
   buildKeyboard();
+  switchSource();
   updateStatus();
   updateTimer();
 })();
