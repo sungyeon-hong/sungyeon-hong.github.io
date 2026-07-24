@@ -12,7 +12,7 @@ format:
 
 <section class="research-subpage-intro project-page-intro">
   <a class="project-back-link" href="../embodied-complexity.html">← Embodied complexity</a>
-  <div class="research-kicker">Self-organisation · Collective music · Cybernetics</div>
+  <div class="research-kicker">Self-organisation · Collective music · Embodying cybernetics</div>
   <h2 class="research-title">Musical Homeostasis</h2>
   <div class="research-lede project-question">
     <h3><i>How might collective musical order emerge when no one is conducting?</i></h3>
@@ -34,11 +34,11 @@ format:
   </p>
 
   <p>
-    The term <em>homeostasis</em> is inspired by W. Ross Ashby's Homeostat, one of the earliest cybernetic machines to demonstrate how stable global behaviour can emerge through continual local adaptation. Drawing on the same principles, Musical Homeostasis is an ongoing experiment in creating an embodied manifestation of self-organisation.
+    The term <em>homeostasis</em> is inspired by W. Ross Ashby's <i>Homeostat</i>, one of the earliest cybernetic machines to demonstrate how stable global behaviour can emerge through continual local adaptation. Drawing on the same principles, <i>Musical Homeostasis</i> is an ongoing experiment in creating an embodied manifestation of self-organisation.
   </p>
 
   <div class="project-pullquote">
-    Music provides a way to feel emergence: participants listen, adapt, and collectively create an outcome that no individual determines alone.
+    Music provides a way to feel emergence: we tune into one other, embrace changes, and collectively create an outcome that no individual determines alone.
   </div>
 </section>
 
@@ -50,19 +50,35 @@ format:
     <div class="project-two-column">
       <div>
         <p>
-          Music is a particularly appealing medium because it can connect people without requiring formal musical training or verbal communication. We may not share the same technical vocabulary, but we can often sense tension, harmony, balance, repetition, and change.
-        </p>
+          I was very fortunate to grow up in an environment filled with music. My musical journey began when I started learning the piano at the age of seven—after first overcoming the heartbreak of being turned away by my prospective piano teacher a year earlier simply because I was "too young" (!). As a teenager, I managed to convince my parents that I absolutely needed a violin in my life, and later I picked up a guitar in my 20s so I could accompany myself while singing.
+				</p>
+				
+      <aside class="project-concept-note">
+        <div class="project-concept-note-label">Music for me</div>
         <p>
-          Musical Homeostasis therefore shifts attention away from musical expertise and towards listening, adaptation, and collective sense-making. The activity asks participants not to perform a predetermined composition, but to create the conditions in which a collective musical structure can organise itself.
+          Music grounds me, lifts me, and reminds me that connection can exist beyond words and equations.
         </p>
-      </div>
-
+      </aside>
+      
+				<p>
+					My favourite downtime is with singing at the top of my lungs, simply for the joy and comfort it brings. Music has become an indispensable part of my life. It grounds me, lifts me up, and creates beautiful resonance across space and time.
+				</p>
+				<p>
+					What fascinates me most is music's remarkable ability to connect people. Even without formal musical training or verbal communication, music invites us to be present and, in many ways, to recognise something about ourselves. We may not share the same language, technical vocabulary, or cultural background, yet we can still sense tension and release, harmony and imbalance, repetition and change. In those shared experiences, music becomes more than sound — it becomes a way of relating to one another and, more importantly, of making meaning together.
+        </p>
+        
       <aside class="project-concept-note">
         <div class="project-concept-note-label">Central idea</div>
         <p>
-          The participants do not compose the final outcome directly. They continually adjust their own local contribution, and the larger pattern emerges from those interactions.
+        	What if harmony emerged not from a composer, but from everyone listening, adapting, and responding together?
         </p>
       </aside>
+      
+        <p>
+          <i>Musical Homeostasis</i> therefore shifts attention away from musical expertise and towards listening, adaptation, and collective sense-making. The activity asks participants not to perform a predetermined composition, but to create the conditions in which a collective musical structure can organise itself.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -71,7 +87,7 @@ format:
 <section class="research-subpage-section">
   <h2 class="research-section-title">How Musical Homeostasis works</h2>
   <p class="research-muted project-section-lede">
-    The simplest form of Musical Homeostasis (MH v.1) translates three elements of a self-organising system into a shared musical activity.
+    The simplest form of <i>Musical Homeostasis</i> (MH v.1) translates three elements of a self-organising system into a shared musical activity.
   </p>
 
   <div class="project-principle-grid">
@@ -144,7 +160,7 @@ format:
 <section class="research-subpage-section">
   <h2 class="research-section-title">Where the project could go next</h2>
   <p>
-    Musical Homeostasis is intentionally minimal at this stage. Its simplicity makes the central dynamics visible, but it also leaves substantial room for richer models: new interaction rules, computational agents, spatial or networked arrangements, multimodal visualisations, empirical studies of group behaviour, and installations that connect physical and online participation.
+    <i>Musical Homeostasis</i> is intentionally minimal at this stage. Its simplicity makes the central dynamics visible, but it also leaves substantial room for richer models: new interaction rules, computational agents, spatial or networked arrangements, multimodal visualisations, empirical studies of group behaviour, and installations that connect physical and online participation.
   </p>
   <p>
     I am especially interested in how different rules and constraints shape the kinds of equilibria a group can reach, how disturbances reorganise an established musical state, and whether recurring dynamical signatures can be identified across different groups and settings.
@@ -155,7 +171,7 @@ format:
       <div class="research-collaboration-kicker">Collaborate</div>
       <h2>Help develop the next iteration</h2>
       <p>
-        I would be delighted to hear from researchers, musicians, educators, designers, artists, and creative technologists interested in developing more sophisticated models, participatory experiments, interactive installations, or learning activities inspired by Musical Homeostasis.
+        I would be delighted to hear from researchers, musicians, educators, designers, artists, and creative technologists interested in developing more sophisticated models, participatory experiments, interactive installations, or learning activities inspired by <i>Musical Homeostasis</i>.
       </p>
     </div>
     <a class="research-collaboration-link" href="../../contact.html">Get in touch <span aria-hidden="true">→</span></a>

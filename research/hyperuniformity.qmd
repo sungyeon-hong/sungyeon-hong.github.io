@@ -38,7 +38,7 @@ Today, these ideas continue to motivate my broader interest in emergence, phase 
   <div class="research-subpage-section">
     <h2 class="research-section-title">Relevant publications</h2>
     <p class="research-muted">
-      This list is intended for publications connected to geometry-driven hyperuniformity, pattern formation, local relaxation, and emergent order.
+      Below is a list of publications connected to my work on geometry-driven hyperuniformity, pattern formation, local relaxation, and emergent order.
     </p>
 
     <div class="publication-list">

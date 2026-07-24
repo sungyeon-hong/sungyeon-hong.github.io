@@ -22,14 +22,14 @@ format:
 <section class="research-subpage-section">
   <h2 class="research-section-title">Overview</h2>
   <p>
-    Complex systems are often introduced through equations, simulations, and abstract models. While these are indispensable scientific tools, they can sometimes obscure the intuitive experience of emergence itself. I am interested in designing interactive systems that allow people to participate in complexity—not simply by watching patterns unfold, but by becoming part of the dynamics that generate them.
+    Complex systems are often introduced through equations, simulations, and abstract models. While these are indispensable scientific tools, they can sometimes obscure the intuitive experience of emergence itself. I am interested in designing interactive systems that allow people to participate in complexity—not simply by watching patterns unfold, but by becoming part of the dynamics that generate them and using their own sensory apparatus.
   </p>
 
   <p>
     My work in embodied complexity explores how ideas from cybernetics, complexity science, and self-organisation can be experienced through physical interaction, collaborative activities, and creative media. Rather than treating participants as passive observers, these projects invite them to become interacting agents whose local decisions collectively shape global outcomes.
   </p>
   <p>
-    Current projects include <strong>Musical Homeostasis v.1</strong>, an interactive framework in which participants seek collective musical equilibrium through local listening and adaptation, together with a growing collection of online demonstrations that explore cellular automata, topology, emergence, and adaptive systems. Through these activities, I hope to make complex systems more tangible, accessible, and enjoyable while opening new opportunities for research, education, and public engagement.
+    Current projects include <strong>Musical Homeostasis</strong>, an interactive framework in which participants seek collective "musical equilibrium" through local listening and adaptation, together with a growing collection of online demonstrations that explore cellular automata, topology, emergence, and adaptive systems. Through these activities, I hope to make complex systems more tangible, accessible, and enjoyable while opening new opportunities for research, education, and public engagement.
   </p>
 </section>
 
