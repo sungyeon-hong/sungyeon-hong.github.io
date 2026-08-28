@@ -30,7 +30,7 @@ format:
   <h2 class="research-section-title">Overview</h2>
 
   <p>
-    One of the recurring questions throughout my research is how collective order emerges without a central controller—a phenomenon known as <strong>self-organisation</strong>. Whether in materials, ecosystems, communication networks, or human–AI systems, complex patterns often arise from simple local interactions among many individual components. While these ideas are commonly illustrated through simulations of particles, cells, or agents, I have been interested in exploring whether they can also be experienced directly through music.
+    One of the recurring questions throughout my research is how collective order emerges without a central controller — a phenomenon known as <strong>self-organisation</strong>. Whether in materials, ecosystems, communication networks, or human–AI systems, complex patterns often arise from simple local interactions among many individual components. While these ideas are commonly illustrated through simulations of particles, cells, or agents, I have been interested in exploring whether they can also be experienced directly through music.
   </p>
 
   <p>
@@ -50,7 +50,7 @@ format:
     <div class="project-two-column">
       <div>
         <p>
-          I was very fortunate to grow up in an environment filled with music. My musical journey began when I started learning the piano at the age of seven—after first overcoming the heartbreak of being turned away by my prospective piano teacher a year earlier simply because I was "too young" (!). As a teenager, I managed to convince my parents that I absolutely needed a violin in my life, and later I picked up a guitar in my 20s so I could accompany myself while singing.
+          I was very fortunate to grow up in an environment filled with music. My musical journey began when I started learning the piano at the age of seven—after being turned away a year earlier by my prospective piano teacher simply because I was "too young"(!). After a few years, as a teenager, I managed to convince my parents that I absolutely needed a violin in my life, and later I picked up a guitar in my 20s so I could accompany myself while singing.
 				</p>
 				
       <aside class="project-concept-note">
@@ -64,7 +64,7 @@ format:
 					My favourite downtime is with singing at the top of my lungs, simply for the joy and comfort it brings. Music has become an indispensable part of my life. It grounds me, lifts me up, and creates beautiful resonance across space and time.
 				</p>
 				<p>
-					What fascinates me most is music's remarkable ability to connect people. Even without formal musical training or verbal communication, music invites us to be present and, in many ways, to recognise something about ourselves. We may not share the same language, technical vocabulary, or cultural background, yet we can still sense tension and release, harmony and imbalance, repetition and change. In those shared experiences, music becomes more than sound — it becomes a way of relating to one another and, more importantly, of making meaning together.
+					What fascinates me most is music's remarkable ability to connect people. Even without formal musical training or verbal communication, music invites us to be present and, in many ways, to recognise something about ourselves. We may not share the same language, technical vocabulary, or cultural background, yet we can still sense tension and release, harmony and imbalance, repetition and change all through our sensory apparatus. In those shared experiences, music becomes more than sound — it becomes a way of relating to one another and, more importantly, of making meaning together.
         </p>
         
       <aside class="project-concept-note">
@@ -103,15 +103,15 @@ format:
       <div class="project-principle-number">02</div>
       <h3>Local interaction</h3>
       <p>
-        Participants listen to the notes around them and may change their own note at any time. There is no conductor and no access to a complete global plan.
+        Participants listen to the notes around them and may change their own note at any time. There is no conductor and no pre-defined global plan.
       </p>
     </article>
 
     <article class="project-principle-card">
       <div class="project-principle-number">03</div>
-      <h3>Emergent equilibrium</h3>
+      <h3>Emergence</h3>
       <p>
-        Through repeated mutual adjustment, the group may converge on one note, form a harmonious chord, or settle into another arrangement that feels collectively satisfactory.
+        Through repeated mutual adjustment, the group may find a balanced arrangement that feels collectively satisfactory, corresponding to a dynamic equilibrium.
       </p>
     </article>
   </div>

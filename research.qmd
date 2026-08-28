@@ -164,7 +164,7 @@ format:
       </article>
 
       <article class="research-card">
-        <img src="images/research-embodied-complexity-placeholder.jpg" alt="Placeholder image for embodied complexity">
+        <img src="images/musical_homeostasis.jpeg" alt="Placeholder image for embodied complexity">
         <div class="research-card-body">
           <h3>Embodied Complexity</h3>
           <p>How self-organisation, adaptation, and collective behaviour can be experienced through interactive systems and creative media.</p>
