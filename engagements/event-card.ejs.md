@@ -9,7 +9,7 @@
 <article <%- metadataAttrs(item) %> class="event-listing-card">
 
   <h3 class="event-listing-title">
-    <a href="<%= item.path %>"><%= item.title %></a>
+    <a href="<%- item.path %>"><%= item.title %></a>
   </h3>
 
   <% if (item.date) { %>
