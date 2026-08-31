@@ -1,0 +1,7 @@
+# Shared metadata and rendering rules for all event pages in this directory.
+date-format: "D MMMM YYYY"
+published-title: "DATE"
+format:
+  html:
+    template-partials:
+      - title-block.html

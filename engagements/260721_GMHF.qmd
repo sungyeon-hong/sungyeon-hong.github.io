@@ -1,0 +1,21 @@
+---
+title: "Global Mathematics Histories and Futures"
+date: "2026-07-21"
+event-period: "20-24 July 2026"
+location: "Canberra, Australia"
+organisers:
+  - "ANU Mathematical Sciences Institute (MSI)"
+description: "Delivered two guest lectures tracing the shift from Newtonian determinism to cybernetics and complexity science, with examples spanning autonomous machines, hyperuniformity, and generative AI."
+categories: [Guest lecturer, Workshop]
+image: ../../images/activity-placeholder.png
+---
+
+Entitled "From clockwork to complexity: Tracing the evolution of our worldviews with mathematics", I contributed to two guest lectures to trace the evolution of mathematics from describing a predictable mechanical universe to understanding adaptive, self-organising, and interconnected systems. Beginning with mechanical philosophy and Newtonian determinism, the lecture traces the emergence of cybernetics, information theory, and complexity science through ideas of feedback, entropy, and emergence. Drawing on diverse examples ranging from autonomous machines to hyperuniform structures and generative AI, the lecture reflects on evolving mathematical worldviews for understanding complex organisation across natural, technological, and social systems.
+
+The workshop was convened by Prof. Rowena Ball. 
+
+
+## Resources
+
+- <a href="https://maths.anu.edu.au/news-events/events/global-mathematics-histories-and-futures">Event website</a>
+

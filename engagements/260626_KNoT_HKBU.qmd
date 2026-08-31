@@ -1,0 +1,19 @@
+---
+title: "Emergence & Hopeful Futures for Hong Kong Baptist University Study Tour"
+date: "2026-06-26"
+event-period: "26 June 2026"
+location: "Canberra, Australia"
+organisers:
+  - "ANU McCusker Institute"
+description: "Led a one-hour session on self-organisation, adaptability, and resilience for the Hong Kong Baptist University Global Study Tour, adapted from my existing longer workshop in the McCusker Institute's SoCIETIE program."
+categories: [Facilitator, Workshop]
+image: ../../images/activity-placeholder.png
+---
+
+
+As part of the Hong Kong Baptist University Global Study Tour hosted by the ANU McCusker Institute, I ran a session entitled <i>Emergence and Hopeful Futures: Beauty of Self-organisation</i> to inspire students with the priniciples of self-organisation that is pivotal in endowing many systems in nature and society with adaptability and resilience under constant changes. This was a compact version, condensed to fit in an hour-long session from the original duration of 2.5hr-long, as a recurring workshop in each semester as part of the McCusker Institute's SoCIETIE program.
+
+
+## Resources 
+- <a href="">Reflection piece</a> on the School of Cybernetics website.
+- ANU McCusker Institute's <a href="https://mccuskerinstitute.anu.edu.au/societie/">SoCIETIE program</a>.

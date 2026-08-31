@@ -1,0 +1,54 @@
+---
+title: "IEEE International Conference on Systems, Man and Cybernetics (SMC)"
+date: "2025-10-06"
+event-period: "4-8 Oct 2026"
+location: "Vienna, Austria"
+organisers:
+  - "IEEE SMC Society"
+description: "Presented my work on \"Semantic topologies in the recursive application of genAI models\" (joint work with Ben Swift)."
+categories: [Poster presenter, Conference]
+image: ../../images/activity-placeholder.png
+---
+
+I presented work on \"Semantic topologies in the recursive application of genAI models\" (joint work with Ben Swift) in a poster session.
+
+
+## Resources
+
+- Read an <a href="https://cybernetics.anu.edu.au/news/2025/11/27/playing-telephone-with-ai/">online article</a> about the work (written in plain language) published on ANU School of Cybernetics website.
+
+
+
+<!--
+::: {.event-resource-grid}
+
+::: {.event-resource-item}
+<span class="event-resource-type">ABSTRACT</span>
+
+**Presentation abstract**  
+[Read the abstract →](#)
+:::
+
+::: {.event-resource-item}
+<span class="event-resource-type">SLIDES</span>
+
+**Presentation slides**  
+[View slides →](#)
+:::
+
+::: {.event-resource-item}
+<span class="event-resource-type">PAPER</span>
+
+**Related paper**  
+[Read the paper →](#)
+:::
+
+::: {.event-resource-item}
+<span class="event-resource-type">EVENT</span>
+
+**Conference website**  
+[Visit the event website →](#)
+:::
+
+:::
+-->

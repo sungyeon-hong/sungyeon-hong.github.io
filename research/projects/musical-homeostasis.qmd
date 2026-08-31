@@ -19,9 +19,9 @@ format:
   </div>
 
   <div class="project-status-row" aria-label="Project status and format">
-    <span>Exploratory research project</span>
-    <span>Active</span>
-    <span>Participatory · Interactive</span>
+    <span>Exploratory</span>
+    <span>Interactive</span>
+    <span>Participatory</span>
   </div>
 </section>
 

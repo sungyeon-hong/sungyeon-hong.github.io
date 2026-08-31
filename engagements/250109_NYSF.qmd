@@ -1,0 +1,14 @@
+---
+title: "National Youth Science Forum (NYSF) Year 12 Speed Meet Session"
+date: "2025-01-09"
+event-period: "9 January 2025"
+location: "Canberra, Australia"
+organisers:
+  - "National Youth Science Forum (NYSF)"
+description: "Took part in a Speed Meet with Year 11 students from across Australia, sharing my career journey and answering questions about university, research, and PhD life."
+categories: [Outreach, Mentoring]
+image: ../../images/activity-placeholder.png
+---
+
+
+As a STEM researcher, I was invited to take part in a Speed Meet session with Year 11 students from across Australia, many of whom were about to enter their final year of school. Over the course of an hour, I moved between small groups to introduce my work, share parts of my academic and career journey, and respond to students’ questions about university life, research, and the experience of undertaking a PhD.

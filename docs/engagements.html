@@ -33,6 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -42,7 +44,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3cbf9fa670015d5da8a21d517caf2a17.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-19f9f6dfbad63c64d447301a7ac90294.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,6 +72,36 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-activities .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-website','listing-format','listing-engines','listing-language','listing-date-format','listing-published-title','listing-title','listing-date','listing-event-period','listing-location','listing-organisers','listing-description','listing-categories','listing-image','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      page: 6,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-project","listing-website","listing-format","listing-engines","listing-language","listing-date-format","listing-published-title","listing-title","listing-date","listing-event-period","listing-location","listing-organisers","listing-description","listing-categories","listing-image","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-activities'] = new List('listing-activities', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-CPXYZFK8GC"></script>
 
 <script type="text/javascript">
@@ -80,6 +112,35 @@ gtag('js', new Date());
 gtag('config', 'G-CPXYZFK8GC', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -158,30 +219,277 @@ gtag('config', 'G-CPXYZFK8GC', { 'anonymize_ip': true});
 
 
 
-
-<div class="site-page">
+<div class="site-page engagements-page">
 
 <section class="site-intro">
-  <div class="site-kicker">Events · Outreach · Public engagement</div>
+  <div class="site-kicker">Events · Presentations · Public engagement</div>
   <h2 class="anchored">Engagements</h2>
   <div class="site-lede">
-    <p>Selected talks, workshops, panels, podcasts, public programs, and other events where I share, test, and develop ideas with wider communities.</p>
-    <p><span class="site-muted">This page is under construction.</span></p>
+    <p>In this page, you can find my engagement in various formats, such as presentations, workshops, conferences, podcasts, and other outreach activities beyond formal research outputs.</p>
   </div>
 </section>
 
+<section class="site-section" id="features">
+  <div class="engagement-section-heading">
+    <div>
+      <div class="engagement-section-kicker">Ongoing</div>
+      <h2 class="site-section-title anchored">Current projects</h2>
+    </div>
+  </div>
 
-<!--
-<section class="site-section">
-  <p>This page is collects talks, workshops, panels, podcasts, public programs, and other events I have participated in or will participate in.</p>
-  <h2 class="site-section-title">Future activities</h2>
-  {#future-activities}
-  <h2 class="site-section-title">Past activities</h2>
-  {#past-activities}
+  <article class="engagement-feature-card">
+    <div class="engagement-feature-visual engagement-feature-podcast" aria-hidden="true">
+        <!--
+      <div class="podcast-wave">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      -->
+      <div class="podcast-mic">
+        <img src="images/kuberknots-logo.png" alt="">
+      </div>
+    </div>
+
+    <div class="engagement-feature-body">
+      <div class="engagement-card-meta">Podcast</div>
+      <h3 class="anchored">Kuberknots | Voyage into Cybernetics</h3>
+      <p>
+        I am hosting a podcast exploring complexity, cybernetics, technology, and the ideas that connect research with broader cultural and public questions. Through conversations with guests from diverse backgrounds, I aim to unpack the technical and philosophical dimensions of these fields in plain language and make them accessible beyond disciplinary boundaries.
+      </p>
+      <div class="engagement-tags">
+        <span>Complexity</span>
+        <span>Cybernetics</span>
+        <span>Humanity</span>
+        <span>Technology</span>
+        <span>Society</span>
+      </div>
+      <div class="engagement-feature-actions">
+        <a class="engagement-primary-link" href="https://kuberknots.com">Listen to the podcast →</a>
+      </div>
+    </div>
+  </article>
 </section>
--->
+
+<section class="site-section site-band" id="activities-section">
+  <div class="engagement-section-heading">
+    <div>
+      <div class="engagement-section-kicker">Selected engagements</div>
+      <h2 class="site-section-title anchored">Events &amp; Contributions</h2>
+    </div>
+  </div>
+
+    <!-- Event cards listed here -->
+  <div id="listing-activities" class="quarto-listing quarto-listing-container-custom">
+<div class="event-listing-grid list">
+
+<article data-index="'0'" data-categories="'R3Vlc3QlMjBsZWN0dXJlciUyQ1dvcmtzaG9w'" data-listing-date-sort="'1784556000000'" data-listing-file-modified-sort="'1788174381283'" data-listing-date-modified-sort="'NaN'" data-listing-reading-time-sort="'1'" data-listing-word-count-sort="'106'" class="event-listing-card">
+
+  <h3 class="event-listing-title anchored">
+    <a href="./engagements/260721_GMHF.html">Global Mathematics Histories and Futures</a>
+  </h3>
+
+  
+  <div class="event-listing-date-row">
+    <span class="event-listing-label">DATE</span>
+    <span class="event-listing-date">21 July 2026</span>
+  </div>
+  
+
+  
+  <p class="event-listing-description">Delivered two guest lectures tracing the shift from Newtonian determinism to cybernetics and complexity science, with examples spanning autonomous machines, hyperuniformity, and generative AI.</p>
+  
+
+  
+  <div class="event-listing-tags">
+    
+      <span>Guest lecturer</span>
+    
+      <span>Workshop</span>
+    
+  </div>
+  
+
+</article>
+
+<article data-index="'1'" data-categories="'SW52aXRlZCUyMHNwZWFrZXIlMkNDb25mZXJlbmNl'" data-listing-date-sort="'1783260000000'" data-listing-file-modified-sort="'1788174399787'" data-listing-date-modified-sort="'NaN'" data-listing-reading-time-sort="'1'" data-listing-word-count-sort="'59'" class="event-listing-card">
+
+  <h3 class="event-listing-title anchored">
+    <a href="./engagements/260706_HTDA.html">International Conference on Hyperuniformity and Topological Data Analysis</a>
+  </h3>
+
+  
+  <div class="event-listing-date-row">
+    <span class="event-listing-label">DATE</span>
+    <span class="event-listing-date">6 July 2026</span>
+  </div>
+  
+
+  
+  <p class="event-listing-description">Presented my research spanning geometry-driven hyperuniformity and AI-mediated information flow at a meeting bringing together mathematicians and theoretical physicists interested in order and disorder.</p>
+  
+
+  
+  <div class="event-listing-tags">
+    
+      <span>Invited speaker</span>
+    
+      <span>Conference</span>
+    
+  </div>
+  
+
+</article>
+
+<article data-index="'2'" data-categories="'RmFjaWxpdGF0b3IlMkNXb3Jrc2hvcA=='" data-listing-date-sort="'1782396000000'" data-listing-file-modified-sort="'1788176503705'" data-listing-date-modified-sort="'NaN'" data-listing-reading-time-sort="'1'" data-listing-word-count-sort="'103'" class="event-listing-card">
+
+  <h3 class="event-listing-title anchored">
+    <a href="./engagements/260626_KNoT_HKBU.html">Emergence &amp; Hopeful Futures for Hong Kong Baptist University Study Tour</a>
+  </h3>
+
+  
+  <div class="event-listing-date-row">
+    <span class="event-listing-label">DATE</span>
+    <span class="event-listing-date">26 June 2026</span>
+  </div>
+  
+
+  
+  <p class="event-listing-description">Led a one-hour session on self-organisation, adaptability, and resilience for the Hong Kong Baptist University Global Study Tour, adapted from my existing longer workshop in the McCusker Institute's SoCIETIE program.</p>
+  
+
+  
+  <div class="event-listing-tags">
+    
+      <span>Facilitator</span>
+    
+      <span>Workshop</span>
+    
+  </div>
+  
+
+</article>
+
+<article data-index="'3'" data-categories="'UG9zdGVyJTIwcHJlc2VudGVyJTJDQ29uZmVyZW5jZQ=='" data-listing-date-sort="'1759669200000'" data-listing-file-modified-sort="'1788175423370'" data-listing-date-modified-sort="'NaN'" data-listing-reading-time-sort="'1'" data-listing-word-count-sort="'74'" class="event-listing-card">
+
+  <h3 class="event-listing-title anchored">
+    <a href="./engagements/251006_IEEE-SMC.html">IEEE International Conference on Systems, Man and Cybernetics (SMC)</a>
+  </h3>
+
+  
+  <div class="event-listing-date-row">
+    <span class="event-listing-label">DATE</span>
+    <span class="event-listing-date">6 October 2025</span>
+  </div>
+  
+
+  
+  <p class="event-listing-description">Presented my work on "Semantic topologies in the recursive application of genAI models" (joint work with Ben Swift).</p>
+  
+
+  
+  <div class="event-listing-tags">
+    
+      <span>Poster presenter</span>
+    
+      <span>Conference</span>
+    
+  </div>
+  
+
+</article>
+
+<article data-index="'4'" data-categories="'T3V0cmVhY2glMkNNZW50b3Jpbmc='" data-listing-date-sort="'1736341200000'" data-listing-file-modified-sort="'1788175429179'" data-listing-date-modified-sort="'NaN'" data-listing-reading-time-sort="'1'" data-listing-word-count-sort="'73'" class="event-listing-card">
+
+  <h3 class="event-listing-title anchored">
+    <a href="./engagements/250109_NYSF.html">National Youth Science Forum (NYSF) Year 12 Speed Meet Session</a>
+  </h3>
+
+  
+  <div class="event-listing-date-row">
+    <span class="event-listing-label">DATE</span>
+    <span class="event-listing-date">9 January 2025</span>
+  </div>
+  
+
+  
+  <p class="event-listing-description">Took part in a Speed Meet with Year 11 students from across Australia, sharing my career journey and answering questions about university, research, and PhD life.</p>
+  
+
+  
+  <div class="event-listing-tags">
+    
+      <span>Outreach</span>
+    
+      <span>Mentoring</span>
+    
+  </div>
+  
+
+</article>
+
+<article data-index="'5'" data-categories="'RXhwbw=='" data-listing-date-sort="'1728824400000'" data-listing-file-modified-sort="'1788175576533'" data-listing-date-modified-sort="'NaN'" data-listing-reading-time-sort="'1'" data-listing-word-count-sort="'27'" class="event-listing-card">
+
+  <h3 class="event-listing-title anchored">
+    <a href="./engagements/241014_SXSW.html">SXSW Sydney 2024</a>
+  </h3>
+
+  
+  <div class="event-listing-date-row">
+    <span class="event-listing-label">DATE</span>
+    <span class="event-listing-date">14 October 2024</span>
+  </div>
+  
+
+  
+  <p class="event-listing-description">With colleagues at the ANU School of Cybernetics, we set up <i>PANIC!</i> (an interactive AI Art installation) at the SXSW Sydney 2024 Tech and Innovation Expo.</p>
+  
+
+  
+  <div class="event-listing-tags">
+    
+      <span>Expo</span>
+    
+  </div>
+  
+
+</article>
+
+<article data-index="'6'" data-categories="'UGFydGljaXBhbnQ='" data-listing-date-sort="'1717855200000'" data-listing-file-modified-sort="'1788176279505'" data-listing-date-modified-sort="'NaN'" data-listing-reading-time-sort="'1'" data-listing-word-count-sort="'109'" class="event-listing-card">
+
+  <h3 class="event-listing-title anchored">
+    <a href="./engagements/240609_SFI-CSSS.html">Santa Fe Institute Complex Systems Summer School 2024</a>
+  </h3>
+
+  
+  <div class="event-listing-date-row">
+    <span class="event-listing-label">DATE</span>
+    <span class="event-listing-date">9 June 2024</span>
+  </div>
+  
+
+  
+  <p class="event-listing-description">Selected as one of 40 participants worldwide for the SFI summer school, an intensive program combining lectures, workshops, and collaborative research across a wide range topics about complexity.</p>
+  
+
+  
+  <div class="event-listing-tags">
+    
+      <span>Participant</span>
+    
+  </div>
+  
+
+</article>
 
 </div>
+<div class="listing-no-matching d-none">No matching items</div>
+<nav id="activities-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div>
+</section>
+
+</div>
+
 
 
 

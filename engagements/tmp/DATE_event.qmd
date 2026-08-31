@@ -1,0 +1,14 @@
+---
+title: ""
+date: "2020-00-00"
+event-period: ""
+location: "City, Country"
+organisers:
+  - ""
+description: ""
+categories: [Workshop, ...]
+image: ../../images/activity-placeholder.png
+---
+
+
+

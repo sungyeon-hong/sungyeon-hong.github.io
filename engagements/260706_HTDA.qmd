@@ -1,0 +1,22 @@
+---
+title: "International Conference on Hyperuniformity and Topological Data Analysis"
+date: "2026-07-06"
+event-period: "6-10 July 2026"
+location: "Ulm, Germany (More precisely, Reisensburg Castle, Günzburg, Germany)"
+organisers:
+  - "University of Ulm"
+  - "Australian National University"
+  - "German Aerospace Center (DLR)"
+description: "Presented my research spanning geometry-driven hyperuniformity and AI-mediated information flow at a meeting bringing together mathematicians and theoretical physicists interested in order and disorder."
+categories: [Invited speaker, Conference]
+image: ../../images/activity-placeholder.png
+---
+
+
+At the first meeting of its kind, bringing together mathematicians and theoretical physicists to explore a wide range of questions around order and disorder, I was invited to present my PhD work on geometry-driven hyperuniformity in two dimensions, alongside my more recent work on the semantic topologies of AI-mediated information flow.
+
+
+## Resources
+
+- <a href="https://www.uni-ulm.de/mawi/mawi-stochastik/allgemeines/aktuelles/hyperuniformity-and-topological-data-analysis-reisensburg-ulm-germany-6-10july2026/">Event website</a>
+- <a href="/research/hyperuniformity.html#publications">Related page and publications</a>

@@ -29,11 +29,11 @@ format:
     <div class="resources-section-heading">
       <div>
         <div class="resource-section-kicker">Good places to begin</div>
-        <h2 class="site-section-title">Foundations of complexity</h2>
+        <h2 class="site-section-title">Explore complexity</h2>
       </div>
-      <p>
-        These demos introduce two widely useful ways of thinking about complex systems: how simple local rules generate emergent behaviour, and how structure changes as our notion of proximity changes.
-      </p>
+      <!--
+      <p>These demos introduce two widely useful ways of thinking about complex systems: how simple local rules generate emergent behaviour, and how structure changes as our notion of proximity changes.</p>
+        -->
     </div>
 
     <div class="resource-feature-grid">
@@ -46,7 +46,7 @@ format:
           <div class="resource-card-meta">Cellular automata · Emergence</div>
           <h3>Conway's Game of Life</h3>
           <p>
-            Explore how a two-dimensional cellular automaton can generate stable forms, oscillators, travelling structures, and long-lived transients from a minimal rule set. Two editable grids make it possible to compare how small differences in initial conditions reshape the system's future.
+            Explore how a two-dimensional cellular automaton can generate a rich ensemble of patterns, including stable forms, oscillators, travelling structures, and long-lived transients, from a minimal rule set. Two editable grids make it possible to compare how small differences in initial conditions reshape the system's future.
           </p>
           <div class="resource-card-prompts">
             <span>What to notice</span>
@@ -70,7 +70,7 @@ format:
           <div class="resource-card-meta">Topology · Shape of data</div>
           <h3>Persistent Homology</h3>
           <p>
-            Grow neighbourhoods around a point cloud and watch connected components and loops appear and disappear across scale. The linked persistence diagram helps reveal which structures endure and which are short-lived.
+            Grow neighbourhoods around a point cloud and watch connected components and loops appear and disappear across scale. The linked persistence diagram helps reveal which structures endure and which are short-lived. (Don't worry too much about technicality behind persistent homology just yet!)
           </p>
           <div class="resource-card-prompts">
             <span>What to notice</span>

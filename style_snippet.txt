@@ -1,120 +1,91 @@
 
-<style>
-.research-subpage {
-  --research-accent: #426b73;
-  --research-accent-soft: #e7f0f1;
-  --research-ink: #1f2933;
-  --research-muted: #5f6f7a;
-  --research-line: #d7e1e4;
-  --research-bg: #ffffff;
+.event-listing-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--engagement-bg, #ffffff);
+  border: 1px solid var(--engagement-line, #d7e1e4);
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(31, 41, 51, 0.045);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.research-subpage-intro,
-.research-subpage-section {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 3.5rem 1.5rem;
+.event-listing-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(66, 107, 115, 0.42);
+  box-shadow: 0 13px 30px rgba(31, 41, 51, 0.085);
 }
 
-.research-subpage-intro {
-  padding-top: 2rem;
-  padding-bottom: 2.5rem;
+.event-listing-image-link {
+  display: block;
+  overflow: hidden;
+  border-bottom: 1px solid var(--engagement-line, #d7e1e4);
+  line-height: 0;
 }
 
-.research-kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.78rem;
-  color: var(--research-accent);
-  font-weight: 700;
-  margin-bottom: 0.9rem;
+.event-listing-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.2s ease;
 }
 
-.research-title {
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 0.98;
-  margin: 0 0 1.15rem;
-  color: var(--research-ink);
-  font-weight: 800;
-  letter-spacing: -0.04em;
+.event-listing-card:hover .event-listing-image {
+  transform: scale(1.015);
 }
 
-.research-lede {
-  max-width: 900px;
-  font-size: 1.12rem;
-  line-height: 1.75;
-  color: var(--research-ink);
+.event-listing-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.15rem;
 }
 
-.research-muted {
-  color: var(--research-muted);
-}
-
-.research-band {
-  background: #f7fafb;
-  border-top: 1px solid var(--research-line);
-  border-bottom: 1px solid var(--research-line);
-}
-
-.research-section-title {
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
-  margin: 0 0 1.2rem;
-  color: var(--research-ink);
-}
-
-.research-subpage-section p,
-.research-subpage-section li {
-  line-height: 1.65;
-}
-
-.demo-button,
-.publication-links a {
-  font-weight: 650;
-  text-decoration: none;
-  color: var(--research-accent);
-}
-
-.demo-button {
-  display: inline-block;
-  margin-top: 0.6rem;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--research-accent);
-  border-radius: 999px;
-  background: var(--research-accent-soft);
-}
-
-
-
-
-.publication-list {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.publication-meta {
-  color: var(--research-muted);
-  font-size: 0.95rem;
-  line-height: 1.55;
+.event-listing-date-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
   margin-bottom: 0.65rem;
 }
 
-.publication-description {
-  color: var(--research-ink);
-  line-height: 1.65;
-  margin-bottom: 0.75rem;
+.event-meta-label,
+.event-page-meta-label,
+.event-resource-type {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.69rem;
+  font-weight: 750;
+  color: var(--engagement-accent, #426b73);
 }
 
-@media (max-width: 720px) {
-  .research-title {
-    font-size: clamp(2.2rem, 12vw, 3.2rem);
-  }
-
-  .publication-item {
-    grid-template-columns: 1fr;
-  }
-
-  .publication-snapshot {
-    max-width: 420px;
-  }
+.event-listing-date {
+  color: var(--engagement-ink, #1f2933);
+  font-size: 0.84rem;
+  font-weight: 650;
 }
-</style>
+
+.event-listing-title {
+  margin: 0 0 0.65rem;
+  font-size: 1.08rem;
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+}
+
+.event-listing-title a,
+.event-listing-title a:visited {
+  color: var(--engagement-ink, #1f2933);
+  text-decoration: none;
+}
+
+.event-listing-title a:hover {
+  color: var(--engagement-accent, #426b73);
+}
+
+.event-listing-description {
+  margin: 0 0 1rem;
+  color: var(--engagement-muted, #5f6f7a);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}

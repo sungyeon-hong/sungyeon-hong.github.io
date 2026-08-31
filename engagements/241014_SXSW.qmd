@@ -1,0 +1,14 @@
+---
+title: "SXSW Sydney 2024"
+date: "2024-10-14"
+event-period: "14-19 October 2024"
+location: "Sydney, Australia"
+organisers:
+  - "South-by-South-West (SXSW)"
+description: ""
+categories: [Expo]
+image: ../../images/activity-placeholder.png
+---
+
+
+With colleagues at the ANU School of Cybernetics, we set up <a href="https://cybernetics.anu.edu.au/news/2022/11/22/panic-a-serendipity-engine/"><i>PANIC!</i></a> (an interactive AI Art installation) at the SXSW Sydney 2024 Tech and Innovation Expo.

@@ -1,0 +1,21 @@
+---
+title: "Santa Fe Institute Complex Systems Summer School 2024
+"
+date: "2024-06-09"
+event-period: "9 Jun 2024 - 5 Jul 2024"
+location: "Santa Fe, New Mexico, USA"
+organisers:
+  - "Santa Fe Institute (SFI)"
+description: "Selected as one of 40 participants worldwide for the SFI summer school, an intensive program combining lectures, workshops, and collaborative research across a wide range topics about complexity."
+categories: [Participant]
+image: ../../images/activity-placeholder.png
+---
+
+Santa Fe Institute Complex Systems Summer School (CSSS) 2024 consists of a series of lectures and workshops devoted to theory and tools in complexity science, applications-focused seminars, and discussions with faculty and fellow participants on diverse topics, such as economics, evolutionary theory, natural language processing, networks, nonlinear dynamics and scaling theory. I was one of only 40 participants globally selected for the program from the pool of 175+ applicants (<23% selection rate). 
+
+CSSS participants are expected to put what they learn from these didactic sessions into practice through group research projects, conducted throughout the program and often extending into manuscripts and longer-term collaborations.
+
+
+## Resources
+
+- <a href="https://santafe.edu/">Santa Fe Institute (SFI) website</a>

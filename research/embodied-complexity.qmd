@@ -65,7 +65,9 @@ format:
             <span>Music</span>
           </div>
 
+					<!--
           <span class="project-card-link">Explore the project <span aria-hidden="true">→</span></span>
+          -->
         </div>
       </a>
 

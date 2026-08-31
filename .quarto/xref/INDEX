@@ -64,5 +64,62 @@
   },
   "research/projects/musical-homeostasis.qmd": {
     "musical-homeostasis.html": "273e9df0"
+  },
+  "engagements/example-conference.qmd": {
+    "example-conference.html": "33e8a97d"
+  },
+  "engagements/example-invited-talk.qmd": {
+    "example-invited-talk.html": "7dc238c8"
+  },
+  "engagements/example-workshop.qmd": {
+    "example-workshop.html": "a1050bb4"
+  },
+  "engagements/event-card.ejs.md": {
+    "event-card.ejs.html": "b1f37cb0"
+  },
+  "engagements/tmp/example-invited-talk.qmd": {
+    "example-invited-talk.html": "0be862d4"
+  },
+  "engagements/tmp/example-workshop.qmd": {
+    "example-workshop.html": "f60b114b"
+  },
+  "engagements/old/example-future-event.qmd": {
+    "example-future-event.html": "bbb6f55b"
+  },
+  "engagements/old/example-past-event.qmd": {
+    "example-past-event.html": "3f11cb27"
+  },
+  "engagements/tmp/example-event.qmd": {
+    "example-event.html": "49dca936"
+  },
+  "engagements/example-event.qmd": {
+    "example-event.html": "33be5406"
+  },
+  "engagements/260721_GMHF.qmd": {
+    "260721_GMHF.html": "f108ceb9"
+  },
+  "engagements/251006_IEEE-SMC.qmd": {
+    "251006_IEEE-SMC.html": "88769929"
+  },
+  "engagements/tmp/DATE_event.qmd": {
+    "DATE_event.html": "4a25bec9"
+  },
+  "engagements/260706_HTDA.qmd": {
+    "260706_HTDA.html": "2ddaf50a"
+  },
+  "engagements/DATE_event.qmd": {
+    "DATE_event.html": "73cf9428"
+  },
+  "engagements/260626_KNoT_HKBU.qmd": {
+    "260626_KNoT_HKBU.html": "1853a30b"
+  },
+  "engagements/250109_NYSF.qmd": {
+    "250109_NYSF.html": "d82edf51"
+  },
+  "engagements/241014_SXSW.qmd": {
+    "241014_SXSW.html": "896d5252"
+  },
+  "engagements/240609_SFI-CSSS.qmd": {
+    "240609_SFI-CSSS.html": "8d176d01"
   }
 }

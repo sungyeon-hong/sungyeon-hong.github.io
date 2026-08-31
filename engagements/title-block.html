@@ -1,0 +1,48 @@
+<header id="title-block-header" class="quarto-title-block default event-title-block">
+  <div class="quarto-title">
+    $if(title)$
+    <h1 class="title">$title$</h1>
+    $endif$
+
+    $if(categories)$
+    <div class="quarto-categories">
+      $for(categories)$
+      <div class="quarto-category">$categories$</div>
+      $endfor$
+    </div>
+    $endif$
+  </div>
+
+  <div class="event-page-meta-grid">
+    $if(date)$
+    <div class="event-page-meta-item">
+      <div class="event-page-meta-label">DATE</div>
+      <div class="event-page-meta-value date">$date$</div>
+    </div>
+    $endif$
+
+    $if(event-period)$
+    <div class="event-page-meta-item">
+      <div class="event-page-meta-label">EVENT PERIOD</div>
+      <div class="event-page-meta-value">$event-period$</div>
+    </div>
+    $endif$
+
+    $if(location)$
+    <div class="event-page-meta-item">
+      <div class="event-page-meta-label">LOCATION</div>
+      <div class="event-page-meta-value">$location$</div>
+    </div>
+    $endif$
+
+    $if(organisers)$
+    <div class="event-page-meta-item">
+      <div class="event-page-meta-label">ORGANISERS</div>
+      <div class="event-page-meta-value event-page-organisers">
+        $for(organisers)$
+        <span>$organisers$</span>$sep$<span class="event-meta-separator"> · </span>$endfor$
+      </div>
+    </div>
+    $endif$
+  </div>
+</header>
