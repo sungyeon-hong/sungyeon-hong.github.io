@@ -7,118 +7,7 @@ format:
 ---
 
 ```{=html}
-<style>
-.research-page {
-  --research-accent: #426b73;
-  --research-accent-soft: #e7f0f1;
-  --research-ink: #1f2933;
-  --research-muted: #5f6f7a;
-  --research-line: #d7e1e4;
-  --research-bg: #ffffff;
-}
 
-.research-intro,
-.research-section {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 3.5rem 1.5rem;
-}
-
-.research-intro {
-  padding-top: 2rem;
-  padding-bottom: 2.5rem;
-}
-
-.research-kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.78rem;
-  color: var(--research-accent);
-  font-weight: 700;
-  margin-bottom: 0.9rem;
-}
-
-.research-intro h2 {
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1;
-  margin: 0 0 1.2rem;
-  color: var(--research-ink);
-}
-
-.research-lede {
-  max-width: 900px;
-  font-size: 1.12rem;
-  line-height: 1.75;
-  color: var(--research-ink);
-}
-
-.research-muted {
-  color: var(--research-muted);
-}
-
-.research-band {
-  background: #f7fafb;
-  border-top: 1px solid var(--research-line);
-  border-bottom: 1px solid var(--research-line);
-}
-
-.research-section-title {
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
-  margin: 0 0 1.2rem;
-  color: var(--research-ink);
-}
-
-.research-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.2rem;
-}
-
-.research-card {
-  background: var(--research-bg);
-  border: 1px solid var(--research-line);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 8px 22px rgba(31, 41, 51, 0.05);
-  height: 100%;
-}
-
-.research-card img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  display: block;
-  background: var(--research-accent-soft);
-}
-
-.research-card-body {
-  padding: 1.2rem;
-}
-
-.research-card h3 {
-  font-size: 1.15rem;
-  margin: 0 0 0.55rem;
-  color: var(--research-ink);
-}
-
-.research-card p {
-  margin: 0 0 0.9rem;
-  color: var(--research-muted);
-  line-height: 1.55;
-}
-
-.research-card a {
-  font-weight: 650;
-  text-decoration: none;
-  color: var(--research-accent);
-}
-
-@media (max-width: 820px) {
-  .research-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
 
 <div class="research-page">
 
@@ -145,32 +34,30 @@ format:
   <div class="research-section">
     <h2 class="research-section-title">Research themes</h2>
     <div class="research-grid">
-      <article class="research-card">
+    
+      <a class="research-card" href="research/hyperuniformity.html" aria-label="Order, Disorder and In-between">
         <img src="images/random_vs_hyperuniform.png" alt="Placeholder image for geometry-driven complexity">
         <div class="research-card-body">
           <h3>Order, Disorder and In-between</h3>
           <p>How simple local interactions generate spatial organisation and reveal universal principles of pattern formation.</p>
-          <a href="research/hyperuniformity.html">Read more →</a>
         </div>
-      </article>
+      </a>
 
-      <article class="research-card">
+      <a class="research-card" href="research/information-dynamics.html" aria-label="Information Dynamics">
         <img src="images/semantic_topologies.png" alt="Placeholder image for information dynamics">
         <div class="research-card-body">
           <h3>Information Dynamics</h3>
           <p>How information, meaning, and knowledge evolve through communication, feedback, and human–AI interaction.</p>
-          <a href="research/information-dynamics.html">Read more →</a>
         </div>
-      </article>
+      </a>
 
-      <article class="research-card">
+      <a class="research-card" href="research/embodied-complexity.html" aria-label="Embodied Complexity">
         <img src="images/musical_homeostasis.jpeg" alt="Placeholder image for embodied complexity">
         <div class="research-card-body">
           <h3>Embodied Complexity</h3>
           <p>How self-organisation, adaptation, and collective behaviour can be experienced through interactive systems and creative media.</p>
-          <a href="research/embodied-complexity.html">Read more →</a>
         </div>
-      </article>
+      </a>
 
 
 <!--
