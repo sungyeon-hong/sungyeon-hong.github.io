@@ -16,8 +16,12 @@ format:
   <div class="site-kicker">FAQ · Orientation · Small human details</div>
   <h2>Frequently Asked Questions</h2>
   <div class="site-lede">
-    <p>This page gathers a few common questions about my research, teaching, supervision, and me as a human.</p>
-    <p><span class="site-muted">It is intended as a lightweight orientation point for students, collaborators, event organisers, and anyone curious about how my work connects across cybernetics, complexity, AI, and topology.</span></p>
+    <p>
+		  <span class="site-muted">
+		  In this page, I listed out a few common questions about my research, teaching, supervision, and me as a human.
+	It is intended as a lightweight orientation point for students, collaborators, event organisers, and anyone curious about how my work connects across cybernetics, complexity, AI, and topology.
+			</span>
+		</p>
   </div>
 </section>
 
@@ -50,7 +54,7 @@ Although my research spans materials, information systems, and interactive exper
 <summary>How did you get into complexity science?</summary>
 <div class="faq-answer">
 	<p>
-	My entry point into complexity science came through my PhD research on geometry-driven hyperuniformity. What began as a study of disordered materials quickly became a fascination with a much broader question: how can remarkably simple local interactions generate striking forms of large-scale order?
+	My entry point into complexity science came through my PhD research on <a href="/research/hyperuniformity.html">geometry-driven hyperuniformity</a>. What began as a study of disordered materials quickly became a fascination with a much broader question: how can remarkably simple local interactions generate striking forms of large-scale order?
 	</p>
 	<p>
 	That experience introduced me to a rich landscape of ideas, including emergence, self-organisation, adaptation, phase transitions, nonlinearity, and collective behaviour, which continue to shape my research today. Although the systems I study have expanded from materials to information, communication, and embodied interaction, the underlying questions have remained remarkably consistent.
@@ -68,7 +72,7 @@ Although my research spans materials, information systems, and interactive exper
 	What draws me to cybernetics is not simply its concepts, but its way of asking questions. Rather than viewing systems as isolated components, cybernetics encourages us to think in terms of relationships, interactions, feedback loops, adaptation, and emergence. It asks how collective behaviour arises, how systems remain resilient under change, and how they continue to learn and reorganise over time.
 	</p>
 	<p>
-	Voilà, that's what I found in cybernetics: <b>a common language for communicating across fields</b>, connecting research themes from <a href="/research/hyperuniformity.html">geometry-driven complexity</a> and <a href="/research/information-dynamics.html">information dynamics</a> to <a href="/research/embodied-complexity.html">embodied experiences</a>, such as <a href="/research/projects/musical-homeostasis.html"><i>Musical Homeostasis</i></a>. Cybernetics therefore serves not only as a theoretical foundation, but also as a practical orientation for exploring how complex systems organise, communicate, and evolve.
+	Voilà, that's what I found in cybernetics: <b>a common language for communicating across fields</b>, connecting research themes from <a href="/research/hyperuniformity.html">geometry-driven complexity</a> and <a href="/research/information-dynamics.html">information dynamics</a> to <a href="/research/embodied-complexity.html">embodied experiences</a>, such as <a href="/research/projects/musical-allostasis.html"><i>Musical Allostasis</i></a>. Cybernetics therefore serves not only as a theoretical foundation, but also as a practical orientation for exploring how complex systems organise, communicate, and evolve.
 	</p>
 </div>
 </details>
@@ -105,7 +109,7 @@ I welcome students whose projects engage with complexity, cybernetics, informati
 <summary>Do students need a strong mathematical background to work with you?</summary>
 <div class="faq-answer">
 
-Not always! Some projects require mathematical or computational depth, while others are more conceptual, design-oriented, or interpretive. What matters most is a willingness to work carefully across methods, assumptions, and levels of abstraction with an open mind and curiosity.
+Preferably, yes. A strong mathematical background is certainly helpful in shaping a project's direction and identifying appropriate analytical approaches. Many of my research projects involve mathematical or computational analysis, so a strong foundation in mathematical reasoning, logic, and intuition can make the work more structured, rigorous, and enjoyable. That said, I also value a willingness to work carefully across methods, assumptions, and levels of abstraction, with curiosity, openness, and attention to detail.
 
 </div>
 </details>
@@ -142,7 +146,7 @@ I am open to invitations that align with my research and teaching interests, par
 <summary>How can I contact you?</summary>
 <div class="faq-answer">
 
-The best starting point is to write an email to <i>sungyeon[dot]hong[at]anu[dot]edu[dot]au</i>. For supervision or collaboration enquiries, it is helpful to include a brief description of the topic, context, and what kind of conversation or outcome you have in mind.
+The best starting point is either to use the <a href="../../contact.html">Contact form</a> or to write an email to <i>sungyeon.hong[at]anu.edu.au</i>. For supervision or collaboration enquiries, it is helpful to include a brief description of the topic, context, and what kind of conversation or outcome you have in mind.
 
 </div>
 </details>

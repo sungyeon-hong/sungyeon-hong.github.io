@@ -68,6 +68,7 @@
   --bs-primary: #426b73;
   --site-accent: #426b73;
   --site-accent-dark: #2f5158;
+  --site-content-width: 1120px;
 }
 
 a {
@@ -107,7 +108,7 @@ a:visited {
 }
 
 .home-hero-inner {
-  max-width: 1120px;
+  max-width: var(--site-content-width);
   margin: 0 auto;
   padding: 5.5rem 1.5rem 4.5rem;
 }
@@ -163,7 +164,7 @@ a:visited {
 }
 
 .home-section {
-  max-width: 1120px;
+  max-width: var(--site-content-width);
   margin: 0 auto;
   padding: 4rem 1.5rem;
 }
@@ -266,7 +267,7 @@ a:visited {
 
 .research-subpage-intro,
 .research-subpage-section {
-  max-width: 1120px;
+  max-width: var(--site-content-width);
   margin: 0 auto;
   padding: 3.5rem 1.5rem;
 }
@@ -474,7 +475,7 @@ a:visited {
 
 .site-intro,
 .site-section {
-  max-width: 1120px;
+  max-width: var(--site-content-width);
   margin: 0 auto;
   padding: 3.5rem 1.5rem;
 }
@@ -948,7 +949,34 @@ details.faq-item[open] summary::after {
 }
 
 
-/* Dedicated project page */
+/* Dedicated research project pages
+   Keep project pages aligned to the same content width as the rest of the site. */
+.research-project-page {
+  width: 100%;
+  max-width: none;
+}
+
+.research-project-page .research-subpage-intro,
+.research-project-page .research-subpage-section {
+  width: 100%;
+  max-width: var(--site-content-width);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Project-page prose and callouts should use the available section width. */
+.research-project-page .research-lede,
+.research-project-page .project-question,
+.research-project-page .project-overview p,
+.research-project-page .project-pullquote,
+.research-project-page .project-section-lede,
+.research-project-page .project-publication-card {
+  max-width: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .project-page-intro {
   padding-bottom: 2rem;
 }
@@ -967,9 +995,9 @@ details.faq-item[open] summary::after {
   color: #2f5158;
 }
 
-.project-question {
+/*.project-question {
   max-width: 980px;
-}
+}*/
 
 .project-status-row {
   margin-top: 1.4rem;
@@ -979,12 +1007,59 @@ details.faq-item[open] summary::after {
   background: #ffffff;
 }
 
-.project-overview p {
-  max-width: 940px;
+.project-publication-card {
+  margin: 2rem 0;
+  padding: 1.35rem 1.5rem;
+  border: 1px solid var(--research-line);
+  border-left: 4px solid var(--research-accent);
+  border-radius: 12px;
+  background: rgba(66, 107, 115, 0.035);
+}
+
+.project-publication-meta {
+  margin-bottom: 0.4rem;
+  color: var(--research-accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.project-publication-card h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.08rem;
+  line-height: 1.4;
+}
+
+.project-publication-card h3 a {
+  color: var(--research-ink);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.project-publication-card h3 a:hover {
+  color: var(--research-accent);
+}
+
+.project-publication-card p {
+  margin: 0 0 0.8rem;
+  color: var(--research-muted);
+}
+
+.project-publication-link {
+  display: inline-block;
+  color: var(--research-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.18s ease;
+}
+
+.project-publication-link:hover {
+  transform: translateX(2px);
 }
 
 .project-pullquote {
-  max-width: 900px;
+  /*max-width: 900px;*/
   margin-top: 1.5rem;
   padding: 1.15rem 1.25rem;
   border-left: 4px solid var(--research-accent);
@@ -994,13 +1069,6 @@ details.faq-item[open] summary::after {
   font-size: clamp(1.05rem, 2vw, 1.25rem);
   line-height: 1.6;
   font-weight: 580;
-}
-
-.project-two-column {
-  display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.8fr);
-  gap: 2rem;
-  align-items: start;
 }
 
 .project-concept-note {
@@ -1017,7 +1085,7 @@ details.faq-item[open] summary::after {
 
 .project-principle-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
 }
@@ -1092,7 +1160,7 @@ details.faq-item[open] summary::after {
 
 .project-demo-visual {
   position: relative;
-  min-height: 290px;
+  min-height: 270px;
   background:
     radial-gradient(circle at center, rgba(255,255,255,0.92) 0 12%, transparent 13%),
     repeating-radial-gradient(circle at center, rgba(66,107,115,0.18) 0 1px, transparent 2px 31px),
@@ -1167,11 +1235,17 @@ details.faq-item[open] summary::after {
   }
 
   .project-principle-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .project-demo-visual {
     min-height: 240px;
+  }
+}
+
+@media (max-width: 620px) {
+  .project-principle-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2162,7 +2236,7 @@ details.faq-item[open] summary::after {
 
 .research-intro,
 .research-section {
-  max-width: 1120px;
+  max-width: var(--site-content-width);
   margin: 0 auto;
   padding: 3.5rem 1.5rem;
 }

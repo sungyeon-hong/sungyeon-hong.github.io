@@ -1,0 +1,222 @@
+---
+pagetitle: "Musical Allostasis"
+page-layout: full
+format:
+  html:
+    toc: false
+---
+
+```{=html}
+
+<div class="research-subpage research-project-page">
+
+<section class="research-subpage-intro project-page-intro">
+  <a class="project-back-link" href="../embodied-complexity.html">← Embodied Complexity</a>
+  <div class="research-kicker">Self-organisation · Collective dynamic · Embodying cybernetics</div>
+  <h2 class="research-title">Musical Allostasis</h2>
+  <div class="research-lede project-question">
+    <h3><i>How might a collective musical system adapt not only to what it hears now, but also to what it anticipates next?</i></h3>
+  </div>
+
+  <div class="project-status-row" aria-label="Project status and format">
+    <span>Exploratory</span>
+    <span>Interactive</span>
+    <span>Participatory</span>
+  </div>
+</section>
+
+
+<section class="research-subpage-section project-overview">
+  <h2 class="research-section-title">Overview</h2>
+
+  <p>
+    One of the recurring questions throughout my research is how collective order emerges without a central controller — a phenomenon known as <strong>self-organisation</strong>. Whether in materials, ecosystems, communication networks, or human–AI systems, complex patterns often arise from simple local interactions among many individual components. While these ideas are commonly illustrated through simulations of particles, cells, or agents, I have been interested in exploring whether they can also be experienced directly through music.
+  </p>
+
+  <p>
+    The project began with the idea of <em>homeostasis</em>, inspired in part by W. Ross Ashby's <i>Homeostat</i>: an early cybernetic machine demonstrating how stable global behaviour can emerge through continual local adjustment. This provided the initial motivation for turning self-organisation into a shared musical experience. Yet homeostasis can also imply maintaining or returning to a relatively fixed state, whereas the dynamics I am interested in are often more open-ended: participants respond to what they hear, anticipate how the collective sound may develop, and continually revise their actions as the situation changes.
+  </p>
+
+  <p>
+    For this reason, I now describe the project as <b>Musical Allostasis</b>. In physiology and complex adaptive systems, <i>allostasis</i> broadly refers to achieving stability through change. Rather than merely correcting deviations after they occur, an allostatic system can also act in anticipation of changing conditions. In <i>Musical Allostasis</i>, this distinction opens space for both <strong>feedback</strong> — responding to the sound that already exists — and <strong>feedforward</strong> — acting on expectations about where the collective soundscape may be heading.
+  </p>
+
+  <div class="project-pullquote">
+    Music provides a way to feel adaptation in motion: we listen to one another, anticipate change, and collectively shape a soundscape that no individual determines alone.
+  </div>
+
+  <div class="project-publication-card">
+    <div class="project-publication-meta">Preprint</div>
+
+    <h3>
+      <a href="https://doi.org/10.5281/zenodo.22686798" target="_blank" rel="noopener">
+        Hong, S., & Wong, P. (2026). Musical Allostasis: Foundations of an Embodied Cybernetic Research Programme (Version 0.1). Zenodo.
+      </a>
+    </h3>
+
+    <p>
+      A research preprint developing the conceptual and experimental framework behind Musical Allostasis.
+    </p>
+
+    <a class="project-publication-link"
+       href="https://doi.org/10.5281/zenodo.22686798"
+       target="_blank"
+       rel="noopener">
+      Read the preprint <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+
+
+<section class="research-band">
+  <div class="research-subpage-section">
+    <h2 class="research-section-title">Why music?</h2>
+
+      <div>
+        <p>
+          I was very fortunate to grow up in an environment filled with music. My musical journey began when I started learning the piano at the age of seven—after being turned away a year earlier by my prospective piano teacher simply because I was "too young"(!). After a few years, as a teenager, I managed to convince my parents that I absolutely needed a violin in my life, and later I picked up a guitar in my 20s so I could accompany myself while singing.
+        </p>
+
+        <aside class="project-concept-note">
+          <div class="project-concept-note-label">Music for me</div>
+          <p>
+            Music grounds me, lifts me, and reminds me that connection can exist beyond words and equations.
+          </p>
+        </aside>
+
+        <p>
+          My favourite downtime is with singing at the top of my lungs, simply for the joy and comfort it brings. Music has become an indispensable part of my life. It grounds me, lifts me up, and creates beautiful resonance across space and time.
+        </p>
+        <p>
+          What fascinates me most is music's remarkable ability to connect people. Even without formal musical training or verbal communication, music invites us to be present and, in many ways, to recognise something about ourselves. We may not share the same language, technical vocabulary, or cultural background, yet we can still sense tension and release, harmony and imbalance, repetition and change through our sensory apparatus. In those shared experiences, music becomes more than sound — it becomes a way of relating to one another and, more importantly, of making meaning together.
+        </p>
+
+        <aside class="project-concept-note">
+          <div class="project-concept-note-label">Central idea</div>
+          <p>
+            What if musical coherence emerged not from a composer, but from everyone listening, anticipating, adapting, and responding together?
+          </p>
+        </aside>
+
+        <p>
+          <i>Musical Allostasis</i> therefore shifts attention away from musical expertise and towards listening, anticipation, adaptation, and collective sense-making. Participants do not perform a predetermined composition; instead, they continually shape the conditions in which a collective musical structure can emerge, persist, and reorganise.
+        </p>
+      </div>
+
+
+  </div>
+</section>
+
+
+<section class="research-subpage-section">
+  <h2 class="research-section-title">How Musical Allostasis works</h2>
+  <p class="research-muted project-section-lede">
+    In its simplest form, <i>Musical Allostasis</i> (MA) v0.1 translates four elements of an adaptive collective system into a shared musical activity.
+  </p>
+
+  <div class="project-principle-grid">
+    <article class="project-principle-card">
+      <div class="project-principle-number">01</div>
+      <h3>Initial condition</h3>
+      <p>
+        Each participant begins by selecting an arbitrary sustained note. The group therefore starts from a deliberately uncoordinated musical state.
+      </p>
+    </article>
+
+    <article class="project-principle-card">
+      <div class="project-principle-number">02</div>
+      <h3>Feedback</h3>
+      <p>
+        Participants listen to the surrounding sound and may change their own note at any time. Their actions are shaped by the collective musical state that already exists.
+      </p>
+    </article>
+
+    <article class="project-principle-card">
+      <div class="project-principle-number">03</div>
+      <h3>Feedforward</h3>
+      <p>
+        Participants may also act in anticipation — sensing where the soundscape appears to be heading and adjusting before a stable pattern has fully formed.
+      </p>
+    </article>
+
+    <article class="project-principle-card">
+      <div class="project-principle-number">04</div>
+      <h3>Collective reorganisation</h3>
+      <p>
+        Through repeated mutual adjustment, the group may settle temporarily into a coherent configuration, move between several such configurations, or reorganise when disturbed. The focus is not a single equilibrium, but stability achieved through continual change.
+      </p>
+    </article>
+  </div>
+
+  <div class="project-concepts-strip" aria-label="Central research concepts">
+    <span>Self-organisation</span>
+    <span>Collective dynamics</span>
+    <span>Feedback</span>
+    <span>Feedforward</span>
+    <span>Anticipation</span>
+    <span>Adaptation</span>
+    <span>Allostasis</span>
+  </div>
+</section>
+
+
+
+
+<section class="research-band">
+  <div class="research-subpage-section">
+    <h2 class="research-section-title">Interactive experience</h2>
+			<p>
+			The online version of <i>Musical Allostasis</i> makes the participatory activity easier to experience across classrooms, workshops, and informal gatherings. Using their own devices, participants can listen, anticipate, and adapt to one another in real time, exploring how a collective soundscape emerges and reorganises without a conductor or predetermined score.
+			</p>
+    <div class="project-demo-feature">
+      <div class="project-demo-copy">
+        <div class="project-card-meta">Musical Allostasis v0.1 Digital Edition</div>
+        <h3>Listen and adapt — let the music reorganise itself</h3>
+        <p>
+          Invite at least two friends or colleagues to join from their own devices. Each person chooses a note, listens to the collective sound, and changes notes as the group explores a coherent musical configuration. Rather than aiming for one prescribed endpoint, pay attention to how the group adjusts, anticipates, and reorganises over time.
+        </p>
+        <p class="research-muted">
+          No musical background is required. For the clearest experience, participate in the same physical room and keep device volumes moderate.
+        </p>
+
+        <div class="project-demo-actions">
+          <a class="demo-button project-primary-button" href="../../interactive/musical_allostasis_v0.1/">Launch the Digital Edition <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="project-demo-visual" aria-hidden="true">
+        <span class="project-demo-note project-demo-note-one">E</span>
+        <span class="project-demo-note project-demo-note-two">G</span>
+        <span class="project-demo-note project-demo-note-three">B♭</span>
+        <span class="project-demo-centre">♪</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="research-subpage-section">
+  <h2 class="research-section-title">Where the project could go next</h2>
+  <p>
+    <i>Musical Allostasis</i> is intentionally minimal at this stage. Its simplicity makes the central dynamics visible, but it also leaves substantial room for richer models: new interaction rules, computational agents, spatial or networked arrangements, multimodal visualisations, empirical studies of group behaviour, and installations that connect physical and online participation.
+  </p>
+  <p>
+    I am especially interested in how different rules and constraints shape the collective configurations a group can sustain, how participants anticipate and respond to disturbances, and whether recurring dynamical signatures can be identified across different groups and settings. More broadly, the project asks whether musical interaction can provide a useful experimental and educational medium for studying how adaptive systems maintain coherence while continually changing.
+  </p>
+
+  <div class="research-collaboration-callout project-collaboration-callout">
+    <div>
+      <div class="research-collaboration-kicker">Collaborate</div>
+      <h2>Help develop the next iteration</h2>
+      <p>
+        I would be delighted to hear from researchers, musicians, educators, designers, artists, and creative technologists interested in developing more sophisticated models, participatory experiments, interactive installations, or learning activities inspired by <i>Musical Allostasis</i>.
+      </p>
+    </div>
+    <a class="research-collaboration-link" href="../../contact.html">Get in touch <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</div>
+
+```
