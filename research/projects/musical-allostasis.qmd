@@ -77,7 +77,7 @@ format:
 
       <div>
         <p>
-          I was very fortunate to grow up in an environment filled with music. My musical journey began when I started learning the piano at the age of seven—after being turned away a year earlier by my prospective piano teacher simply because I was "too young"(!). After a few years, as a teenager, I managed to convince my parents that I absolutely needed a violin in my life, and later I picked up a guitar in my 20s so I could accompany myself while singing.
+          I was very fortunate to grow up in an environment filled with music. My musical journey began when I started learning the piano at the age of seven — after being turned away a year earlier by my prospective piano teacher simply because I was "too young"(!). After a few years, as a teenager, I managed to convince my parents that I absolutely needed a violin in my life, and later I picked up a guitar in my 20s so I could accompany myself while singing.
         </p>
 
         <aside class="project-concept-note">
