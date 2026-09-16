@@ -1,0 +1,132 @@
+---
+pagetitle: "Resources"
+page-layout: full
+format:
+  html:
+    toc: false
+---
+
+```{=html}
+<div class="site-page resources-page resources-overview-page">
+
+<!--
+<nav class="resource-subnav" aria-label="Resources sections">
+  <a class="active" href="overview.qmd" aria-current="page">Overview</a>
+  <a href="glossary.qmd">Glossary</a>
+  <a href="writing.qmd">Writing</a>
+  <a href="interactive_demo.qmd">Interactive Demos</a>
+</nav>
+-->
+
+<section class="site-intro resources-intro">
+  <div class="site-kicker">Concepts · Writing · Interactive exploration</div>
+  <h2>Resources</h2>
+  <div class="site-lede site-muted">
+    <p>
+      This section brings together materials that sit alongside my research and teaching: explanations of key concepts, longer-form writing, and interactive demonstrations. They are intended as different ways into the same set of questions about complexity, cybernetics, emergence, information, and collective behaviour.
+    </p>
+    <p>
+      Some resources provide orientation before encountering a technical idea; others invite experimentation or develop a line of thought beyond the format of a research paper. You can browse them independently or move between them as related concepts appear across the site.
+    </p>
+  </div>
+</section>
+
+<section class="site-band">
+  <div class="site-section resources-section">
+    <div class="resources-section-heading">
+      <div>
+        <div class="resource-section-kicker">Three ways to explore</div>
+        <h2 class="site-section-title">Choose a starting point</h2>
+      </div>
+      <p>
+        The three collections serve different purposes: build a conceptual vocabulary, follow an argument or reflection, or interact directly with a model or activity.
+      </p>
+    </div>
+
+    <div class="resource-demo-grid">
+
+      <a class="resource-demo-card" href="glossary.qmd" aria-label="Open the Glossary">
+        <div class="resource-demo-icon" aria-hidden="true">A↔B</div>
+        <div class="resource-demo-content">
+          <div class="resource-card-meta">Concepts · Methods · Connections</div>
+          <h3>Glossary</h3>
+          <p>
+            A growing guide to concepts and methods drawn from cybernetics, complexity science, mathematics, physics, computation, and related fields. Entries emphasise not only definitions, but also how ideas connect across disciplinary boundaries.
+          </p>
+<!--
+          <div class="resource-demo-tags">
+            <span>Concepts</span>
+            <span>Methods</span>
+            <span>Cross-disciplinary</span>
+          </div>
+-->
+          <span class="resource-card-link">Browse the glossary <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+      <a class="resource-demo-card" href="writing.qmd" aria-label="Open Writing">
+        <div class="resource-demo-icon" aria-hidden="true">¶</div>
+        <div class="resource-demo-content">
+          <div class="resource-card-meta">Essays · Reflections · Commentary</div>
+          <h3>Writing</h3>
+          <p>
+            Essays, reflections, and commentary that develop ideas outside the conventions of formal academic publication. Some pieces live on this site, while others link to writing published through universities, collaborators, or external outlets.
+          </p>
+<!--
+          <div class="resource-demo-tags">
+            <span>Essays</span>
+            <span>Ideas in progress</span>
+            <span>Public writing</span>
+          </div>
+-->
+          <span class="resource-card-link">Read the writing <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+      <a class="resource-demo-card" href="interactive_demo.qmd" aria-label="Open Interactive Demos">
+        <div class="resource-demo-icon" aria-hidden="true">◎</div>
+        <div class="resource-demo-content">
+          <div class="resource-card-meta">Models · Activities · Open demos</div>
+          <h3>Interactive Demos</h3>
+          <p>
+            Browser-based demonstrations developed across my research and teaching. Change an initial condition, parameter, or rule and observe how local interactions reorganise the larger system.
+          </p>
+<!--
+          <div class="resource-demo-tags">
+            <span>Experiment</span>
+            <span>Observe</span>
+            <span>Compare</span>
+          </div>
+-->
+          <span class="resource-card-link">Explore the demos <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!--
+<section class="site-section resources-section">
+  <div class="resource-use-callout">
+    <div>
+      <div class="resource-section-kicker">Across the collection</div>
+      <h2>Follow the connections</h2>
+      <p>
+        The Resources pages are designed to connect with one another. A technical term encountered in an essay may lead to the Glossary; a concept in the Glossary may be easier to grasp through an Interactive Demo; and a demo may in turn motivate a longer reflection or research question.
+      </p>
+    </div>
+    <div class="resource-use-steps" aria-label="Suggested ways to move through the resources">
+      <span><b>1</b> Define</span>
+      <span><b>2</b> Connect</span>
+      <span><b>3</b> Explore</span>
+      <span><b>4</b> Reflect</span>
+    </div>
+  </div>
+</section>
+-->
+
+
+</div>
+```

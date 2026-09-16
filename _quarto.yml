@@ -24,7 +24,15 @@ website:
       - text: Engagements
         href: engagements.qmd
       - text: Resources
-        href: resources.qmd
+        menu:
+          - text: "Overview"
+            href: resources/overview.qmd
+          - text: "Glossary"
+            href: resources/glossary.qmd
+          - text: "Writing"
+            href: resources/writing.qmd
+          - text: "Interactive Demos"
+            href: resources/interactive_demo.qmd
       - text: FAQ
         href: faq.qmd
 #      - text: Contact

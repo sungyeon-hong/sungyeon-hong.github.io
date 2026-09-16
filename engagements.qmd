@@ -51,7 +51,7 @@ listing:
 
     <div class="engagement-feature-body">
       <div class="engagement-card-meta">Podcast</div>
-      <a href="https://kuberknots.com"><h3>Kuberknots | Voyage into Cybernetics</h3></a>
+      <a href="https://kuberknots.com"><h3>Kuberknots | Voyage into Cybernetics<span class="external-arrow" aria-hidden="true">↗</span></h3></a>
       <p>
         I am hosting a podcast exploring complexity, cybernetics, technology, and the ideas that connect research with broader cultural and public questions. Through conversations with guests from diverse backgrounds, I aim to unpack the technical and philosophical dimensions of these fields in plain language and make them accessible beyond disciplinary boundaries.
       </p>

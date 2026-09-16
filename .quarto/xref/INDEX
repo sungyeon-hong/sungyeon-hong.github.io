@@ -127,5 +127,26 @@
   },
   "interactive/musical_allostasis_v0.1/index.qmd": {
     "index.html": "6a81ae8a"
+  },
+  "resources/interactive_demo.qmd": {
+    "interactive_demo.html": "706d2e11"
+  },
+  "resources/glossary.qmd": {
+    "glossary.html": "e3c74e2d"
+  },
+  "resources/writing.qmd": {
+    "writing.html": "fd33585d"
+  },
+  "resources/overview.qmd": {
+    "overview.html": "1a2ddd7a"
+  },
+  "resources/writing/cybernetic-prodigy.qmd": {
+    "cybernetic-prodigy.html": "b4311c94"
+  },
+  "resources/writing/ai-and-productivity.qmd": {
+    "ai-and-productivity.html": "4b08db93"
+  },
+  "resources/writing/example.qmd": {
+    "example.html": "fd394239"
   }
 }

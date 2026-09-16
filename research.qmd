@@ -33,8 +33,10 @@ format:
 <section class="research-band">
   <div class="research-section">
     <h2 class="research-section-title">Research themes</h2>
+    <p>
+    	Click on each research theme below to find more details.
+    </p>
     <div class="research-grid">
-    
       <a class="research-card" href="research/hyperuniformity.html" aria-label="Order, Disorder and In-between">
         <img src="images/random_vs_hyperuniform.png" alt="Image for geometry-driven complexity">
         <div class="research-card-body">

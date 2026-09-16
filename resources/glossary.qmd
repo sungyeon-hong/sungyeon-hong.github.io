@@ -1,0 +1,478 @@
+---
+pagetitle: "Glossary"
+page-layout: full
+format:
+  html:
+    toc: false
+---
+
+```{=html}
+<div class="site-page resources-page glossary-page">
+
+<nav class="resource-subnav" aria-label="Resources sections">
+  <a class="active" href="glossary.qmd" aria-current="page">Glossary</a>
+  <a href="writing.qmd">Writing</a>
+  <a href="interactive_demo.qmd">Interactive Demos</a>
+</nav>
+
+<section class="site-intro resources-intro">
+  <div class="site-kicker">Concepts · Methods · Shared vocabulary</div>
+  <h2>Glossary</h2>
+  <div class="site-lede site-muted">
+    <p>
+      Cybernetics and complexity science are inherently multidisciplinary. Their ideas move between mathematics, physics, biology, computer science, social science, design, and other fields, often carrying slightly different meanings or emphases with them.
+    </p>
+    <p>
+      This glossary provides concise working introductions to core concepts and to established or emerging methods that appear across my research, teaching, and writing. It is not intended as an exhaustive dictionary. Rather, it offers a shared vocabulary for navigating the website and for seeing how ideas that originate in different disciplines can become connected.
+    </p>
+  </div>
+</section>
+
+<section class="site-band">
+  <div class="site-section resources-section">
+    <div class="resources-section-heading">
+      <div>
+        <div class="resource-section-kicker">Concept constellation</div>
+        <h2 class="site-section-title">How the ideas connect</h2>
+      </div>
+      <p>
+        Select a term to reveal neighbouring concepts that share one or more tags. The links indicate conceptual overlap rather than equivalence or a formal dependency.
+      </p>
+    </div>
+
+    <div class="glossary-cloud" aria-label="Interactive glossary concept cloud">
+      <button class="glossary-cloud-term" type="button" data-term="Adaptation" data-tags="dynamics cybernetics feedback regulation">Adaptation</button>
+      <button class="glossary-cloud-term" type="button" data-term="Agent-based modelling" data-tags="simulation agents emergence">Agent-based modelling</button>
+      <button class="glossary-cloud-term" type="button" data-term="Allostasis" data-tags="adaptation anticipation regulation embodiment">Allostasis</button>
+      <button class="glossary-cloud-term" type="button" data-term="Attractor" data-tags="dynamics state-space nonlinear-systems">Attractor</button>
+      <button class="glossary-cloud-term" type="button" data-term="Complexity science" data-tags="complex-systems emergence dynamics interdisciplinarity">Complexity science</button>
+      <button class="glossary-cloud-term" type="button" data-term="Criticality" data-tags="phase-transition scaling fluctuations universality">Criticality</button>
+      <button class="glossary-cloud-term" type="button" data-term="Phase transition" data-tags="criticality scaling emergence collective-behaviour statistical-mechanics">Phase transition</button>
+      <button class="glossary-cloud-term" type="button" data-term="Cybernetics" data-tags="feedback regulation communication control">Cybernetics</button>
+      <button class="glossary-cloud-term" type="button" data-term="Emergence" data-tags="complex-systems self-organisation local-rules collective-behaviour">Emergence</button>
+      <button class="glossary-cloud-term" type="button" data-term="Feedback" data-tags="cybernetics regulation adaptation dynamics">Feedback</button>
+      <button class="glossary-cloud-term" type="button" data-term="Feedforward" data-tags="cybernetics anticipation regulation allostasis">Feedforward</button>
+      <button class="glossary-cloud-term" type="button" data-term="Hyperuniformity" data-tags="spatial-order fluctuations geometry statistical-physics">Hyperuniformity</button>
+      <button class="glossary-cloud-term" type="button" data-term="Persistent homology" data-tags="topology data-analysis scale">Persistent homology</button>
+      <button class="glossary-cloud-term" type="button" data-term="Scaling" data-tags="criticality phase-transition universality power-law self-similarity statistical-physics">
+				Scaling
+			</button>
+      <button class="glossary-cloud-term" type="button" data-term="Self-organisation" data-tags="emergence local-rules collective-behaviour dynamics">Self-organisation</button>
+      <button class="glossary-cloud-term" type="button" data-term="Topology" data-tags="mathematics connectivity shape data-analysis">Topology</button>
+      <button class="glossary-cloud-term" type="button" data-term="Universality" data-tags="scaling criticality statistical-physics patterns">Universality</button>
+    </div>
+
+    <div class="glossary-cloud-status" aria-live="polite">
+      Select a term to highlight related ideas.
+    </div>
+    <button class="glossary-cloud-reset" type="button" hidden>Reset connections</button>
+  </div>
+</section>
+
+<section class="site-section resources-section">
+  <div class="resources-section-heading glossary-browse-heading">
+    <div>
+      <div class="resource-section-kicker">Working definitions</div>
+      <h2 class="site-section-title">Browse the glossary</h2>
+    </div>
+    <label class="glossary-search">
+      <span>Find a term</span>
+      <input type="search" placeholder="Search terms, definitions, or tags" autocomplete="off">
+    </label>
+  </div>
+
+  <div class="glossary-ledger">
+
+    <details class="glossary-entry" data-term="Adaptation" data-tags="dynamics cybernetics feedback regulation">
+      <summary>
+        <span class="glossary-term">Adaptation</span>
+        <span class="glossary-summary">A change in behaviour, structure, or organisation in response to conditions encountered over time.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>In complex systems, adaptation may occur at the level of individual components, interactions, or the collective itself. The important question is often not simply whether a system changes, but what information it uses, what it retains from the past, and what remains stable while it changes.</p>
+        <div class="glossary-tags"><span>dynamics</span><span>cybernetics</span><span>feedback</span><span>regulation</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Agent-based modelling" data-tags="simulation agents emergence">
+      <summary>
+        <span class="glossary-term">Agent-based modelling</span>
+        <span class="glossary-summary">A computational approach that represents individual agents and their local rules to study collective behaviour.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Rather than prescribing a system's large-scale behaviour directly, an agent-based model specifies how individual entities act and interact. Repeated simulation then reveals what macroscopic patterns, regularities, or unexpected behaviours can emerge from those rules.</p>
+        <div class="glossary-tags"><span>method</span><span>simulation</span><span>agents</span><span>emergence</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Allostasis" data-tags="adaptation anticipation regulation embodiment">
+      <summary>
+        <span class="glossary-term">Allostasis</span>
+        <span class="glossary-summary">The maintenance of stability through change, including adaptive and anticipatory regulation.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Allostasis shifts attention away from returning to one fixed state and towards maintaining viability as conditions change. On this website, the idea is particularly useful for thinking about systems that respond to current conditions while also anticipating what may happen next.</p>
+        <div class="glossary-tags"><span>adaptation</span><span>anticipation</span><span>regulation</span><span>embodiment</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Attractor" data-tags="dynamics state-space nonlinear-systems">
+      <summary>
+        <span class="glossary-term">Attractor</span>
+        <span class="glossary-summary">A state or set of states towards which a dynamical system tends to evolve after transient behaviour.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Attractors provide one way of describing the long-term organisation of dynamics. Depending on the system, an attractor may be a fixed point, a repeating cycle, or a more complicated set of states.</p>
+        <div class="glossary-tags"><span>dynamics</span><span>state-space</span><span>nonlinear systems</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Complexity science" data-tags="complex-systems emergence dynamics interdisciplinarity">
+      <summary>
+        <span class="glossary-term">Complexity science</span>
+        <span class="glossary-summary">The study of systems whose collective behaviour arises from many interacting components and cannot be understood from the components alone.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Complexity science asks how interactions, feedback, heterogeneity, adaptation, and history produce organisation across scales. Its methods span analytical models, simulation, network analysis, statistical physics, data-driven approaches, and qualitative inquiry.</p>
+        <div class="glossary-tags"><span>complex systems</span><span>emergence</span><span>dynamics</span><span>interdisciplinarity</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Criticality" data-tags="phase-transition complexity-science scaling fluctuations universality">
+      <summary>
+        <span class="glossary-term">Criticality</span>
+        <span class="glossary-summary">Behaviour associated with the vicinity of a transition where fluctuations and correlations can extend across many scales.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Near a critical point, systems can become unusually sensitive to perturbations and may display scaling behaviour or long-range correlations. The concept originates in statistical physics but has also inspired broader approaches to biological, computational, and social systems.</p>
+        <div class="glossary-tags"><span>phase transition</span><span>scaling</span><span>fluctuations</span><span>universality</span><span>complexity science</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Cybernetics" data-tags="feedback regulation communication control">
+      <summary>
+        <span class="glossary-term">Cybernetics</span>
+        <span class="glossary-summary">A transdisciplinary field concerned with communication, feedback, control, regulation, and purposeful behaviour in systems.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Cybernetics studies how systems sense, communicate, act, and regulate themselves or one another. Rather than belonging to one application domain, its concepts have travelled across engineering, biology, cognition, organisations, design, and social systems.</p>
+        <div class="glossary-tags"><span>feedback</span><span>regulation</span><span>communication</span><span>control</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Emergence" data-tags="complex-systems self-organisation local-rules collective-behaviour">
+      <summary>
+        <span class="glossary-term">Emergence</span>
+        <span class="glossary-summary">The appearance of collective patterns or properties that arise from interactions among components.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>An emergent pattern need not be explicitly represented in the rules followed by individual components. The concept is therefore central to understanding how simple local interactions can produce organised behaviour at a larger scale.</p>
+        <div class="glossary-tags"><span>complex systems</span><span>self-organisation</span><span>local rules</span><span>collective behaviour</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Feedback" data-tags="cybernetics regulation adaptation dynamics">
+      <summary>
+        <span class="glossary-term">Feedback</span>
+        <span class="glossary-summary">A process in which the consequences of an action or state influence what the system does next.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Feedback can stabilise, amplify, or reorganise behaviour depending on how information is returned and acted upon. It is a foundational concept in cybernetics and a recurring mechanism across biological, technological, ecological, and social systems.</p>
+        <div class="glossary-tags"><span>cybernetics</span><span>regulation</span><span>adaptation</span><span>dynamics</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Feedforward" data-tags="cybernetics anticipation regulation allostasis">
+      <summary>
+        <span class="glossary-term">Feedforward</span>
+        <span class="glossary-summary">Anticipatory action taken in response to an expected change rather than only to an observed error.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Where feedback responds to consequences that are already observable, feedforward uses a model, cue, or expectation about what is likely to happen. The distinction is useful when studying adaptive systems that combine reaction with anticipation.</p>
+        <div class="glossary-tags"><span>cybernetics</span><span>anticipation</span><span>regulation</span><span>allostasis</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Hyperuniformity" data-tags="spatial-order fluctuations geometry statistical-physics">
+      <summary>
+        <span class="glossary-term">Hyperuniformity</span>
+        <span class="glossary-summary">A form of large-scale order characterised by unusually suppressed long-wavelength density fluctuations.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Hyperuniform systems can be disordered at short distances while becoming strongly constrained at large scales. This makes hyperuniformity useful for studying forms of order that lie between conventional categories such as crystals and ordinary disordered materials.</p>
+        <div class="glossary-tags"><span>spatial order</span><span>fluctuations</span><span>geometry</span><span>statistical physics</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Persistent homology" data-tags="topology data-analysis scale">
+      <summary>
+        <span class="glossary-term">Persistent homology</span>
+        <span class="glossary-summary">A topological data analysis method that tracks features such as connected components and loops across scale.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Instead of choosing one scale in advance, persistent homology asks when topological features appear and disappear as a scale parameter changes. Features that persist across a wide range of scales are often interpreted as more structurally significant than short-lived ones. Try this <a href="../interactive/persistence/">interactive demo</a> to get a sense of how persistent homology works.</p>
+        <div class="glossary-tags"><span>method</span><span>topology</span><span>data analysis</span><span>scale</span></div>
+      </div>
+    </details>
+    
+    <details
+			class="glossary-entry"
+			id="phase-transition"
+			data-term="Phase transition"
+			data-tags="complexity dynamics criticality emergence statistical-mechanics"
+		>
+			<summary>
+				<span class="glossary-term">Phase transition</span>
+
+				<span class="glossary-summary">
+				  A qualitative change in a system's collective state that occurs when a control parameter crosses a threshold.
+				</span>
+
+				<span class="glossary-marker" aria-hidden="true"></span>
+			</summary>
+
+			<div class="glossary-detail">
+				<p>
+				  A <strong>phase transition</strong> occurs when a system changes from one macroscopic state or regime to another as some condition is varied. Familiar physical examples include water freezing into ice or a magnet losing its magnetisation as temperature changes. In complex systems, the idea is used more broadly to describe abrupt or qualitative changes in collective organisation, behaviour, or connectivity.
+				</p>
+
+				<p>
+				  Near a transition point, small changes in local interactions can sometimes produce large-scale changes across the whole system. This makes phase transitions closely related to ideas such as <strong>criticality</strong>, <strong>emergence</strong>, <strong>collective behaviour</strong>, and <strong>scaling</strong>.
+				</p>
+
+				<div class="glossary-tags">
+				  <span>complexity</span>
+				  <span>dynamics</span>
+				  <span>criticality</span>
+				  <span>emergence</span>
+				  <span>statistical mechanics</span>
+				</div>
+			</div>
+		</details>
+		
+		<details
+  class="glossary-entry"
+  id="scaling"
+  data-term="Scaling"
+  data-tags="criticality phase-transition universality power-law self-similarity statistical-physics"
+>
+  <summary>
+    <span class="glossary-term">Scaling</span>
+
+    <span class="glossary-summary">
+      A relationship in which the behaviour or structure of a system changes systematically with scale, often following simple mathematical laws.
+    </span>
+
+    <span class="glossary-marker" aria-hidden="true"></span>
+  </summary>
+
+  <div class="glossary-detail">
+    <p>
+      <strong>Scaling</strong> describes how a quantity changes as the size, resolution, distance, time scale, or some other characteristic scale of a system is varied. In many complex systems, these relationships can be expressed through power laws, where the same mathematical form persists across a range of scales.
+    </p>
+
+    <p>
+      Scaling is closely associated with <strong>criticality</strong> and <strong>phase transitions</strong>, where systems may develop correlations across many different length or time scales and lose a single characteristic scale. Similar scaling behaviour can sometimes appear in otherwise very different systems, which is one reason the concept is also closely connected to <strong>universality</strong>.
+    </p>
+
+    <div class="glossary-tags">
+      <span>criticality</span>
+      <span>phase transition</span>
+      <span>universality</span>
+      <span>power law</span>
+      <span>self-similarity</span>
+      <span>statistical physics</span>
+    </div>
+  </div>
+</details>
+
+    <details class="glossary-entry" data-term="Self-organisation" data-tags="emergence local-rules collective-behaviour dynamics">
+      <summary>
+        <span class="glossary-term">Self-organisation</span>
+        <span class="glossary-summary">The formation or maintenance of collective organisation through local interactions without a central controller specifying the global pattern.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Self-organisation does not imply the absence of constraints, environments, or external influences. It describes how coordination at one scale can arise through interactions occurring at another.</p>
+        <div class="glossary-tags"><span>emergence</span><span>local rules</span><span>collective behaviour</span><span>dynamics</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Topology" data-tags="mathematics connectivity shape data-analysis">
+      <summary>
+        <span class="glossary-term">Topology</span>
+        <span class="glossary-summary">The mathematics of qualitative structure, including properties such as connectivity and holes that persist under continuous deformation.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Topology provides a language for describing structure without depending on exact distances or angles. In data analysis, this perspective can help identify robust organisation that may be difficult to see using purely metric or coordinate-based descriptions.</p>
+        <div class="glossary-tags"><span>mathematics</span><span>connectivity</span><span>shape</span><span>data analysis</span></div>
+      </div>
+    </details>
+
+    <details class="glossary-entry" data-term="Universality" data-tags="scaling criticality statistical-physics patterns">
+      <summary>
+        <span class="glossary-term">Universality</span>
+        <span class="glossary-summary">The appearance of the same large-scale behaviour in systems whose microscopic details can be very different.</span>
+        <span class="glossary-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="glossary-detail">
+        <p>Universality is especially important in the theory of critical phenomena, where systems with different constituents can share the same scaling laws. More broadly, it motivates the search for structural principles that survive changes in microscopic implementation.</p>
+        <div class="glossary-tags"><span>scaling</span><span>criticality</span><span>statistical physics</span><span>patterns</span></div>
+      </div>
+    </details>
+
+  </div>
+
+  <p class="glossary-no-results" hidden>No glossary entries match that search.</p>
+
+  <div class="glossary-author-note">
+    <strong>For future glossary pages:</strong> I would give each term its own page only when it needs a longer explanation, references, equations, or examples. A simple front matter field such as <code>tags: [feedback, adaptation, cybernetics]</code> can then provide the relationship data used by this index and the concept cloud.
+  </div>
+</section>
+
+</div>
+
+<script>
+(() => {
+  const root = document.querySelector('.glossary-page');
+  if (!root || root.dataset.glossaryReady === 'true') return;
+  root.dataset.glossaryReady = 'true';
+
+  const cloudTerms = [...root.querySelectorAll('.glossary-cloud-term')];
+  const entries = [...root.querySelectorAll('.glossary-entry')];
+  const status = root.querySelector('.glossary-cloud-status');
+  const reset = root.querySelector('.glossary-cloud-reset');
+  const search = root.querySelector('.glossary-search input');
+  const noResults = root.querySelector('.glossary-no-results');
+
+  // Raw relationship tags written in data-tags.
+  const rawTagsFor = (el) =>
+    new Set((el.dataset.tags || '').split(/\s+/).filter(Boolean));
+
+  // Turn a term name into the same kebab-case vocabulary used by data-tags.
+  const slugify = (value) =>
+    value
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+  // A concept is represented by both its explicit tags and its own term name.
+  const conceptTokensFor = (el) => {
+    const tokens = rawTagsFor(el);
+    const term = el.dataset.term || el.textContent.trim();
+    if (term) tokens.add(slugify(term));
+    return tokens;
+  };
+
+  const sharedCount = (a, b) =>
+    [...a].reduce((count, token) => count + (b.has(token) ? 1 : 0), 0);
+
+  const overlaps = (a, b) => sharedCount(a, b) > 0;
+
+  // Assign cloud sizes from network centrality rather than by hand.
+  // degree   = number of connected concepts
+  // strength = total number of shared concept tokens
+  function assignNetworkWeights() {
+    const scored = cloudTerms.map((term) => {
+      const tokens = conceptTokensFor(term);
+      let degree = 0;
+      let strength = 0;
+
+      cloudTerms.forEach((other) => {
+        if (other === term) return;
+
+        const shared = sharedCount(tokens, conceptTokensFor(other));
+        if (shared > 0) {
+          degree += 1;
+          strength += shared;
+        }
+      });
+
+      return {
+        term,
+        score: degree + 0.25 * strength
+      };
+    });
+
+    const scores = scored.map(({ score }) => score);
+    const minScore = Math.min(...scores);
+    const maxScore = Math.max(...scores);
+    const span = maxScore - minScore;
+
+    scored.forEach(({ term, score }) => {
+      term.classList.remove('weight-2', 'weight-3', 'weight-4', 'weight-5');
+
+      const normalised = span === 0 ? 0.5 : (score - minScore) / span;
+      const weight = 2 + Math.round(normalised * 3);
+
+      term.classList.add(`weight-${weight}`);
+    });
+  }
+
+  assignNetworkWeights();
+
+  function clearConnections() {
+    cloudTerms.forEach((el) => el.classList.remove('is-selected', 'is-related', 'is-dimmed'));
+    entries.forEach((el) => el.classList.remove('is-related', 'is-dimmed'));
+    status.textContent = 'Select a term to highlight related ideas.';
+    reset.hidden = true;
+  }
+
+  cloudTerms.forEach((selected) => {
+    selected.addEventListener('click', () => {
+      const selectedTokens = conceptTokensFor(selected);
+      const term = selected.dataset.term || selected.textContent.trim();
+
+      cloudTerms.forEach((candidate) => {
+        const same = candidate === selected;
+        const related = !same && overlaps(selectedTokens, conceptTokensFor(candidate));
+        candidate.classList.toggle('is-selected', same);
+        candidate.classList.toggle('is-related', related);
+        candidate.classList.toggle('is-dimmed', !same && !related);
+      });
+
+      entries.forEach((entry) => {
+        const same = (entry.dataset.term || '') === term;
+        const related = overlaps(selectedTokens, conceptTokensFor(entry));
+        entry.classList.toggle('is-related', related);
+        entry.classList.toggle('is-dimmed', !same && !related);
+      });
+
+      const shared = [...rawTagsFor(selected)].map((tag) => tag.replaceAll('-', ' ')).join(', ');
+      status.textContent = `Connections around ${term}: ${shared}.`;
+      reset.hidden = false;
+    });
+  });
+
+  reset.addEventListener('click', clearConnections);
+
+  search.addEventListener('input', () => {
+    const query = search.value.trim().toLowerCase();
+    let visible = 0;
+
+    entries.forEach((entry) => {
+      const haystack = `${entry.dataset.term || ''} ${entry.dataset.tags || ''} ${entry.textContent}`.toLowerCase();
+      const match = !query || haystack.includes(query);
+      entry.hidden = !match;
+      if (match) visible += 1;
+    });
+
+    noResults.hidden = visible !== 0;
+  });
+})();
+</script>
+```

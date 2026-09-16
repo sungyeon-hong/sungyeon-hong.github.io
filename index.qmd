@@ -38,7 +38,7 @@ format:
         I am a Lecturer at the School of Cybernetics, Australian National University (ANU), in Canberra, Australia.
       </p>
       <p class="home-lede">
-        My research sits at the intersection of topology, complexity science, cybernetics, and information dynamics. I study how structure emerges, evolves, and sometimes degrades in systems composed of many interacting parts—from geometric point patterns to human–AI communication systems and knowledge landscapes.
+        My research sits at the intersection of complexity science, cybernetics, topology, and information dynamics. I study how structure emerges, evolves, and sometimes degrades in systems composed of many interacting parts from geometric point patterns to human–AI communication systems and knowledge landscapes.
       </p>
       <p class="home-lede">
         Across these projects, I use topology not only as a mathematical toolkit, but as a way of seeing: a means of identifying shapes, holes, flows, and structural signatures that reveal how local interactions give rise to global phenomena.

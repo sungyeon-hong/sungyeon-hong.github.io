@@ -11,6 +11,7 @@ format:
 <div class="research-subpage">
 
 	<section class="research-subpage-intro">
+  	<a class="back-link" href="../research.html">← Research Overview</a>
 		<div class="research-kicker">Embodiment · Collective dynamics · Equilibrium</div>
 		<h2 class="research-title">Embodied complexity</h2>
 		<div class="research-lede">

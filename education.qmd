@@ -69,12 +69,11 @@ format:
 
 		  <div class="teaching-card-grid">
 		    <article class="teaching-card">
-		      <div class="teaching-card-meta">Master of Applied Cybernetics · ANU School of Cybernetics</div>
-		      <a class="title-link" href="https://programsandcourses.anu.edu.au/course/cybn8001">
-		      	<h3>CYBN8001: Building Cyber-Physical Systems I & II
-	</h3>
+		      <div class="teaching-card-meta">Postgraduate teaching · ANU School of Cybernetics</div>
+		      <a class="title-link" href="https://cybernetics.anu.edu.au/education/masters/">
+		      	<h3>Master of Applied Cybernetics</h3>
 					</a>
-		      <p>As a core year-long course in the <a href="https://cybernetics.anu.edu.au/education/masters/">Master of Applied Cybernetics</a>, this course enables students to critically analyse emerging technological constellations and engage in informed conversations about cybernetic systems. Grounded in a learning-by-making ethos, the course supports students as they design and build cyber-physical system prototypes both individually and in diverse collaborative teams.</p>
+		      <p>I am teaching in <a href="https://programsandcourses.anu.edu.au/course/cybn8001"><b>CYBN8001: Building Cyber-Physical Systems I & II</b></a> (24 units), a core year-long course in the Master of Applied Cybernetics. This course enables students to critically analyse emerging technological constellations and engage in informed conversations about cybernetic systems. Grounded in a learning-by-making ethos, the course supports students as they design and build cyber-physical system prototypes both individually and in diverse collaborative teams.</p>
 		      <div class="teaching-tags">
 		        <span>Postgraduate</span>
 		        <span>Cyber-physical systems</span>
@@ -83,12 +82,12 @@ format:
 		    </article>
 
 		    <article class="teaching-card">
-		      <div class="teaching-card-meta">Learning Experiences · ANU School of Cybernetics</div>
+		      <div class="teaching-card-meta">Non-award courses · ANU School of Cybernetics</div>
 		      <a class="title-link" href="https://cybernetics.anu.edu.au/education/learning-experiences/">
-		      	<h3>Decoding/Leading AI through Cybernetics</h3>
+		      	<h3>Learning Experiences</h3>
 		      </a>
 		      <p>
-		      As part of the School's <i>Navigating Cybernetic Futures Learning Experience</i> (LX) series, I contribute to the delivery of this one-day non-award module. Working within a presenter team, I help equip participants from industry, government, and community sectors with clearer ways of understanding AI as part of wider social, cultural, economic, and ecological systems.
+		      As part of the School's <a href="https://cybernetics.anu.edu.au/education/learning-experiences/"><i>Navigating Cybernetic Futures Learning Experience</i></a> (LX) series, I contribute to the delivery of a one-day non-award module, <b>Decoding/Leading AI through Cybernetics</b>. Working within a presenter team, I help equip participants from industry, government, and community sectors with clearer ways of understanding AI as part of wider social, cultural, economic, and ecological systems.
 		      </p>
 		      <div class="teaching-tags">
 		        <span>Non-award</span>
@@ -98,11 +97,10 @@ format:
 		    </article>
 
 		    <article class="teaching-card">
-		      <div class="teaching-card-meta">Undergraduate Workshops · ANU McCusker Institute</div>
-		      <h3>Undergraduate teaching</h3>
-		      <!--Use this card for undergraduate courses, guest lectures, tutorials, workshops, or foundational teaching contributions. This can include mathematics, physics, data analysis, systems thinking, or computational methods, depending on what you want to foreground.-->
+		      <div class="teaching-card-meta">Undergraduate teaching · ANU McCusker Institute</div>
+		      <h3>SoCIETIE Initiatives</h3>
 		      <p>
-		      I developed and facilitate an undergraduate workshop within the <i>Cybernetics for Social Impact</i> curriculum (awarded <i>Transdisciplinary Teaching Award 2026</i>). Hosted by the <a href="https://mccuskerinstitute.anu.edu.au/">ANU McCusker Institute</a>, the workshop equips students with transdisciplinary tools and systems perspectives for engaging with complex social issues and creating meaningful impact.
+		      As a SoCIETIE Affiliate at the <a href="https://mccuskerinstitute.anu.edu.au/">ANU McCusker Institute</a>, I develop and facilitate undergraduate workshops called KNoTs (Know the Nature of Things) within the <i>Cybernetics for Social Impact</i> curriculum, which was awarded <i>Transdisciplinary Teaching Award 2026</i>. The aim of the workshops is to equip students with transdisciplinary tools and systems perspectives for engaging with complex social issues, imagining hopeful futures, and creating meaningful impact.
 		      </p>
 		      <!--Through repeated delivery across successive cohorts, the workshop has become an evolving learning environment, continually refined through reflection, feedback, and experimentation.-->
 		      <!--The workshop is designed to provide students with space and time to think through what it means by self-organisation, interact with other peers to embody the concept, and understand what makes systems resilient. We discuss the emergence of patterns in natural and sociotechnical contexts and identify cybernetic elements, such as agents, relationships, and feedback, to analyse self-organising systems with the aim of envisioning resilient and hopeful futures.-->

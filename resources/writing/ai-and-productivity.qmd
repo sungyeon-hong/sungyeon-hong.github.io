@@ -1,0 +1,49 @@
+---
+pagetitle: "AI and Productivity"
+title: "AI and Productivity"
+date: "1 May 2026"
+page-layout: full
+description: "Can AI be meaningfully mapped to human productivity when both intelligence and productivity are multidimensional, context-dependent, and continually reshaped by technological and social change?"
+categories:
+  - Artificial intelligence
+  - Productivity
+  - Complexity
+  - Economics
+  - Human–AI systems
+  - Relationality
+format:
+  html:
+    toc: true
+    toc-depth: 2
+---
+
+
+::: {.site-section}
+
+It is indeed an important question whether AI is genuinely contributing to an increase in net productivity of human society. In my view, this touches on many different aspects of society, not economics alone, as the impact of AI use and its integration into our daily activities and organisations is so broad, spanning politics, economics, research sectors, education, and even human psychology.
+
+I suppose the relationship between the performance of AI models and human productivity is highly non-linear; hence the use of the term "net" productivity. Considering the multi-dimensional nature of AI's influence on human society, productivity may be more appropriately modelled as a vector-valued quantity, rather than a single scalar quantity.
+
+For me, **intelligence** itself is a double-edged sword (if not multi-edged!). Intelligence can be seen as the product of an agent's evolution (whether living or non-living) to maximise the utility of surrounding resources in order to sustain its own existence. It manifests at many different levels, from cells to organisms to collectives. However, intelligence does not necessarily lead to outcomes that optimise long-term sustainment or performance. For example, highly optimised systems can become brittle: financial markets driven by sophisticated algorithms can amplify instability, or individuals may overfit to short-term gains at the expense of long-term well-being. In this sense, intelligence can both enhance and undermine the very goals it appears to serve.
+
+In such a way, intelligence, as an entity, can be viewed as a complex system. This leads me to wonder whether the very question of mapping AI (as a form of intelligence) to (economic) productivity is well-defined. This resembles attempting to define a function between two spaces whose dimensions and metrics are themselves evolving. If both "intelligence" and "productivity" are multi-dimensional, context-dependent, and dynamically evolving, then any attempt to establish a stable, one-to-one mapping between them may be inherently reductive. At best, we may only capture partial projections of this relationship under specific assumptions or time scales.
+
+On top of that, intelligence is often reduced to a single scalar metric, but I do not believe that tells the whole story when evaluating an agent's performance. By bringing this up, I think the point I am making is that AI is not simply a tool that linearly increases/decreases productivity. Rather, it reshapes the structure of productivity itself: redistributing effort, attention, and value across different dimensions, some of which may not be immediately visible or measurable.
+
+From an economic perspective, this raises questions about how we even define and measure productivity in the presence of AI. For instance, conventional measures such as total factor productivity (TFP) attempt to capture efficiency gains that are not explained by inputs like labour and capital. However, if AI fundamentally alters what counts as "labour", augments cognitive processes, and reorganises workflows, then TFP may be capturing only a shadow of these transformations rather than their full substance.
+
+Moreover, the impact of AI is unlikely to be confined to local improvements in efficiency. Through **general equilibrium effects**, gains in one sector may induce shifts in others, changing demand structures, labour allocation, and even the nature of tasks themselves. In this sense, productivity is not merely increased but "reconfigured" across the system.
+
+This also connects to innovation dynamics: AI may accelerate certain forms of innovation while constraining or displacing others, depending on how it channels attention and resources. As such, the question is not only whether AI increases net productivity, but also what kinds of productivity it privileges, and over what time scales. Some gains may appear immediately, while others, such as losses in diversity, resilience, or long-term adaptability, may only become visible later.
+
+Rather than asking "Does AI increase productivity?", the question may have to be whether our current conceptual and measurement frameworks are adequate to even recognise the kinds of changes it brings, like in many other questions. (And yes, I am rerouting a question once again! And I guess I will keep doing so quite often for a reason.)
+
+What I found particularly resonant is that these questions around productivity are not entirely separate from [my earlier reflections on relationality, boundary, and alienation in the context of AI](https://cybernetics.anu.edu.au/news/2026/05/20/more-to-human/){.external-link target="_blank"}. If AI lacks relationality in the sense of being situated within lived, experiential networks, then its contribution to "productivity" may also be relationally incomplete, optimising along dimensions that are legible within data, while leaving out those that emerge through human context, meaning, and consequence.
+
+At the same time, the blurring boundary between human and AI complicates this further: if our activities are already entangled with AI systems, then productivity itself becomes a hybrid construct, no longer attributable to either side alone. Yet, as noted in the sense of foreignness or alienation, this entanglement does not fully dissolve the distinction. We simultaneously experience integration and separation. This tension suggests that what we call productivity may itself sit within this dual condition: partially shared, partially disjoint, and not easily reducible to a single measure.
+
+This makes me wonder whether productivity, much like relationality, is not an intrinsic property of a system, but something that emerges through relations — relations that AI may simulate but not fully inhabit.
+
+<div style="text-align: right; margin-top: 2rem;"><em>In the course of email correspondence with a student</em></div>
+
+:::

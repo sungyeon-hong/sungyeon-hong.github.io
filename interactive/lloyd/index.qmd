@@ -1,8 +1,8 @@
 ---
-title: "Geometry-driven hyperuniformity via Lloyd iterations"
+pagetitle: "Geometry-driven hyperuniformity via Lloyd iterations"
+page-layout: full
 format:
   html:
-    page-layout: full
     toc: false
 ---
 
