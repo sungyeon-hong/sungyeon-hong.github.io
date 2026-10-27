@@ -185,7 +185,7 @@ a:focus-visible .external-arrow {
   display: grid;
   align-items: center;
   background:
-    linear-gradient(rgba(255,255,255,0.22), rgba(255,255,255,0.90)),
+    linear-gradient(rgba(255,255,255,0.32), rgba(255,255,255,0.90)),
     url("images/black-mt-peninsula.jpg") center / cover no-repeat;
   /*border-bottom: 1px solid var(--home-line);*/
   border-radius: 20px;
