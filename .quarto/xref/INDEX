@@ -148,5 +148,8 @@
   },
   "resources/writing/example.qmd": {
     "example.html": "fd394239"
+  },
+  "bio.qmd": {
+    "bio.html": "a390209f"
   }
 }

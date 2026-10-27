@@ -19,7 +19,8 @@ format:
       Transdisciplinary researcher and educator, studying how structure, behaviour, and meaning emerge in complex systems.
     </div>
     <div class="home-actions">
-      <a class="home-btn primary" href="research.html">Explore research</a>
+      <a class="home-btn primary" href="bio.qmd">Bio</a>
+      <a class="home-btn secondary" href="research.qmd">Explore research</a>
       <!--
       <a class="home-btn secondary" href="contact.html">Get in touch</a>
       -->
@@ -27,7 +28,8 @@ format:
   </div>
 </section>
 
-<section class="home-section narrow">
+<section class="home-section home-about-section">
+  <div class="home-section-eyebrow">Introduction</div>
   <h2 class="home-section-title">About</h2>
   <div class="home-about-grid">
     <div>
@@ -43,6 +45,7 @@ format:
       <p class="home-lede">
         Across these projects, I use topology not only as a mathematical toolkit, but as a way of seeing: a means of identifying shapes, holes, flows, and structural signatures that reveal how local interactions give rise to global phenomena.
       </p>
+      <a class="home-inline-link" href="bio.qmd">More about my background <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -51,17 +54,18 @@ format:
 <section class="home-section">
   <div class="home-two-col">
     <div>
+      <div class="home-section-eyebrow">Beyond research</div>
       <h2 class="home-section-title">Teaching and public engagement</h2>
       <p class="home-lede">
         I teach across undergraduate, postgraduate, and non-award learning contexts, with an emphasis on helping learners reason with complexity, build conceptual tools, and engage responsibly with emerging technologies.
       </p>
       <div class="home-list-links">
-        <a href="education.html"><strong>Education</strong><br><span>Teaching commitments and learning experiences</span></a>
-        <a href="engagements.html"><strong>Engagements</strong><br><span>Talks, workshops, panels, and public activities</span></a>
+        <a href="education.qmd"><strong>Education</strong><br><span>Teaching commitments and learning experiences</span></a>
+        <a href="engagements.qmd"><strong>Engagements</strong><br><span>Talks, workshops, panels, and public activities</span></a>
       </div>
     </div>
     <div>
-      <img class="home-portrait" src="images/me_3mt.jpeg" alt="Placeholder image for teaching and public engagement">
+      <img class="home-portrait" src="images/me_3mt.jpeg" alt="Sungyeon Hong during a teaching or public engagement activity">
     </div>
   </div>
 </section>

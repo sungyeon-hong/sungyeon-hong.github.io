@@ -9,6 +9,8 @@ website:
   google-analytics: "G-CPXYZFK8GC"
   navbar:
     left:
+      - text: Bio
+        href: bio.qmd
       - text: Research
         menu:
           - text: Overview

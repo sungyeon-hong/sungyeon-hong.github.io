@@ -1,0 +1,172 @@
+---
+title: ""
+pagetitle: "Bio | Sungyeon Hong"
+page-layout: full
+title-block-banner: false
+format:
+  html:
+    toc: false
+---
+
+```{=html}
+<div class="site-page bio-page">
+
+<section class="site-intro bio-intro">
+  <div class="site-kicker">Background · Employment · Membership</div>
+  <h1 class="bio-title">Bio</h1>
+  <div class="bio-intro-grid">
+    <div class="bio-opening">
+      <p class="bio-lede">I am a Lecturer at the School of Cybernetics, Australian National University (ANU), in Canberra, Australia.</p>
+      <p>With a background in mathematics and physics, I approach questions of self-organisation and complexity through both mathematical and transdisciplinary perspectives. My research began with geometry-driven hyperuniformity and has since expanded towards the structures and dynamics of information systems, including interactions involving generative AI.</p>
+      <p>Across research and education, I am interested in how seemingly different systems can reveal common principles of emergence, feedback, adaptation, and collective behaviour.</p>
+      <a class="bio-text-link" href="research.qmd">Explore my research <span aria-hidden="true">→</span></a>
+    </div>
+    <figure class="bio-figure">
+      <img src="images/syh.jpg" alt="Portrait of Sungyeon Hong">
+    </figure>
+  </div>
+</section>
+
+<section class="site-band">
+  <div class="site-section bio-section" id="employment">
+    <div class="bio-section-header">
+      <div class="site-kicker">Academic appointments</div>
+      <h2 class="site-section-title">Employment</h2>
+      <p>A concise record of my academic appointments. The latest role is listed first.</p>
+    </div>
+    <div class="bio-timeline">
+    
+      <!-- Add more appointments as needed, using this structure:
+      <article class="bio-timeline-item">
+        <div class="bio-timeline-date">YYYY–YYYY</div>
+        <div class="bio-timeline-content">
+          <h3>Position title</h3>
+          <p class="bio-timeline-institution">School / Institute · University</p>
+          <p class="bio-timeline-meta">Location</p>
+        </div>
+      </article>
+      -->
+      
+      <article class="bio-timeline-item">
+        <div class="bio-timeline-date">Jan 2025 – Present</div>
+        <div class="bio-timeline-content">
+          <h3>Lecturer</h3>
+          <p class="bio-timeline-institution"><a href="https://cybernetics.anu.edu.au/">School of Cybernetics</a> · Australian National University</p>
+          <p class="bio-timeline-meta">Canberra, Australia</p>
+        </div>
+      </article>
+      <article class="bio-timeline-item">
+        <div class="bio-timeline-date">Aug 2023 – Dec 2024</div>
+        <div class="bio-timeline-content">
+          <h3>Research Associate</h3>
+          <p class="bio-timeline-institution"><a href="https://cybernetics.anu.edu.au/">School of Cybernetics</a> · Australian National University</p>
+          <p class="bio-timeline-meta">Canberra, Australia</p>
+        </div>
+      </article>
+      <!--
+      <article class="bio-timeline-item">
+        <div class="bio-timeline-date">Jun 2018 – Aug 2019</div>
+        <div class="bio-timeline-content">
+          <h3>Research Intern</h3>
+          <p class="bio-timeline-institution">Korea Institute of Science and Technology (KIST)</p>
+          <p class="bio-timeline-meta">Seoul, Republic of Korea</p>
+        </div>
+      </article>
+      <article class="bio-timeline-item">
+        <div class="bio-timeline-date">Mar 2015 – Jul 2015</div>
+        <div class="bio-timeline-content">
+          <h3>STEM Educator</h3>
+          <p class="bio-timeline-institution">KAIST Global Center for Gifted Children</p>
+          <p class="bio-timeline-meta">Daejeon, Republic of Korea</p>
+        </div>
+      </article>
+      -->
+    </div>
+  </div>
+</section>
+
+<section class="site-section bio-section" id="education">
+  <div class="bio-section-header">
+    <div class="site-kicker">Academic training</div>
+    <h2 class="site-section-title">Education</h2>
+    <p>My academic background spans mathematics and physics, with doctoral research focused on geometry-driven hyperuniformity.</p>
+  </div>
+  <div class="bio-timeline">
+    <article class="bio-timeline-item">
+      <div class="bio-timeline-date">2024</div>
+      <div class="bio-timeline-content">
+        <h3>PhD in Physics</h3>
+        <p class="bio-timeline-institution">Australian National University (ANU)</p>
+      </div>
+    </article>
+
+    <article class="bio-timeline-item">
+      <div class="bio-timeline-date">2017</div>
+      <div class="bio-timeline-content">
+        <h3>MSc in Mathematics</h3>
+        <p class="bio-timeline-institution">École Polytechnique Fédérale de Lausanne (EPFL)</p>
+      </div>
+    </article>
+    
+    <article class="bio-timeline-item">
+      <div class="bio-timeline-date">2015</div>
+      <div class="bio-timeline-content">
+        <h3>BSc in Mathematics</h3>
+        <p class="bio-timeline-institution">Korea Advanced Institute of Science & Technology (KAIST)</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<section class="site-band">
+  <div class="site-section bio-section" id="membership">
+    <div class="bio-section-header">
+      <div class="site-kicker">External engagement</div>
+      <h2 class="site-section-title">Professional membership</h2>
+      <p>Memberships and affiliations with professional, research and educational organisations that support scholarly exchange, interdisciplinary collaboration and continued professional development.</p>
+    </div>
+    <div class="bio-timeline">
+    
+      <article class="bio-timeline-item">
+        <div class="bio-timeline-date">Jun 2025 – Present</div>
+        <div class="bio-timeline-content">
+          <h3>SoCIETIE Affiliate</h3>
+          <p class="bio-timeline-institution"><a href="https://mccuskerinstitute.anu.edu.au/">ANU McCusker Institute</a></p>
+          <p class="bio-timeline-meta">Canberra, Australia</p>
+        </div>
+      </article>
+      
+      <article class="bio-timeline-item">
+        <div class="bio-timeline-date">Mar 2025 – Present</div>
+        <div class="bio-timeline-content">
+          <h3>Young Professional</h3>
+          <p class="bio-timeline-institution"><a href="https://www.ieeesmc.org/">IEEE Systems, Man and Cybernetics (SMC) Society</a></p>
+          <p class="bio-timeline-meta">United States</p>
+        </div>
+      </article>
+
+      <article class="bio-timeline-item">
+        <div class="bio-timeline-date">Oct 2022 – Present</div>
+        <div class="bio-timeline-content">
+          <h3>Associate Fellow of Higher Education Academy (AFHEA)</h3>
+          <p class="bio-timeline-institution"><a href="https://www.advance-he.ac.uk">Advance HE</a></p>
+          <p class="bio-timeline-meta">United Kingdom</p>
+        </div>
+      </article>
+      
+      <article class="bio-timeline-item">
+        <div class="bio-timeline-date">Jan 2020 – Present</div>
+        <div class="bio-timeline-content">
+          <h3>Member</h3>
+          <p class="bio-timeline-institution"><a href="https://www.kasea.org.au/index.php">Korean Academy of Scientists and Engineers in Australasia (KASEA)</a></p>
+          <p class="bio-timeline-meta">Australia & New Zealand</p>
+        </div>
+      </article>
+      
+    </div>
+  </div>
+</section>
+
+</div>
+```

@@ -2891,3 +2891,66 @@ details.faq-item[open] summary::after {
     grid-template-columns: 1fr;
   }
 }
+
+/* Homepage and Bio: modest visual hierarchy and shared chronology */
+.home-section-eyebrow {
+  margin-bottom: 0.65rem;
+  color: var(--home-accent);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.home-about-section { padding-top: 4.5rem; }
+.home-about-grid { grid-template-columns: minmax(210px, 0.29fr) minmax(0, 0.71fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+.home-about-photo { display: block; max-width: 300px; aspect-ratio: 4 / 5; object-position: center top; }
+.home-about-grid .home-lede { margin-bottom: 1rem; }
+.home-inline-link, .home-inline-link:visited, .bio-text-link, .bio-text-link:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+  color: var(--site-accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.home-inline-link:hover, .bio-text-link:hover { color: var(--site-accent-dark); }
+.home-inline-link span, .bio-text-link span { transition: transform 0.18s ease; }
+.home-inline-link:hover span, .bio-text-link:hover span { transform: translateX(3px); }
+.home-btn, .home-btn:visited { text-decoration: none; }
+.home-btn.primary:visited { color: #fff; }
+.home-btn.primary:hover { color: #fff; background: var(--site-accent-dark); }
+.home-btn.secondary:hover { color: var(--site-accent-dark); background: #fff; }
+.home-list-links a:hover { border-color: rgba(66,107,115,0.48); background: #f7fafb; }
+
+.bio-page { --bio-line: #d7e1e4; --bio-muted: #5f6f7a; }
+.bio-intro { padding-bottom: 4rem; }
+.bio-title { margin: 0 0 1.8rem; font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.035em; color: var(--site-ink); }
+.bio-intro-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(220px, 0.58fr); align-items: start; gap: clamp(2rem, 5vw, 4.5rem); }
+.bio-opening { max-width: 740px; }
+.bio-opening p { color: var(--site-ink); font-size: 1.05rem; line-height: 1.75; margin: 0 0 1rem; }
+.bio-opening .bio-lede { font-size: 1.21rem; line-height: 1.6; font-weight: 550; }
+.bio-figure { margin: 0; }
+.bio-figure img { display: block; width: 100%; max-width: 310px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; border-radius: 18px; border: 1px solid var(--bio-line); }
+.bio-section { display: grid; grid-template-columns: minmax(210px, 0.65fr) minmax(0, 1.35fr); align-items: start; gap: clamp(2rem, 5vw, 4rem); }
+.bio-section-header .site-kicker { margin-bottom: 0.65rem; }
+.bio-section-header .site-section-title { margin-bottom: 0.6rem; }
+.bio-section-header > p { color: var(--bio-muted); font-size: 0.98rem; line-height: 1.65; }
+.bio-timeline { border-top: 1px solid var(--bio-line); }
+.bio-timeline-item { display: grid; grid-template-columns: minmax(110px, 0.33fr) minmax(0, 1fr); gap: 1.25rem; padding: 1.35rem 0; border-bottom: 1px solid var(--bio-line); }
+.bio-timeline-date { color: var(--site-accent); font-size: 0.85rem; font-weight: 700; }
+.bio-timeline-content h3 { color: var(--site-ink); font-size: 1.12rem; margin: 0 0 0.35rem; }
+.bio-timeline-content p { margin: 0 0 0.2rem; line-height: 1.6; }
+.bio-timeline-institution { color: var(--site-ink); }
+.bio-timeline-meta { color: var(--bio-muted); font-size: 0.92rem; }
+@media (max-width: 820px) {
+  .home-about-grid { grid-template-columns: minmax(0, 1fr); }
+  .home-about-photo { max-width: 250px; }
+  .bio-intro-grid, .bio-section { grid-template-columns: 1fr; }
+  .bio-figure { grid-row: 1; }
+  .bio-figure img { max-width: 220px; }
+}
+@media (max-width: 480px) {
+  .bio-timeline-item { grid-template-columns: 1fr; gap: 0.35rem; }
+  .home-about-section { padding-top: 3rem; }
+}
