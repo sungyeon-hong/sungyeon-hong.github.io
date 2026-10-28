@@ -5,6 +5,13 @@ format:
   html:
     toc: false
 listing:
+  - id: engagement-map-data
+    contents: engagements/*.qmd
+    template: engagements/map-data.ejs.md
+    sort: "date desc"
+    page-size: 10000
+    field-types:
+      date: date
   - id: activities
     contents: engagements/*.qmd
     template: engagements/event-card.ejs.md
@@ -79,9 +86,46 @@ listing:
     </div>
   </div>
 
-	<!-- Event cards listed here -->
-  <div id="activities"></div>
+  <div class="engagement-map-intro">
+    <div>
+      <div class="engagement-section-kicker">Across places</div>
+      <h3>Where I could be found</h3>
+      <p>Find the places I visited for my engagement activities below.</p>
+    </div>
+    <div class="engagement-map-legend"><span aria-hidden="true"></span> Engagement locations</div>
+  </div>
+  <div class="engagement-map-frame">
+    <div id="engagement-world-map" role="region" aria-label="Map of countries represented in engagement activities"></div>
+    <div class="engagement-map-zoom-buttons" role="group" aria-label="Map zoom controls">
+      <button type="button" id="engagement-zoom-in" aria-label="Zoom in" title="Zoom in">+</button>
+      <button type="button" id="engagement-zoom-out" aria-label="Zoom out" title="Zoom out">−</button>
+    </div>
+  </div>
+  <p id="engagement-map-status" class="engagement-map-status" aria-live="polite">Loading engagement locations…</p>
+  <div id="engagement-events-slot" class="engagement-events-slot" aria-label="Event cards"></div>
 </section>
 
 </div>
 ```
+
+::: {#engagement-map-data .engagement-map-feed}
+:::
+
+::: {#activities}
+:::
+
+
+<!-- The map is built from the complete Quarto listing metadata, not just the visible page of cards. -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyo85ZOg7Efo=" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="engagements/engagement-map.js" defer></script>
+
+<!-- Quarto expands custom listings outside raw HTML sections. Relocate the generated
+     event listing into the existing Events & Contributions section after rendering. -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const slot = document.getElementById('engagement-events-slot');
+  const listing = document.getElementById('listing-activities');
+  if (slot && listing && listing.parentElement !== slot) slot.appendChild(listing);
+});
+</script>

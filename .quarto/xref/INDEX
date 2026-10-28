@@ -151,5 +151,8 @@
   },
   "bio.qmd": {
     "bio.html": "a390209f"
+  },
+  "engagements/map-data.ejs.md": {
+    "map-data.ejs.html": "b95bbcec"
   }
 }

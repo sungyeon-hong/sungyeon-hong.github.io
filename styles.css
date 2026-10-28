@@ -2560,6 +2560,18 @@ details.faq-item[open] summary::after {
    Engagement event cards + event detail pages
    -------------------------------------------------------------------------- */
 
+/* Quarto renders #activities outside .engagements-page; restore scoped tokens there. */
+#listing-activities,
+#activities,
+.event-listing-grid {
+  --engagement-accent: #426b73;
+  --engagement-accent-dark: #2f5158;
+  --engagement-accent-soft: #e7f0f1;
+  --engagement-ink: #1f2933;
+  --engagement-muted: #5f6f7a;
+  --engagement-line: #d7e1e4;
+}
+
 /* Custom EJS listing */
 .event-listing-grid {
   display: grid;
@@ -2568,11 +2580,17 @@ details.faq-item[open] summary::after {
 }
 
 .event-listing-card {
-  padding: 1.15rem;
-  border: 1px solid var(--engagement-line);
+  padding: 0 1.15rem 1.15rem;
+  border: 1px solid #c9ded4;
   border-radius: 16px;
-  background: var(--engagement-bg);
+  background: #edf6f0;
   box-shadow: 0 6px 18px rgba(31, 41, 51, 0.04);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.event-listing-card:hover {
+  background: #e1f0e6;
+  transform: translateY(-2px);
 }
 
 .event-listing-date-row {
@@ -2596,6 +2614,7 @@ details.faq-item[open] summary::after {
 }
 
 .event-listing-title {
+  margin-top: 0;
   margin: 0 0 0.4rem;
   font-size: 1.1rem;
   line-height: 1.32;
@@ -2953,4 +2972,295 @@ details.faq-item[open] summary::after {
 @media (max-width: 480px) {
   .bio-timeline-item { grid-template-columns: 1fr; gap: 0.35rem; }
   .home-about-section { padding-top: 3rem; }
+}
+
+
+/* Engagement map: metadata-driven country markers */
+.engagement-map-intro { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin: 0.5rem 0 1rem; }
+.engagement-map-intro h3 { margin: 0 0 0.5rem; color: var(--engagement-ink); font-size: clamp(1.25rem, 2vw, 1.65rem); }
+.engagement-map-intro p { margin: 0; color: var(--engagement-muted); max-width: 660px; line-height: 1.6; }
+.engagement-map-legend { display: flex; align-items: center; white-space: nowrap; gap: 0.45rem; color: var(--engagement-muted); font-size: 0.8rem; }
+.engagement-map-legend span { width: 11px; height: 11px; border-radius: 50%; background: #426b73; box-shadow: 0 0 0 4px rgba(66,107,115,.16); }
+.engagement-map-frame { position: relative; overflow: hidden; border: 1px solid var(--engagement-line); background: #edf3f4; border-radius: 18px; margin-bottom: 2.5rem; }
+#engagement-world-map { width: 100%; height: clamp(300px, 39vw, 440px); z-index: 0; }
+.engagement-map-status { padding: 0.55rem 0.9rem; margin: 0; color: var(--engagement-muted); font-size: 0.82rem; background: #f7fafb; border-top: 1px solid var(--engagement-line); }
+#listing-engagement-map-data { display: none !important; }
+.engagement-map-popup h4 { margin: 0 0 .5rem; font-size: 1rem; color: #1f2933; }
+.engagement-map-popup ul { list-style: none; padding: 0; margin: 0; }
+.engagement-map-popup li + li { margin-top: 0.5rem; }
+.engagement-map-popup a { font-weight: 650; text-decoration: none; }
+.engagement-map-popup small { display: block; color: #5f6f7a; }
+.engagements-page .leaflet-container { font-family: inherit; }
+.engagements-page .leaflet-control-attribution { font-size: 10px; }
+@media (max-width: 680px) { .engagement-map-intro { align-items: start; flex-direction: column; gap: .65rem; } #engagement-world-map { height: 330px; } }
+
+/* Locally drawn Natural Earth basemap: no OSM tile images */
+#engagement-world-map { background: #f5fafb; }
+
+/* Hoverable, link-rich engagement map popups */
+.engagement-map-popup-shell .leaflet-popup-content { margin: 1rem 1.15rem; max-height: 290px; overflow-y: auto; }
+.engagement-map-popup h4 { padding-right: 1rem; margin: 0 0 .65rem; font-size: .98rem; }
+.engagement-map-popup ul { list-style: none; padding: 0; margin: 0; }
+.engagement-map-popup li { padding: .55rem 0; border-top: 1px solid #e5edef; }
+.engagement-map-popup li:first-child { padding-top: .25rem; border-top: 0; }
+.engagement-map-popup a { display: block; color: #426b73; font-weight: 700; line-height: 1.35; text-decoration: none; }
+.engagement-map-popup a:hover, .engagement-map-popup a:focus-visible { color: #2f5158; text-decoration: underline; }
+.engagement-map-event-location { display: block; margin-top: .3rem; color: #334b53; font-size: .83rem; line-height: 1.35; }
+.engagement-map-popup small { display: block; margin-top: .15rem; font-size: .75rem; color: #687982; }
+.engagements-page .leaflet-interactive { cursor: pointer; }
+
+/* Progressive-disclosure event lists on the engagement map */
+.engagement-map-popup-shell .leaflet-popup-content { max-height: none; overflow: visible; margin: .95rem 1.05rem; }
+.engagement-map-popup { width: min(310px, 70vw); }
+.engagement-map-popup h4 { margin-bottom: .2rem; }
+.engagement-map-popup-count { font-size: .78rem; color: #647781; margin: 0 0 .5rem; }
+.engagement-map-popup-list { max-height: none; overflow: visible; }
+.engagement-map-popup-list.is-expanded { max-height: 290px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding-right: .45rem; }
+.engagement-map-popup-list li[hidden] { display: none !important; }
+.engagement-map-expand { width: 100%; margin-top: .65rem; padding: .58rem .7rem; border: 1px solid #c9d9dc; border-radius: 7px; background: #f5fafb; color: #426b73; font: inherit; font-size: .82rem; font-weight: 650; cursor: pointer; }
+.engagement-map-expand:hover, .engagement-map-expand:focus-visible { background: #e9f2f3; outline-offset: 2px; }
+@media (max-width: 520px) { .engagement-map-popup { width: min(270px, 70vw); } .engagement-map-popup-list.is-expanded { max-height: 220px; } }
+
+/* Stationary country event panel: independent of Leaflet popup autoPan. */
+.engagement-map-frame #engagement-world-map { position: relative; }
+.engagement-map-detail-panel[hidden] { display: none !important; }
+.engagement-map-detail-panel {
+  position: absolute; top: 12px; right: 12px; z-index: 650;
+  box-sizing: border-box; width: min(355px, calc(100% - 24px));
+  max-height: calc(100% - 24px); overflow-y: auto;
+  background: rgba(255,255,255,.98); border: 1px solid #cbdadd;
+  border-radius: 12px; box-shadow: 0 7px 24px rgba(27,53,63,.17);
+  padding: 16px; pointer-events: auto; overscroll-behavior: contain;
+}
+.engagement-map-detail-panel .engagement-map-popup { width: 100%; }
+.engagement-map-detail-panel .engagement-map-popup h4 { padding-right: 25px; }
+.engagement-map-panel-close {
+  position: absolute; top: 6px; right: 8px; width: 30px; height: 30px;
+  background: transparent; border: 0; border-radius: 6px;
+  font-size: 24px; line-height: 1; color: #526e76; cursor: pointer;
+}
+.engagement-map-panel-close:hover, .engagement-map-panel-close:focus-visible { background: #e9f2f3; }
+.engagement-map-detail-panel .engagement-map-popup-list.is-expanded { max-height: 250px; }
+@media (max-width: 600px) {
+  .engagement-map-detail-panel { top: auto; bottom: 8px; right: 8px; width: min(320px, calc(100% - 16px)); max-height: 75%; padding: 12px; }
+  .engagement-map-detail-panel .engagement-map-popup-list.is-expanded { max-height: 180px; }
+}
+
+/* Map refinements: engagement summary sits below the map frame, not over its viewport. */
+.engagement-map-frame { margin-bottom: 0; }
+.engagement-map-status {
+  position: static;
+  display: block;
+  margin: .6rem 0 2.5rem;
+  padding: 0 .15rem;
+  border: 0;
+  background: transparent;
+  color: var(--engagement-muted);
+  font-size: .82rem;
+  line-height: 1.45;
+}
+/* Explicit +/- controls, bottom-left and unobscured by the event panel. */
+#engagement-world-map .leaflet-control-zoom {
+  border: 1px solid #cbdadd;
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 2px 9px rgba(27,53,63,.12);
+}
+#engagement-world-map .leaflet-control-zoom a {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  color: #355e66;
+  background: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}
+#engagement-world-map .leaflet-control-zoom a:hover,
+#engagement-world-map .leaflet-control-zoom a:focus-visible { background: #e9f2f3; }
+
+
+/* Engagement cards correction: scoped to the actual Quarto-generated custom listing.
+   Do not change --engagement-bg globally; the podcast body stays white. */
+.engagements-page .engagement-feature-card,
+.engagements-page .engagement-feature-body {
+  background: #ffffff;
+}
+.engagements-page #engagement-events-slot {
+  width: 100%;
+  min-width: 0;
+  margin-top: 1.65rem;
+}
+.engagements-page #engagement-events-slot #listing-activities {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+.engagements-page #engagement-events-slot .event-listing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.engagements-page #engagement-events-slot .event-listing-card {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  border: 1px solid #c9ded4;
+  background-color: #edf6f0;
+  border-radius: 16px;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.engagements-page #engagement-events-slot .event-listing-card:hover {
+  background-color: #e1f0e6;
+}
+.engagements-page #engagement-events-slot .event-listing-title a .external-arrow {
+  color: #426b73;
+}
+@media (max-width: 980px) {
+  .engagements-page #engagement-events-slot .event-listing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  .engagements-page #engagement-events-slot .event-listing-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Event cards: restore the original white treatment and explicitly show title arrows.
+   Scoped to the event listing, leaving the podcast feature unchanged. */
+.engagements-page #engagement-events-slot .event-listing-card,
+.engagements-page #engagement-events-slot .event-listing-card:hover {
+  background: #ffffff;
+}
+.engagements-page #engagement-events-slot .event-listing-title a > .external-arrow {
+  display: inline-block;
+  visibility: visible;
+  opacity: 1;
+  color: #426b73;
+  font-size: .82em;
+  font-weight: 500;
+  margin-left: .25em;
+  vertical-align: .08em;
+}
+.engagements-page #engagement-events-slot .event-listing-location-row {
+  display: grid;
+  grid-template-columns: 70px minmax(0,1fr);
+  gap: .5rem;
+  margin-top: -.25rem;
+  margin-bottom: .75rem;
+  align-items: start;
+}
+.engagements-page #engagement-events-slot .event-listing-date-row {
+  display: grid;
+  grid-template-columns: 70px minmax(0,1fr);
+  gap: .5rem;
+  align-items: baseline;
+  margin-bottom: .4rem;
+}
+.engagements-page #engagement-events-slot .event-listing-date-row .event-meta-label,
+.engagements-page #engagement-events-slot .event-listing-location-row .event-meta-label {
+  font-size: .68rem;
+  font-weight: 750;
+  letter-spacing: .09em;
+  color: #426b73;
+}
+.engagements-page #engagement-events-slot .event-listing-location {
+  color: var(--engagement-muted, #5f6f7a);
+  font-size: .82rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+/* Event card hierarchy: title, date, location, description. */
+.engagements-page #engagement-events-slot .event-listing-title { margin: 0 0 .75rem; }
+.engagements-page #engagement-events-slot .event-listing-description { margin-top: .65rem; }
+
+/* Page-level zoom buttons: independent of Leaflet's default controls. */
+.engagement-map-frame .engagement-map-zoom-buttons {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #cbdadd;
+  border-radius: 9px;
+  box-shadow: 0 2px 9px rgba(27,53,63,.12);
+}
+.engagement-map-frame .engagement-map-zoom-buttons button {
+  display: block;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  color: #355e66;
+  font: 600 22px/1 sans-serif;
+  cursor: pointer;
+  padding: 0;
+}
+.engagement-map-frame .engagement-map-zoom-buttons button + button { border-top: 1px solid #cbdadd; }
+.engagement-map-frame .engagement-map-zoom-buttons button:hover:not(:disabled),
+.engagement-map-frame .engagement-map-zoom-buttons button:focus-visible { background: #e9f2f3; }
+.engagement-map-frame .engagement-map-zoom-buttons button:disabled { opacity: .45; cursor: default; }
+
+/* Final event card spacing: compact title-to-metadata rhythm. */
+.engagements-page #engagement-events-slot .event-listing-title {
+  margin: 0 0 .35rem;
+  line-height: 1.3;
+}
+.engagements-page #engagement-events-slot .event-listing-date-row {
+  margin-bottom: .2rem;
+}
+.engagements-page #engagement-events-slot .event-listing-location-row {
+  margin-top: 0;
+  margin-bottom: .45rem;
+}
+.engagements-page #engagement-events-slot .event-listing-description {
+  margin-top: .45rem;
+}
+
+/* Engagement listing: compact spacing matching the earlier card layout.
+   Deliberately scoped so podcast cards and map controls are unaffected. */
+.engagements-page #engagement-events-slot .event-listing-card {
+  padding: 0 1.15rem 1.15rem;
+  min-height: 0;
+  height: auto;
+  justify-content: flex-start;
+}
+.engagements-page #engagement-events-slot .event-listing-body {
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.engagements-page #engagement-events-slot .event-listing-title {
+  margin: 0 0 .45rem;
+  line-height: 1.32;
+}
+.engagements-page #engagement-events-slot .event-listing-date-row {
+  margin: 0 0 .15rem;
+  gap: .5rem;
+}
+.engagements-page #engagement-events-slot .event-listing-location-row {
+  margin: 0 0 .5rem;
+  gap: .5rem;
+}
+.engagements-page #engagement-events-slot .event-listing-description {
+  margin: .45rem 0 0;
+  line-height: 1.55;
+}
+.engagements-page #engagement-events-slot .event-listing-categories {
+  margin-top: .7rem;
+  gap: .38rem;
+}
+.engagements-page #engagement-events-slot .event-listing-grid {
+  align-items: stretch;
+  row-gap: 1rem;
 }

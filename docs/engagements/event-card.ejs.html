@@ -184,38 +184,43 @@ gtag('config', 'G-CPXYZFK8GC', { 'anonymize_ip': true});
 
 
 <div class="event-listing-grid list">
-&lt;% for (const item of items) { 
-     const organisers = Array.isArray(item.organisers)
-       ? item.organisers.join(" · ")
-       : item.organisers;
-%&gt;
+&lt;% for (const item of items) { %&gt;
+  <article class="event-listing-card" <%="metadataAttrs(item)" %="">&gt;
+    &lt;% if (item.image) { %&gt;
+    <a class="event-listing-image-link" href="<%- item.path %>" aria-label="Open <%- item.title %>">
+      <img class="event-listing-image" src="<%- item.image %>" alt="">
+    </a>
+    &lt;% } %&gt;
 
-<article <%-="" metadataattrs(item)="" %=""> class="event-listing-card"&gt;
+    <div class="event-listing-body">
+      <h3 class="event-listing-title listing-title anchored">
+        <a href="<%- item.path %>">&lt;%= item.title %&gt; <span class="external-arrow" aria-hidden="true">↗</span></a>
+      </h3>
 
-  <h3 class="event-listing-title anchored">
-    <a href="<%- item.path %>">&lt;%= item.title %&gt;</a>
-  </h3>
+      <div class="event-listing-date-row">
+        <span class="event-meta-label">DATE</span>
+        <time class="event-listing-date listing-date">&lt;%= item.date %&gt;</time>
+      </div>
+      &lt;% if (item.location) { %&gt;
+      <div class="event-listing-location-row">
+        <span class="event-meta-label">LOCATION</span>
+        <span class="event-listing-location listing-location">&lt;%= item.location %&gt;</span>
+      </div>
+      &lt;% } %&gt;
 
-  &lt;% if (item.date) { %&gt;
-  <div class="event-listing-date-row">
-    <span class="event-listing-label">DATE</span>
-    <span class="event-listing-date">&lt;%= item.date %&gt;</span>
-  </div>
-  &lt;% } %&gt;
+      &lt;% if (item.description) { %&gt;
+      <p class="event-listing-description listing-description">&lt;%= item.description %&gt;</p>
+      &lt;% } %&gt;
 
-  &lt;% if (item.description) { %&gt;
-  <p class="event-listing-description">&lt;%= item.description %&gt;</p>
-  &lt;% } %&gt;
-
-  &lt;% if (item.categories &amp;&amp; item.categories.length) { %&gt;
-  <div class="event-listing-tags">
-    &lt;% item.categories.slice(0, 2).forEach(function(category) { %&gt;
-      <span>&lt;%= category %&gt;</span>
-    &lt;% }) %&gt;
-  </div>
-  &lt;% } %&gt;
-
-</article>
+      &lt;% if (item.categories &amp;&amp; item.categories.length) { %&gt;
+      <div class="event-listing-categories">
+        &lt;% for (const category of item.categories) { %&gt;
+        <span class="listing-category">&lt;%= category %&gt;</span>
+        &lt;% } %&gt;
+      </div>
+      &lt;% } %&gt;
+    </div>
+  </article>
 &lt;% } %&gt;
 </div>
 
